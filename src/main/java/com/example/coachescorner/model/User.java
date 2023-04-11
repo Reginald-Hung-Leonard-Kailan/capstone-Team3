@@ -19,7 +19,7 @@ public class User {
     @Column(length = 50)
     private String email;
 
-    private long password;
+    private String password;
 
     private boolean isCoach;
 
@@ -29,7 +29,7 @@ public class User {
     @Column(length = 50)
     private String lastName;
 
-    @Column(length = 50)
+    @Column(length = 10)
     private int phoneNumber;
 
     private String profilePicture;

@@ -23,13 +23,17 @@ public class ClientInformation {
     @JoinColumn(name = "user_id")
     private User userId;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name = "type",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "type_id")
-    )
-    private Set<InformationType> types;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "information_type")
+    private InformationType InformationType;
+
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(
+//            name = "type",
+//            joinColumns = @JoinColumn(name = "client_id"),
+//            inverseJoinColumns = @JoinColumn(name = "type_id")
+//    )
+//    private Set<InformationType> types;
 
     public ClientInformation() {
     }
@@ -72,11 +76,11 @@ public class ClientInformation {
         this.userId = userId;
     }
 
-    public Set<InformationType> getTypes() {
-        return types;
-    }
-
-    public void setTypes(Set<InformationType> types) {
-        this.types = types;
-    }
+//    public Set<InformationType> getTypes() {
+//        return types;
+//    }
+//
+//    public void setTypes(Set<InformationType> types) {
+//        this.types = types;
+//    }
 }

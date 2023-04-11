@@ -49,7 +49,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, long password, boolean isCoach, String firstName, String lastName, int phoneNumber, String profilePicture) {
+    public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, int phoneNumber, String profilePicture) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -84,11 +84,11 @@ public class User {
         this.email = email;
     }
 
-    public long getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

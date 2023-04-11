@@ -15,8 +15,10 @@ public class InformationType {
 
     private String name;
 
-    @ManyToMany(mappedBy = "types")
-    private Set<ClientInformation> clientInformationSet;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "InformationType")
+    private Set<ClientInformation> clientInformations;
+
 
     public InformationType() {
     }
@@ -41,11 +43,13 @@ public class InformationType {
         this.name = name;
     }
 
-    public Set<ClientInformation> getClientInformationSet() {
-        return clientInformationSet;
-    }
 
-    public void setClientInformationSet(Set<ClientInformation> clientInformationSet) {
-        this.clientInformationSet = clientInformationSet;
-    }
+//    public Set<ClientInformation> getClientInformationSet() {
+//        return clientInformationSet;
+//    }
+//
+//    public void setClientInformationSet(Set<ClientInformation> clientInformationSet) {
+//        this.clientInformationSet = clientInformationSet;
+//    }
+
 }

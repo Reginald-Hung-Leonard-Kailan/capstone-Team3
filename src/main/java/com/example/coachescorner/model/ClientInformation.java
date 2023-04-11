@@ -23,9 +23,11 @@ public class ClientInformation {
     @JoinColumn(name = "user_id")
     private User userId;
 
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "information_type")
     private InformationType InformationType;
+
 
     public ClientInformation() {
     }
@@ -75,4 +77,5 @@ public class ClientInformation {
 //    public void setTypes(Set<InformationType> types) {
 //        this.types = types;
 //    }
+
 }

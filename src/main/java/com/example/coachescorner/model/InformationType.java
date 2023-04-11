@@ -15,8 +15,10 @@ public class InformationType {
 
     private String name;
 
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "InformationType")
     private Set<ClientInformation> clientInformations;
+
 
     public InformationType() {
     }
@@ -41,6 +43,7 @@ public class InformationType {
         this.name = name;
     }
 
+
 //    public Set<ClientInformation> getClientInformationSet() {
 //        return clientInformationSet;
 //    }
@@ -48,4 +51,5 @@ public class InformationType {
 //    public void setClientInformationSet(Set<ClientInformation> clientInformationSet) {
 //        this.clientInformationSet = clientInformationSet;
 //    }
+
 }

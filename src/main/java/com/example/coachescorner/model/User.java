@@ -19,7 +19,9 @@ public class User {
     @Column(length = 50)
     private String email;
 
+
     private String password;
+
 
     private boolean isCoach;
 
@@ -29,7 +31,9 @@ public class User {
     @Column(length = 50)
     private String lastName;
 
+
     @Column(length = 10)
+
     private int phoneNumber;
 
     private String profilePicture;
@@ -49,7 +53,9 @@ public class User {
     public User() {
     }
 
+
     public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, int phoneNumber, String profilePicture) {
+
         this.username = username;
         this.email = email;
         this.password = password;
@@ -84,11 +90,13 @@ public class User {
         this.email = email;
     }
 
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
+
         this.password = password;
     }
 

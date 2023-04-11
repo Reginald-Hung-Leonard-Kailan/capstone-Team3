@@ -27,14 +27,6 @@ public class ClientInformation {
     @JoinColumn(name = "information_type")
     private InformationType InformationType;
 
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(
-//            name = "type",
-//            joinColumns = @JoinColumn(name = "client_id"),
-//            inverseJoinColumns = @JoinColumn(name = "type_id")
-//    )
-//    private Set<InformationType> types;
-
     public ClientInformation() {
     }
 

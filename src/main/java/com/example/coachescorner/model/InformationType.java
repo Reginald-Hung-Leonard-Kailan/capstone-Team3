@@ -18,9 +18,6 @@ public class InformationType {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "InformationType")
     private Set<ClientInformation> clientInformations;
 
-//    @ManyToMany(mappedBy = "types")
-//    private Set<ClientInformation> clientInformationSet;
-
     public InformationType() {
     }
 

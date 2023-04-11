@@ -22,7 +22,7 @@ public class User {
 
     private String password;
 
-
+@Column(nullable = true)
     private boolean isCoach;
 
     @Column(length = 50)
@@ -100,7 +100,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isCoach() {
+    public boolean getIsCoach() {
         return isCoach;
     }
 
@@ -170,5 +170,9 @@ public class User {
 
     public void setClientInformationList(List<ClientInformation> clientInformationList) {
         this.clientInformationList = clientInformationList;
+    }
+
+    public User(String firstName) {
+        this.firstName = firstName;
     }
 }

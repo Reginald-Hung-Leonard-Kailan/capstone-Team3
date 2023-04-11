@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<dialog th:fragment="editChart" class="modal-wide" id="edit-chart-modal">
+    <button id="close-edit-chart">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="date3">Date:</label><br>
+        <input id="date3" type="text"><br>
+        <label for="body-fat">Body Fat Percentage:</label><br>
+        <input id="body-fat" type="text">
+        <br>
+        <button>Submit</button>
+    </form>
+</dialog>
+</html>

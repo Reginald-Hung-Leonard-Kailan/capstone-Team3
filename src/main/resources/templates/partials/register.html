@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<dialog th:fragment="register" class="modal" id="register-modal">
+  <button id="close-register" class="close">❌</button>
+  <form method="dialog" id="register-form" class="modal-form">
+    <label for="role">Role:</label>
+    <select id="role">
+      <option value="coach">Coach</option>
+      <option value="client">Client</option>
+    </select><br><br>
+    <label for="first-name">First Name:</label><br>
+    <input id="first-name" type="text"><br>
+    <label for="last-name">Last Name:</label><br>
+    <input id="last-name" type="text"><br>
+    <label for="email">Email:</label><br>
+    <input id="email" type="text"><br>
+    <label for="username">Username:</label><br>
+    <input id="username" type="text"><br>
+    <label for="password">Password:</label><br>
+    <input id="password" type="text"><br>
+    <button class="button">Register</button>
+  </form>
+</dialog>
+</html>

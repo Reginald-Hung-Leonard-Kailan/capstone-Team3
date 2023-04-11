@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<dialog th:fragment="fatigue" class="modal" id="fatigue-modal">
+    <button id="close-fatigue">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="date">Day:</label>
+        <select id="date">
+            <option value="1">Sunday</option>
+            <option value="2">Monday</option>
+            <option value="3">Tuesday</option>
+            <option value="4">Wednesday</option>
+            <option value="5">Thursday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+        </select>&nbsp;&nbsp;<br>
+        <label for="rating">Fatigue Rating</label>
+        <select id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+        <button>Submit</button>
+    </form>
+</dialog>
+</html>

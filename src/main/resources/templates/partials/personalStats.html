@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="personalStats" id="Personal-Stats" class="tabcontent">
+  <div id="stats">
+    <div id="stats-holder">
+      <div>
+        <div id="injury-title" class="stats-title">Injury Report:</div>
+        <div id="injury-scroller">
+          <div class="injury-stat-card" id="view-injury">
+            <div>Status:current</div>
+            <p>date entered:4/7/23</p>
+            <p>Minor pec Strain</p>
+          </div>
+          <div class="injury-stat-card">
+            <div>Status:past</div>
+            <P>date entered:4/7/23</P>
+            <p>torn bicep</p>
+          </div>
+          <div class="injury-stat-card">
+            <div>Status:past</div>
+            <P>date entered:4/7/23</P>
+            <p>knee tendonitis</p>
+          </div>
+          <div class="injury-stat-card">
+            <div>Status:past</div>
+            <P>date entered:4/7/23</P>
+            <p>glute strain</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="stats-title">Fatigue Rating:</div>
+        <div class="personal-stat-card" id="edit-fatigue">
+          <div>Overall:3/5</div>
+          <hr>
+          <div>Sunday:3</div>
+          <hr>
+          <div>Monday:2</div>
+          <hr>
+          <div>Tuesday:2</div>
+          <hr>
+          <div>Wednesday:4</div>
+          <hr>
+          <div>Thursday:5</div>
+          <hr>
+          <div>Friday:2</div>
+          <hr>
+          <div>Saturday:3</div>
+        </div>
+      </div>
+      <div>
+        <div class="stats-title">Sleep Rating:</div>
+        <div class="personal-stat-card" id="edit-sleep">
+
+          <div> Overall:4/5</div>
+          <hr>
+          <div>
+            <div>Sunday:3</div>
+            <hr>
+            <div>Monday:2</div>
+            <hr>
+            <div>Tuesday:2</div>
+            <hr>
+            <div>Wednesday:4</div>
+            <hr>
+            <div>Thursday:5</div>
+            <hr>
+            <div>Friday:2</div>
+            <hr>
+            <div>Saturday:3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="stats-title">Charts:</div>
+      <div id="chart-scroller">
+        <div>
+          <div class="chart-title">Body Fat %</div>
+          <img src="img/chart.png" id="view-chart">
+        </div>
+        <div>
+          <div class="chart-title">Body Weight</div>
+          <img src="img/chart.png">
+        </div>
+        <div>
+          <div class="chart-title">Squat</div>
+          <img src="img/chart.png">
+        </div>
+        <div>
+          <div class="chart-title">Bench</div>
+          <img src="img/chart.png">
+        </div>
+        <div>
+          <div class="chart-title">Deadlift</div>
+          <img src="img/chart.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

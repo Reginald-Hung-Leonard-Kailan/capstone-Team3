@@ -1,0 +1,113 @@
+#nav-bar{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(98, 180, 255, 0.96);
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    height: 30px;
+    width: 100%;
+    color: white;
+    position: sticky;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: x-large;
+}
+.form{
+    cursor: pointer;
+}
+#nav-bar a{
+    color: white;
+    font-size: x-large;
+    text-decoration: none;
+}
+.page-wrapper{
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 100vh;
+    /*padding: 10px;*/
+
+    color: white;
+}
+
+#header{
+    font-size: 100px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+#verbiage{
+   background-color: rgba(98, 180, 255, 0.96);
+    font-size: 30px;
+    border-radius: 20px;
+    margin: 0 20% 0 20%;
+    padding: 10px;
+    line-height: 70px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#symbol{
+    height: 400px;
+width: 500px;
+}
+#symbol-center{
+    display: flex;
+    justify-content: center;
+}
+
+.modal-form{
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    padding: 10px 3px 10px 10px;
+    line-height: 45px;
+    font-size: 30px;
+    text-align: center;
+    width: 500px;
+    height:630px;
+    vertical-align: center;
+}
+.modal-form2{
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    padding: 10px 3px 10px 10px;
+    line-height: 45px;
+    font-size: 30px;
+    text-align: center;
+    width: 500px;
+    height:300px;
+    vertical-align: center;
+}
+.modal{
+    /*border: rgba(98, 180, 255, 0.96) solid 10px;*/
+    border: white solid 10px;
+    border-radius: 30px;
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 100ch;
+    padding: 5px;
+}
+
+.modal::backdrop{
+    background-color: rgba(98, 180, 255, 0.96);
+    opacity: .2;
+}
+
+.close{
+    height: 30px;
+    width: 30px;
+    margin: 5px 0 0 5px;
+    padding: 0;
+}
+.button{
+    height: 40px;
+    width: 85px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+#role{
+    height: 30px;
+    width: 90px;
+    font-size: 20px;
+}

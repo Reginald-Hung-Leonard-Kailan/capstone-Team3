@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div th:replace="partials/navbar :: navbar"></div>
+        <div id="profile-section">
+            <div id="profile-pic">
+                <button id="profile-button">Edit</button>
+            </div>
+            <div id="profile-info">
+                <div>Reg.graham</div>
+                <div>Reg@email.com</div>
+            </div>
+        </div>
+        <hr id="main-hr">
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>
+            <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>
+            <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>
+        </div>
+        <div th:replace="partials/myClients :: myClients"></div>
+        <div th:replace="partials/personalStats :: personalStats"></div>
+        <div th:replace="partials/fatigue :: fatigue"></div>
+        <div th:replace="partials/sleep :: sleep"></div>
+        <div th:replace="partials/chart :: chart"></div>
+        <div th:replace="partials/editChart :: editChart"></div>
+        <div th:replace="partials/injury :: injury"></div>
+        <div th:replace="partials/editInjury :: editInjury"></div>
+        <div th:replace="partials/editProfile :: editProfile"></div>
+    </div>
+    <script>
+
+    </script>
+    <script src="/js/profile.js"></script>
+</body>
+</html>

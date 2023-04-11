@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<dialog  th:fragment="editInjury" class="modal-wide" id="edit-injury-modal">
+    <button id="close-edit-injury">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="Status">Status:</label>
+        <select id="Status">
+            <option value="current">Current</option>
+            <option value="past">Past</option>
+        </select><br><br>
+        <label for="date4">Date:</label><br>
+        <input id="date4" type="text"><br>
+        <label for="injury">Injury:</label><br>
+        <input id="injury" type="text"><br>
+        <label for="injury-description">Injury description:</label><br>
+        <textarea id="injury-description" type="text" placeholder="brief description on injury and how it occurred"></textarea>
+        <br>
+        <button>Submit</button>
+    </form>
+</dialog>
+</html>

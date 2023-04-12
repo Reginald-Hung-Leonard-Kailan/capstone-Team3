@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<dialog th:fragment="login" class="modal" id="login-modal">
+<dialog  th:fragment="login" class="modal" id="login-modal">
     <button id="close-login" class="close">❌</button>
-    <form th:action="@{/login}" th:object="${user}" method="POST" id="login-form" class="modal-form2">
-        <label for="username">Email:</label><br>
-        <input name="username"id="username" type="text"><br>
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" th:method="POST" id="login-form" class="modal-form2">
+        <label for="username">Username:</label><br>
+        <input id="username" type="text" name="username"><br>
         <label for="password2">Password:</label><br>
-        <input name="password" id="password2" type="text"><br>
+        <input id="password2" name="password" type="password"><br>
         <button class="button">Login</button>
     </form>
 </dialog>

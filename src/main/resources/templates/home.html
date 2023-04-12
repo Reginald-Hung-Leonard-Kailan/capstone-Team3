@@ -14,8 +14,8 @@
                 <button id="profile-button">Edit</button>
             </div>
             <div id="profile-info">
-                <div>Reg.graham</div>
-                <div>Reg@email.com</div>
+                <div th:text="${user.username}"></div>
+                <div th:text="${user.email}"></div>
             </div>
         </div>
         <hr id="main-hr">

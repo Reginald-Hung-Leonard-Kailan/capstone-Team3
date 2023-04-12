@@ -2,15 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <ul th:fragment="navbar" id="nav-bar" >
         <li><a href="/index">Home</a></li>
-<!--        link once mvp is done-->
-<!--        <li><a href="">Find a Coach</a></li>-->
-        <li th:if="${isAuthenticated}">
-            <a href="/index">Logout</a>
-        </li>
-<!--        link once mvp is done -->
-<!--        <li ><a href="">Contact</a></li>-->
+<!--        link once mvp is done  <li><a href="">Find a Coach</a></li>-->
+        <li th:if="${isAuthenticated}"><a href="/index">Logout</a></li>
+<!--        link once mvp is done <li ><a href="">Contact</a></li>-->
         <li th:unless="${isAuthenticated}" id="open-login" class="form">Login</li>
         <li  id="open-register" class="form">Register</li>
     </ul>
-
 </html>

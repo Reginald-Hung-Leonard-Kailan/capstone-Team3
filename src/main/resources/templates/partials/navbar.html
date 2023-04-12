@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="navbar" id="nav-bar">
-    <a href="">Home Page</a>
-    <a href="">Find a coach</a>
-    <a href="">Contact us</a>
-    <a href="">Logout</a>
-<!--    <div id="open-login" class="form">Login</div>-->
-<!--    <a href="/login">login</a>-->
-<!--    <div id="open-register" class="form">Register</div>-->
-    <div> <a href="/login">Login</a></div>
-    <div> <a href="/register">Register</a></div>
-</div>
+    <ul th:fragment="navbar" id="nav-bar" >
+        <li><a href="/index">Home</a></li>
+<!--        link once mvp is done  <li><a href="">Find a Coach</a></li>-->
+        <li th:if="${isAuthenticated}"><a href="/index">Logout</a></li>
+<!--        link once mvp is done <li ><a href="">Contact</a></li>-->
+        <li th:unless="${isAuthenticated}" id="open-login" class="form">Login</li>
+        <li  id="open-register" class="form">Register</li>
+    </ul>
 </html>

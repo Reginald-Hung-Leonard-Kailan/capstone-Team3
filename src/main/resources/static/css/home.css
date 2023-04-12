@@ -23,9 +23,12 @@
 .page-wrapper{
     background-color: lightgray;
     border-radius: 10px;
-    height: 100vh;
     /*padding: 10px;*/
-
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
     color: white;
 }
 
@@ -110,4 +113,13 @@ width: 500px;
     height: 30px;
     width: 90px;
     font-size: 20px;
+}
+
+@media screen and (min-width: 768px){
+    body{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 }

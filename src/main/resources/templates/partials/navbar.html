@@ -6,6 +6,6 @@
         <li th:if="${isAuthenticated}"><a href="/index">Logout</a></li>
 <!--        link once mvp is done <li ><a href="">Contact</a></li>-->
         <li th:unless="${isAuthenticated}" id="open-login" class="form">Login</li>
-        <li  id="open-register" class="form">Register</li>
+        <li th:unless="${isAuthenticated}" id="open-register" class="form"><a href="/register">Register</a></li>
     </ul>
 </html>

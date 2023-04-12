@@ -29,7 +29,29 @@ public class indexController {
     public String saveUser(@ModelAttribute User user, @RequestParam(name = "role") boolean isCoach, Model model) {
         user.setCoach(isCoach);
         userDoa.save(user);
-        return "home";
+        return "redirect:/";
+    }
+
+    @PostMapping("/login")
+    public String logUser( Model model, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password){
+      User user= userDoa.findByUsername(username);
+
+        if(user ==null){
+        return "redirect:/";
+        }
+       boolean validattempt=false;
+        if (password.equals(user.getPassword())){
+            validattempt = true;
+        }
+
+        if(validattempt){
+            model.addAttribute("coach", user);
+            System.out.println("success");
+            return "home";
+        }else {
+            System.out.println(username + password);
+        }
+        return "redirect:/";
     }
 
 }

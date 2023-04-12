@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <dialog th:fragment="login" class="modal" id="login-modal">
     <button id="close-login" class="close">❌</button>
-    <form method="dialog" id="login-form" class="modal-form2">
-        <label for="email2">Email:</label><br>
-        <input id="email2" type="text"><br>
+    <form th:action="@{/login}" th:object="${user}" method="POST" id="login-form" class="modal-form2">
+        <label for="username">Email:</label><br>
+        <input name="username"id="username" type="text"><br>
         <label for="password2">Password:</label><br>
-        <input id="password2" type="text"><br>
+        <input name="password" id="password2" type="text"><br>
         <button class="button">Login</button>
     </form>
 </dialog>

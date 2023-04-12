@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <title>Title</title>
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
 </head>
 <body>
     <div class="page-wrapper">
-        <div th:replace="partials/navbar :: navbar"></div>
+        <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
         <div id="profile-section">
             <div id="profile-pic">
                 <button id="profile-button">Edit</button>

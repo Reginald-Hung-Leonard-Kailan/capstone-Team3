@@ -22,4 +22,15 @@ openRegister.addEventListener('click',()=>{
 closeRegister.addEventListener('click',()=>{
     registerModal.close();
 })
+
+    const contactModal = document.querySelector('#contact-modal');
+    const openContact = document.querySelector('#open-contact');
+    const closeContact = document.querySelector('#close-contact');
+
+    openContact.addEventListener('click', ()=>{
+        contactModal.showModal();
+    })
+    closeContact.addEventListener('click', ()=>{
+        contactModal.close();
+    })
 });

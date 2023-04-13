@@ -38,10 +38,10 @@ public class User {
 
     private String profilePicture;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coachId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coach")
     private List<UserClient> coaches;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "clientId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "client")
     private List<UserClient> clients;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")

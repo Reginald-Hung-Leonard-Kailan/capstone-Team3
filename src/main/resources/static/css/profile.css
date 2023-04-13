@@ -332,6 +332,35 @@ img{
     width: 250px;
 
 }
+#newClient{
+    text-align: center;
+    /*background-color: rgba(98, 180, 255, 0.96);*/
+
+}
+
+.create-user-form{
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    padding: 10px 3px 10px 10px;
+    line-height: 45px;
+    font-size: 30px;
+    text-align: center;
+    /*width: 500px;*/
+    /*height:630px;*/
+    vertical-align: center;
+
+}
+.create-user{
+    /*border: rgba(98, 180, 255, 0.96) solid 10px;*/
+    border: white solid 10px;
+    border-radius: 30px;
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 100ch;
+    padding: 5px;
+}
 
 @media screen and (min-width: 768px){
     body{

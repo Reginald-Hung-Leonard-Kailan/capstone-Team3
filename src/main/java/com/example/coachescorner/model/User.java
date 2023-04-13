@@ -39,10 +39,10 @@ public class User {
     private String profilePicture;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coach")
-    private List<UserClient> coaches;
+    private List<UserClient> clients;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "client")
-    private List<UserClient> clients;
+    private List<UserClient> coaches;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
     private List<Injury> injuries;

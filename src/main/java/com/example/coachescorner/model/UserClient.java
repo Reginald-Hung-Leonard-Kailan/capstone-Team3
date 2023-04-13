@@ -12,15 +12,21 @@ public class UserClient {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "coach_id")
-    private User coachId;
+    private User coach;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "client_id")
-    private User clientId;
+    private User client;
 
     private boolean isActive;
 
     public UserClient() {
+    }
+
+    public UserClient(User coach, User client, boolean isActive) {
+        this.coach = coach;
+        this.client = client;
+        this.isActive = isActive;
     }
 
     public long getId() {
@@ -31,20 +37,20 @@ public class UserClient {
         this.id = id;
     }
 
-    public User getCoachId() {
-        return coachId;
+    public User getCoach() {
+        return coach;
     }
 
-    public void setCoachId(User coachId) {
-        this.coachId = coachId;
+    public void setCoach(User coach) {
+        this.coach = coach;
     }
 
-    public User getClientId() {
-        return clientId;
+    public User getClient() {
+        return client;
     }
 
-    public void setClientId(User clientId) {
-        this.clientId = clientId;
+    public void setClient(User client) {
+        this.client = client;
     }
 
     public boolean isActive() {

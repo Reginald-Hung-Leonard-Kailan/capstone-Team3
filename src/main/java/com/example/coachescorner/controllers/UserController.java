@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
-    private UserRepository userDoa;
+    private UserRepository userDao;
 
     private PasswordEncoder passwordDao;
 
-    public UserController(UserRepository userDoa, PasswordEncoder passwordDao) {
-        this.userDoa = userDoa;
+    public UserController(UserRepository userDao, PasswordEncoder passwordDao) {
+        this.userDao = userDao;
         this.passwordDao = passwordDao;
     }
 
@@ -44,14 +44,14 @@ public class UserController {
         String hash = passwordDao.encode(user.getPassword());
         user.setPassword(hash);
         user.setCoach(isCoach);
-        userDoa.save(user);
+        userDao.save(user);
         return "redirect:/";
     }
     @GetMapping("/home")
     public String showUserHomePage(Model model){
         User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(userLogIn.getUsername());
-        User user = userDoa.findByUsername(userLogIn.getUsername());
+        User user = userDao.findByUsername(userLogIn.getUsername());
         model.addAttribute("user", user);
         return "home";
     }

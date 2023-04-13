@@ -22,6 +22,7 @@
         <!-- Tab links -->
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>
+            <button class="tablinks"><a id="client-button" href="/client">Create Clients</a></button>
             <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>
             <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>
         </div>
@@ -32,7 +33,7 @@
         <div th:replace="partials/chart :: chart"></div>
         <div th:replace="partials/editChart :: editChart"></div>
         <div th:replace="partials/injury :: injury"></div>
-        <div th:replace="partials/editInjury :: editInjury"></div>
+<!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
         <div th:replace="partials/editProfile :: editProfile"></div>
     </div>
     <script>

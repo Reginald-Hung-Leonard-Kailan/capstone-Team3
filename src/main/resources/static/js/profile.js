@@ -76,23 +76,23 @@ const injuryModal = document.querySelector('#injury-modal');
 const viewInjury = document.querySelector('#view-injury');
 const closeInjury = document.querySelector('#close-injury');
 
-viewInjury.addEventListener('click',()=>{
-    injuryModal.showModal();
-})
-closeInjury.addEventListener('click',()=>{
-    injuryModal.close();
-})
-
-const editInjuryModal = document.querySelector('#edit-injury-modal');
-const editInjury = document.querySelector('#edit-injury');
-const closeEditInjury = document.querySelector('#close-edit-injury');
-
-editInjury.addEventListener('click',()=>{
-    editInjuryModal.showModal();
-})
-closeEditInjury.addEventListener('click',()=>{
-    editInjuryModal.close();
-})
+// viewInjury.addEventListener('click',()=>{
+//     injuryModal.showModal();
+// })
+// closeInjury.addEventListener('click',()=>{
+//     injuryModal.close();
+// })
+//
+// const editInjuryModal = document.querySelector('#edit-injury-modal');
+// const editInjury = document.querySelector('#edit-injury');
+// const closeEditInjury = document.querySelector('#close-edit-injury');
+//
+// editInjury.addEventListener('click',()=>{
+//     editInjuryModal.showModal();
+// })
+// closeEditInjury.addEventListener('click',()=>{
+//     editInjuryModal.close();
+// })
 
 const editProfileModal = document.querySelector('#edit-profile-modal');
 const editProfile = document.querySelector('#profile-button');

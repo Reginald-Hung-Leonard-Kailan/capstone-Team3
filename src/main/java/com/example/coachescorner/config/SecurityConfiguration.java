@@ -62,7 +62,7 @@ public class SecurityConfiguration {
                     .authorizeHttpRequests()
                     .requestMatchers(
                             "/home", // only authenticated users can create ads
-                            "/posts/{id}/edit", "/profile", "/posts/{id}/delete" // only authenticated users can edit ads
+                            "/client", "/posts/{id}/delete" // only authenticated users can edit ads
                     )
                     .authenticated()
         ;

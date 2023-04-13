@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <button id="close-register" class="close">❌</button>
@@ -21,9 +23,15 @@
     <label for="userName">Username:</label><br>
     <input id="userName" th:field="*{username}"/><br>
     <label for="password">Password:</label><br>
-    <input id="password" th:field="*{password}"/><br>
+    <input type="password" id="password" th:field="*{password}"/><br>
+    <!--        button for profile picture -->
+    <button type="button" id="upload-btn">Upload photo</button>
+    <input type="text" id="user-input" th:field="*{profilePicture}"/>
+    <!--        button end-->
     <button type="submit" class="button">Register</button>
 </form>
+<!--    script for fileStackAPI-->
+<script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </dialog>
 </body>
 </html>

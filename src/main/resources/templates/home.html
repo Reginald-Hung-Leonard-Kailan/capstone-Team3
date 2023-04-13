@@ -5,12 +5,14 @@
     <title>Title</title>
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="page-wrapper">
         <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
         <div id="profile-section">
-            <div id="profile-pic">
+            <div id="profile-pic"><img th:src="${user.getProfilePicture()}">
                 <button id="profile-button">Edit</button>
             </div>
             <div id="profile-info">

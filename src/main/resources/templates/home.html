@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">

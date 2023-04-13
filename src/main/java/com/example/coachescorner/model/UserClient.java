@@ -1,5 +1,6 @@
 package com.example.coachescorner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,10 +11,12 @@ public class UserClient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "coach_id")
     private User coach;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "client_id")
     private User client;

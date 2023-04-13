@@ -1,5 +1,6 @@
 package com.example.coachescorner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public class ClientInformation {
 
     @Temporal(TemporalType.DATE)
     Date date;
-
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User userId;

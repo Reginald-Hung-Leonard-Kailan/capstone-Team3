@@ -1,5 +1,6 @@
 package com.example.coachescorner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
@@ -15,7 +16,7 @@ public class InformationType {
 
     private String name;
 
-
+@JsonIgnore
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "InformationType")
     private Set<ClientInformation> clientInformations;
 

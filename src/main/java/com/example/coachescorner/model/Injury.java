@@ -1,5 +1,6 @@
 package com.example.coachescorner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -8,24 +9,25 @@ import java.util.Date;
 @Table(name = "injuries")
 public class Injury {
 
+    public enum Status {
+    active, past
+}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @Temporal(TemporalType.DATE)
     Date injuryDate;
-
-    @Enumerated(EnumType.STRING)
+//    @JsonIgnore
+    @Enumerated(EnumType.ORDINAL)
     private Status status;
-    private enum Status {
-        active, past
-    }
+
 
     @Column(length = 50)
     private String title;
 
     private String description;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User userId;

@@ -20,7 +20,7 @@ public class User {
     @Column(length = 50)
     private String email;
 
-
+@JsonIgnore
     private String password;
 
 @Column(nullable = true)
@@ -32,11 +32,10 @@ public class User {
     @Column(length = 50)
     private String lastName;
 
-
     @Column(length = 10)
-
     private int phoneNumber;
 
+    @JsonIgnore
     private String profilePicture;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coach")

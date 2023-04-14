@@ -7,10 +7,7 @@ import com.example.coachescorner.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class clientController {
@@ -42,6 +39,23 @@ public class clientController {
         newClient.setCoach(coach);
         newClient.setActive(isActive);
         clientsDao.save(newClient);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/client-edit/{id}")
+    public String showClientEditFrom(@PathVariable long id, Model model){
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+        return "client-edit";
+    }
+
+    @PostMapping("/client-edit/{id}")
+    public String saveClientEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email){
+        User client = userDao.findById(id);
+        client.setFirstName(firstname);
+        client.setLastName(lastname);
+        client.setEmail(email);
+        userDao.save(client);
         return "redirect:/home";
     }
 

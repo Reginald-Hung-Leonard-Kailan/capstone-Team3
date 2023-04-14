@@ -56,8 +56,6 @@ public class UserController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(Model model, @PathVariable long id){
-//        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = userDao.findByUsername(userLogIn.getUsername());
         User user = userDao.findById(id);
         model.addAttribute("user", user);
         return "home";

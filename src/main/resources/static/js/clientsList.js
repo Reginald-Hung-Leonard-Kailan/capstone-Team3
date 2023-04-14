@@ -18,7 +18,7 @@ function editCard(clients){
         <hr>
         <div>first.Last@email.com</div>
         <hr>
-        <form><button>Edit</button></form>
+        <form action="/client-edit/${client[3]}"><button>Edit</button></form>
         <form><button>Stats</button></form>
       </div>
       
@@ -40,7 +40,7 @@ async function clientArray(id){
         .then(response => response.json() )
         .then(data => {
             let clientInfo = data.clients.map(rel => rel.client);
-            clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email]);
+            clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
             return clientInfo
         }).catch(error => console.error(error));
     editCard(client);

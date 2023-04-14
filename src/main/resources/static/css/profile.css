@@ -390,6 +390,36 @@ img{
      text-decoration: none;
  }
 
+/* EDIT CLIENT MODAL */
+#edit-profile-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800ch;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    z-index: 10;
+    background-color: white;
+}
+#overlay{
+    position: fixed;
+/*    Opacity*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+
 
 @media screen and (min-width: 768px){
     body{

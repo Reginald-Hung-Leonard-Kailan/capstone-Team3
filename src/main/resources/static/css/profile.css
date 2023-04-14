@@ -250,6 +250,9 @@ height: 35px;
     text-align: center;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
+#stats{
+    margin-bottom: 190px;
+}
 
 #stats-holder{
     display: flex;

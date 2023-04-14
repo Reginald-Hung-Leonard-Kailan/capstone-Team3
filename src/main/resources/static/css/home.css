@@ -45,6 +45,7 @@ a {
 }
 
 #header{
+    margin-top: 30px;
     font-size: 100px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -61,6 +62,7 @@ a {
 }
 
 #symbol{
+    margin: 10px 0 20px 0;
     height: 400px;
 width: 500px;
 }

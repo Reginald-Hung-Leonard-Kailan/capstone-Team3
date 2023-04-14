@@ -1,32 +1,131 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <meta th:name="loggedInId" th:content="${user.getId()}"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
-<!--    <link href="css/profile.css" rel="stylesheet">-->
-<!--    <link href="css/layout.css" rel="stylesheet">-->
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div id="createClients" class="tabcontent">
-    <fieldset class=" create-user">
-        <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form">
-<!--            <label for="firstName">First Name:</label><br>-->
-<!--            <input type="text" th:field="*{username}" placeholder="Username" id="newUsername"><br>-->
-<!--            <label for="role">Role:</label>-->
-<!--            <select id="clientRole" name="role" >-->
-<!--                <option  value=false>Client</option>-->
-<!--            </select><br><br> -->
-            <input type="hidden" value="false" name="role" id="role">
-            <label for="firstName">First Name:</label><br>
-            <input type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br>
-            <label for="lastName">Last Name</label><br>
-            <input type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br>
-            <label for="email">email:</label><br>
-            <input type="text" th:field="*{email}" placeholder="email" id="email"><br>
-            <input type="hidden" value="true" name="isActive" id="isActive">
-            <button class="search-button">add</button>
-        </form>
-    </fieldset>
+<div class="page-wrapper">
+    <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
+<!--    <div id="profile-section">-->
+<!--        <div id="profile-pic"><img th:src="${user.getProfilePicture()}">-->
+<!--            <button id="profile-button">Edit</button>-->
+<!--        </div>-->
+<!--        <div id="profile-info">-->
+<!--            <div th:text="${user.username}"></div>-->
+<!--            <div th:text="${user.email}"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <hr id="main-hr">
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks"  onclick="openCity(event, 'myClients')">My Clients</button>
+        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'createClients')">Create Clients</button>
+        <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>
+        <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>
+    </div>
+
+    <div id="createClients" class="tabcontent">
+        <dialog open class="create-user" id="user-dialog">
+
+            <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form">
+                <!--            <label for="firstName">First Name:</label><br>-->
+                <!--            <input type="text" th:field="*{username}" placeholder="Username" id="newUsername"><br>-->
+                <!--            <label for="role">Role:</label>-->
+                <!--            <select id="clientRole" name="role" >-->
+                <!--                <option  value=false>Client</option>-->
+                <!--            </select><br><br> -->
+                <input type="hidden" value="false" name="role" id="role">
+                <label for="firstName">First Name:</label><br>
+                <input type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br>
+                <label for="lastName">Last Name</label><br>
+                <input type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br>
+                <label for="email">email:</label><br>
+                <input type="text" th:field="*{email}" placeholder="email" id="email"><br>
+                <input type="hidden" value="true" name="isActive" id="isActive">
+            <button class="search-button"><a href="/home">cancel</a></button>
+                <button class="search-button">add</button>
+            </form>
+        </dialog>
+    </div>
+    <div id="client-holder">
+        <div>
+            <div class="client-card">
+                <div>Username</div>
+                <hr>
+                <div>First name</div>
+                <hr>
+                <div>Last name</div>
+                <hr>
+                <div>first.Last@email.com</div>
+                <hr>
+                <div>Bio</div>
+            </div>
+        </div>
+        <div>
+            <div class="client-card">
+                <div>Username</div>
+                <hr>
+                <div>First name</div>
+                <hr>
+                <div>Last name</div>
+                <hr>
+                <div>first.Last@email.com</div>
+                <hr>
+                <div>Bio</div>
+            </div>
+        </div>
+        <div>
+            <div class="client-card">
+                <div>Username</div>
+                <hr>
+                <div>First name</div>
+                <hr>
+                <div>Last name</div>
+                <hr>
+                <div>first.Last@email.com</div>
+                <hr>
+                <div>Bio</div>
+            </div>
+        </div>
+        <div>
+            <div class="client-card">
+                <div>Username</div>
+                <hr>
+                <div>First name</div>
+                <hr>
+                <div>Last name</div>
+                <hr>
+                <div>first.Last@email.com</div>
+                <hr>
+                <div>Bio</div>
+            </div>
+        </div>
+        <div>
+            <div class="client-card">
+                <div>Username</div>
+                <hr>
+                <div>First name</div>
+                <hr>
+                <div>Last name</div>
+                <hr>
+                <div>first.Last@email.com</div>
+                <hr>
+                <div>Bio</div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+
+</script>
+<script src="/js/profile.js"></script>
 </body>
 </html>

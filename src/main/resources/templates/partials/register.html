@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<dialog th:fragment="register" class="modal" id="register-modal">
+<!--<dialog th:fragment="register" class="modal" id="register-modal">-->
   <button id="close-register" class="close">❌</button>
   <form th:action="@{/register}" th:object="${user}" method="POST" id="register-form" class="modal-form">
     <label for="role">Role:</label>

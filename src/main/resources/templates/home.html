@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <meta th:name="loggedInId" th:content="${user.getId()}"/>
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
@@ -15,11 +16,11 @@
         <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
         <div id="profile-section">
             <div id="profile-pic"><img th:src="${user.getProfilePicture()}">
-                <button id="profile-button">Edit</button>
             </div>
             <div id="profile-info">
                 <div th:text="${user.username}"></div>
                 <div th:text="${user.email}"></div>
+                <button id="profile-button">Edit Account</button>
             </div>
         </div>
         <hr id="main-hr">

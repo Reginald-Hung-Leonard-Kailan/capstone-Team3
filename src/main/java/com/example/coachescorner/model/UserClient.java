@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "user_clients")
 public class UserClient {
-
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,12 +16,12 @@ public class UserClient {
     @JoinColumn(name = "coach_id")
     private User coach;
 
-    @JsonIgnore
+    private boolean isActive;
+//    @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "client_id")
     private User client;
 
-    private boolean isActive;
 
     public UserClient() {
     }

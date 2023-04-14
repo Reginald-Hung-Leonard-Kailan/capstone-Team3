@@ -1,6 +1,8 @@
 package com.example.coachescorner.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -9,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "client_information")
 public class ClientInformation {
+    @JsonIgnore
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +27,7 @@ public class ClientInformation {
     @JoinColumn(name = "user_id")
     private User userId;
 
-
+    @JsonProperty("informationType")
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "information_type")
     private InformationType InformationType;
@@ -38,6 +41,8 @@ public class ClientInformation {
         this.date = date;
         this.userId = userId;
     }
+
+
 
     public long getId() {
         return id;
@@ -71,12 +76,11 @@ public class ClientInformation {
         this.userId = userId;
     }
 
-//    public Set<InformationType> getTypes() {
-//        return types;
-//    }
-//
-//    public void setTypes(Set<InformationType> types) {
-//        this.types = types;
-//    }
+    public InformationType getInformationType() {
+        return InformationType;
+    }
 
+    public void setInformationType(InformationType informationType) {
+        InformationType = informationType;
+    }
 }

@@ -41,6 +41,7 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coach")
     private List<UserClient> clients;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "client")
     private List<UserClient> coaches;
 
@@ -48,7 +49,7 @@ public class User {
     private List<Injury> injuries;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
-    private List<ClientInformation> clientInformationList;
+    private List<ClientInformation> clientStats;
 
     public User() {
     }
@@ -172,11 +173,11 @@ public class User {
     }
 
     public List<ClientInformation> getClientInformationList() {
-        return clientInformationList;
+        return clientStats;
     }
 
     public void setClientInformationList(List<ClientInformation> clientInformationList) {
-        this.clientInformationList = clientInformationList;
+        this.clientStats = clientInformationList;
     }
 
     public User(String firstName) {

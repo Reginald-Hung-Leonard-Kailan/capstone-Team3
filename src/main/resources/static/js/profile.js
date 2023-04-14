@@ -104,17 +104,17 @@ editProfile.addEventListener('click',()=>{
 closeEditProfile.addEventListener('click',()=>{
     editProfileModal.close();
 })
-async function userInfo(){
-    const id = document.querySelector("meta[name='loggedInId']").content;
-    let url="/api/user/"+id;
-    let result = await fetch(url).then(response => response.json())
-        .then(data => {
-            console.log(data)
-        }).catch(error => console.error(error));
-    return result;
-}
+// async function userInfo(){
+//     const id = document.querySelector("meta[name='loggedInId']").content;
+//     let url="/api/user/"+id;
+//     let result = await fetch(url).then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//         }).catch(error => console.error(error));
+//     return result;
+// }
 
 
-userInfo();
+// userInfo();
 
 

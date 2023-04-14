@@ -11,6 +11,10 @@ import java.util.Set;
 @Entity
 @Table(name = "client_information")
 public class ClientInformation {
+    public enum Type{
+        alert, workoutPlan, bodyWeight, bodyFatPercent, squat, bench, deadlift, sleep, fatigue
+    }
+
     @JsonIgnore
 
     @Id
@@ -27,22 +31,31 @@ public class ClientInformation {
     @JoinColumn(name = "user_id")
     private User userId;
 
-    @JsonProperty("informationType")
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "information_type")
-    private InformationType InformationType;
-
+//    @JsonProperty("informationType")
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "information_type")
+//    private InformationType InformationType;
+    @Enumerated(EnumType.ORDINAL)
+    private Type type;
 
     public ClientInformation() {
     }
 
-    public ClientInformation(String clientInformation, Date date, User userId) {
+    public ClientInformation(String clientInformation, Date date, User userId, Type type) {
         this.clientInformation = clientInformation;
         this.date = date;
         this.userId = userId;
+        this.type = type;
     }
 
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public long getId() {
         return id;
@@ -76,11 +89,11 @@ public class ClientInformation {
         this.userId = userId;
     }
 
-    public InformationType getInformationType() {
-        return InformationType;
-    }
+//    public InformationType getInformationType() {
+//        return InformationType;
+//    }
 
-    public void setInformationType(InformationType informationType) {
-        InformationType = informationType;
-    }
+//    public void setInformationType(InformationType informationType) {
+//        InformationType = informationType;
+//    }
 }

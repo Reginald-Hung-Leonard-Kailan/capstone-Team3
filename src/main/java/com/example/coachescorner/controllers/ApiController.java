@@ -52,18 +52,18 @@ public class ApiController {
         return userRepository.save(user);
     }
 
-    @PostMapping("/{id}/details")
-    public ClientInformation saveInfo(@Validated @RequestBody ClientInformation clientInformation, @PathVariable(value = "id") long id, @RequestBody Map<String, Object> requestBody) {
-        User user = userRepository.findById(id);
+//    @PostMapping("/{id}/details")
+//    public ClientInformation saveInfo(@Validated @RequestBody ClientInformation clientInformation, @PathVariable(value = "id") long id, @RequestBody Map<String, Object> requestBody) {
+//        User user = userRepository.findById(id);
 
         //ensure we have an id for the infoType
-        long typeId = Long.parseLong(requestBody.get("id").toString());
-        InformationType infoType = infoTypeDao.findById(typeId);
-        System.out.println(typeId);
-        clientInformation.setUserId(user);
-        clientInformation.setInformationType(infoType);
-        return infoDao.save(clientInformation);
-    }
+//        long typeId = Long.parseLong(requestBody.get("id").toString());
+//        InformationType infoType = infoTypeDao.findById(typeId);
+//        System.out.println(typeId);
+//        clientInformation.setUserId(user);
+//        clientInformation.setInformationType(infoType);
+//        return infoDao.save(clientInformation);
+//    }
 /**
  * Testing out the following JSON msg:
  * const csrfToken = document.querySelector('meta[name="_csrf"]').content;

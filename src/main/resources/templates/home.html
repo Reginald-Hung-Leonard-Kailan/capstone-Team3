@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <meta th:name="loggedInId" th:content="${user.getId()}"/>
+    <meta th:name="loggedInId" th:content="${user.id}"/>
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
@@ -20,7 +20,11 @@
             <div id="profile-info">
                 <div th:text="${user.username}"></div>
                 <div th:text="${user.email}"></div>
-                <button id="profile-button">Edit Account</button>
+                <button id="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>
+<!--                <form th:action="@{/edit/{id}(id=${user.id})}" th:method="POST" id="profile-form" class="modal-form">-->
+<!--                <button type="button" id="upload-btn">Edit Profile Picture</button>-->
+<!--                <input  type="hidden" id="user-input" name="profile-picture"/>-->
+<!--                </form>-->
             </div>
         </div>
         <hr id="main-hr">

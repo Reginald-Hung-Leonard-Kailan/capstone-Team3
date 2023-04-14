@@ -6,10 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -50,10 +47,30 @@ public class UserController {
     @GetMapping("/home")
     public String showUserHomePage(Model model){
         User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(userLogIn.getUsername());
         User user = userDao.findByUsername(userLogIn.getUsername());
         model.addAttribute("user", user);
         return "home";
+    }
+
+    //profile update
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(Model model, @PathVariable long id){
+//        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = userDao.findByUsername(userLogIn.getUsername());
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+        return "home";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String saveEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email){
+        User user = userDao.findById(id);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setEmail(email);
+        userDao.save(user);
+        return "redirect:/home";
     }
 
 }

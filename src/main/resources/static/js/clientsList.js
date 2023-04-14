@@ -18,8 +18,10 @@ function editCard(clients){
         <hr>
         <div>first.Last@email.com</div>
         <hr>
-        <div>Bio</div>
+        <form><button>Edit</button></form>
+        <form><button>Stats</button></form>
       </div>
+      
     </div>`
     }
 
@@ -33,7 +35,7 @@ function editCard(clients){
 
 
 async function clientArray(id){
-    let url = "/api/user/"+ id, clientArr;
+    let url = "/api/user/" + id, clientArr;
     let client = await fetch(url)
         .then(response => response.json() )
         .then(data => {

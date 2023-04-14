@@ -5,6 +5,7 @@
     <meta th:name="loggedInId" th:content="${user.id}"/>
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta th:name="view" th:content="${user.getId()}"/>
     <title>Title</title>
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
@@ -47,5 +48,6 @@
     </div>
     <script src="/js/profile.js"></script>
     <script src="/js/clientsList.js"></script>
+    <script src="/js/userGraphs.js"></script>
 </body>
 </html>

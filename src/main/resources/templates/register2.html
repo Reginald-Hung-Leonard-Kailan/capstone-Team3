@@ -27,7 +27,7 @@
         <select id="role" name="role">
             <option value=true>Coach</option>
             <option value=false>Client</option>
-        </select><br><br>
+        </select><br>
         <label for="firstName">First Name:</label><br>
         <input id="firstName"  th:field="*{firstName}"/><br>
         <label for="lastName">Last Name:</label><br>
@@ -38,9 +38,10 @@
         <input id="userName" th:field="*{username}"/><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" th:field="*{password}"/><br>
-        <!--        button for profile picture -->
-        <button type="button" id="upload-btn">Upload photo</button>
+        <label for="user-input">Profile Picture:</label><br>
         <input type="text" id="user-input" th:field="*{profilePicture}"/>
+        <!--        button for profile picture -->
+        <button type="button" id="upload-btn">Upload photo</button><br>
         <!--        button end-->
         <button type="submit" class="button">Register</button>
     </form>

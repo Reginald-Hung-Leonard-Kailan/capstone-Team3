@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Client Edit</h1>
+
+<form th:action="@{/client-edit/{id}(id=${user.id})}" th:method="POST">
+    <label for="first-name">First Name:</label><br>
+    <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br>
+    <label for="last-name">Last Name:</label><br>
+    <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br>
+    <label for="email">Email:</label><br>
+    <input id="email" type="text" name="email" th:value="${user.email}"><br><br>
+    <button>Submit</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div th:fragment="settings" id="settings" class="tabcontent">
+    <form th:action="@{/edit/{id}(id=${user.id})}" th:method="POST" id="profile-form" class="modal-form">
+        <!--        <label for="role">Role:</label>-->
+        <!--        <select name="role" id="role">-->
+        <!--            <option value="current">Coach</option>-->
+        <!--            <option value="past">Client</option>-->
+        <!--        </select><br><br>-->
+        <div id="edit-profile-heading"> Edit Profile</div>
+        <label for="first-name" id="firstname">First Name:</label><br>
+        <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br>
+        <label for="last-name">Last Name:</label><br>
+        <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br>
+        <label for="email">Email:</label><br>
+        <input id="email" type="text" name="email" th:value="${user.email}"><br>
+        <!--        <label for="username">Username:</label><br>-->
+        <!--        <input id="username" type="text" name="username" th:value="${user.username}"><br>-->
+        <!--        button for profile picture -->
+        <button type="button" id="upload-btn">Upload photo</button>
+        <input type="text" id="user-input" name="profile-picture"/>
+        <!--        button end-->
+        <br>
+        <button>Submit</button>
+    </form>
+<!--    <button href="#" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete Your Account')">Delete</button>-->
+    <!--    script for fileStackAPI-->
+    <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
+</div>
+</html>

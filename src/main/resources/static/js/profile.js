@@ -94,16 +94,19 @@ closeInjury.addEventListener('click',()=>{
 //     editInjuryModal.close();
 // })
 
-const editProfileModal = document.querySelector('#edit-profile-modal');
-const editProfile = document.querySelector('#profile-button');
-const closeEditProfile = document.querySelector('#close-edit-profile');
+// const editProfileModal = document.querySelector('#edit-profile-modal');
+// const editProfile = document.querySelector('#profile-button');
+// const closeEditProfile = document.querySelector('#close-edit-profile');
+//
+// editProfile.addEventListener('click',()=>{
+//     editProfileModal.showModal();
+// })
+// closeEditProfile.addEventListener('click',()=>{
+//     editProfileModal.close();
+// })
 
-editProfile.addEventListener('click',()=>{
-    editProfileModal.showModal();
-})
-closeEditProfile.addEventListener('click',()=>{
-    editProfileModal.close();
-})
+
+
 // async function userInfo(){
 //     const id = document.querySelector("meta[name='loggedInId']").content;
 //     let url="/api/user/"+id;

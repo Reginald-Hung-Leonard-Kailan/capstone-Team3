@@ -17,24 +17,21 @@
         <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
         <div id="profile-section">
             <div id="profile-pic"><img th:src="${user.getProfilePicture()}">
+                <button  id="settings-button" class="tablinks" onclick="openCity(event, 'settings')">Settings</button>
             </div>
             <div id="profile-info">
                 <div th:text="${user.username}"></div>
                 <div th:text="${user.email}"></div>
-                <button id="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>
-<!--                <form th:action="@{/edit/{id}(id=${user.id})}" th:method="POST" id="profile-form" class="modal-form">-->
-<!--                <button type="button" id="upload-btn">Edit Profile Picture</button>-->
-<!--                <input  type="hidden" id="user-input" name="profile-picture"/>-->
-<!--                </form>-->
+<!--                <button  id="profile-button" class="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>-->
             </div>
         </div>
         <hr id="main-hr">
         <!-- Tab links -->
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>
-            <button class="tablinks"><a id="client-button" href="/client">Create Clients</a></button>
             <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>
             <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>
+<!--            <button class="tablinks" onclick="openCity(event, 'settings')">Settings</button>-->
         </div>
         <div th:replace="partials/myClients :: myClients"></div>
         <div th:replace="partials/personalStats :: personalStats"></div>
@@ -44,10 +41,11 @@
         <div th:replace="partials/editChart :: editChart"></div>
         <div th:replace="partials/injury :: injury"></div>
 <!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
-        <div th:replace="partials/editProfile :: editProfile"></div>
+        <div th:replace="partials/settings :: settings"></div>
     </div>
     <script src="/js/profile.js"></script>
     <script src="/js/clientsList.js"></script>
     <script src="/js/userGraphs.js"></script>
+    <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </body>
 </html>

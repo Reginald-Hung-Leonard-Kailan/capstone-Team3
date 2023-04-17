@@ -9,7 +9,62 @@ let workoutPlanArr = [],
     sleepArr = [],
     fatigueArr = [];
 
+// Body Fat %
 
+function bodyFatChart() {
+    const ctx = document.getElementById('bodyFatChart').getContext('2d');
+
+// this is the data how it should appear from the database when populating
+    let bodyFat = [];
+    let weighInDate = [];
+    bodyFatPercentArr.map(data => {
+        bodyFat.unshift( parseInt( data.clientInformation ) );
+        weighInDate.unshift( data.date );
+    })
+
+    const data = {
+        labels: weighInDate,
+        datasets: [{
+            label: 'Body Fat %',
+            data: bodyFat,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+        }],
+    };
+
+// axis labels are not populating...
+    const options = {
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Weight in lb'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Months throughout the Year'
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+// eslint-disable-next-line no-undef,no-unused-vars
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+}
+
+
+
+// BenchChart
 
 function benchChart() {
     const ctx = document.getElementById('benchChart').getContext('2d');
@@ -100,6 +155,7 @@ async function graphInfo(){
     })
     // console.log(benchArr);
     benchChart();
+    bodyFatChart();
 }
 
 function addinfo(userId, discription, date, type) {

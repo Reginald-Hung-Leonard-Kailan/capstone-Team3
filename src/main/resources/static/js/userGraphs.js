@@ -11,7 +11,6 @@ async function allInfo(){
     // console.log("stats are" + personalStats);
 }
 
-
 function addInfo(userId, discription, date, type) {
     //date format: "2023-01-01" && type is spelt out
     var clientInformation = {

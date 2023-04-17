@@ -94,6 +94,7 @@ width: 500px;
     height:300px;
     vertical-align: center;
 }
+
 .modal{
     /*border: rgba(98, 180, 255, 0.96) solid 10px;*/
     border: white solid 10px;
@@ -107,8 +108,8 @@ width: 500px;
 }
 
 .modal::backdrop{
-    background-color: rgba(98, 180, 255, 0.96);
-    opacity: .2;
+    background-color: black;
+    opacity: 0;
 }
 
 .close{

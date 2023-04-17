@@ -62,6 +62,111 @@ function bodyFatChart() {
     });
 }
 
+// Body Weight %
+
+function bodyWeightChart() {
+    const ctx = document.getElementById('bodyWeightChart').getContext('2d');
+
+// this is the data how it should appear from the database when populating
+    let bodyWeight = [];
+    let bodyweightInDate = [];
+    bodyWeightArr.map(data => {
+        bodyWeight.unshift( parseInt( data.clientInformation ) );
+        bodyweightInDate.unshift( data.date );
+    })
+
+    const data = {
+        labels: bodyweightInDate,
+        datasets: [{
+            label: 'Body Weight',
+            data: bodyWeight,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+        }],
+    };
+
+// axis labels are not populating...
+    const options = {
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Weight in lb'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Months throughout the Year'
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+// eslint-disable-next-line no-undef,no-unused-vars
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+}
+
+// Squat
+
+function squatChart() {
+    const ctx = document.getElementById('squatChart').getContext('2d');
+
+// this is the data how it should appear from the database when populating
+    let squatWeight = [];
+    let squatDate = [];
+    squatArr.map(data => {
+        squatWeight.unshift( parseInt( data.clientInformation ) );
+        squatDate.unshift( data.date );
+    })
+
+    const data = {
+        labels: squatDate,
+        datasets: [{
+            label: 'Squat Weight',
+            data: squatWeight,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+        }],
+    };
+
+// axis labels are not populating...
+    const options = {
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Weight in lb'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Months throughout the Year'
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+// eslint-disable-next-line no-undef,no-unused-vars
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+}
 
 
 // BenchChart
@@ -116,6 +221,59 @@ function benchChart() {
         options: options
     });
 }
+// Body Fat %
+
+function deadLiftChart() {
+    const ctx = document.getElementById('deadLiftChart').getContext('2d');
+
+// this is the data how it should appear from the database when populating
+    let deadLift = [];
+    let liftDate = [];
+    deadliftArr.map(data => {
+        deadLift.unshift( parseInt( data.clientInformation ) );
+        liftDate.unshift( data.date );
+    })
+
+    const data = {
+        labels: liftDate,
+        datasets: [{
+            label: 'Dead Lift',
+            data: deadLift,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+        }],
+    };
+
+// axis labels are not populating...
+    const options = {
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Weight in lb'
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Months throughout the Year'
+                },
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+// eslint-disable-next-line no-undef,no-unused-vars
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+}
+
 
 async function graphInfo(){
     let id = document.querySelector('meta[name="view"]').content;
@@ -156,6 +314,9 @@ async function graphInfo(){
     // console.log(benchArr);
     benchChart();
     bodyFatChart();
+    bodyWeightChart();
+    squatChart();
+    deadLiftChart();
 }
 
 function addinfo(userId, discription, date, type) {

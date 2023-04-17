@@ -1,8 +1,14 @@
 "use strict"
+start()
 const id = document.querySelector("meta[name='loggedInId']").content;
 let runMyFetch = clientArray(id);
 let injuryFetch= injuryArray(id);
 let smallInjuryFetch= smallInjuryArray(id);
+function start(){
+    const id = document.querySelector("meta[name='view']").content;
+    let injuryFetch= injuryArray(id);
+    let smallInjuryFetch= smallInjuryArray(id);
+}
 
 
 // MY Clients Card
@@ -22,8 +28,8 @@ function editCard(clients){
         <hr>
         <div>first.Last@email.com</div>
         <hr>
-        <form action="/client-edit/${client[3]}"><button>Edit</button></form>
-        <button class="viewer" value="${client[3]}">Stats</button>
+        <form action="/client-edit/${client[3]}"><button class="search-button">Edit</button></form>
+        <button class="viewer tablinks search-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
       </div>
     </div>`
     }
@@ -36,6 +42,8 @@ function editCard(clients){
         viewerBtns[i].addEventListener('click', function() {
             document.querySelector('meta[name="view"]').content = this.value;
             // allInfo();
+            start();
+
         });
     }
 

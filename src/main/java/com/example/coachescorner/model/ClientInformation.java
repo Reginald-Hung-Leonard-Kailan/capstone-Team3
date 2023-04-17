@@ -15,7 +15,6 @@ public class ClientInformation {
         alert, workoutPlan, bodyWeight, bodyFatPercent, squat, bench, deadlift, sleep, fatigue
     }
 
-    @JsonIgnore
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

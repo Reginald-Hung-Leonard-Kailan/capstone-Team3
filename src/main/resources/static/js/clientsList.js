@@ -1,6 +1,7 @@
 "use strict"
 start()
 const id = document.querySelector("meta[name='loggedInId']").content;
+const nameSearch = document.getElementById("name");
 let runMyFetch = clientArray(id);
 let injuryFetch= injuryArray(id);
 let smallInjuryFetch= smallInjuryArray(id);
@@ -125,8 +126,21 @@ function renderByClass(classname, html){
 }
 
 
+async function setUpSearchBar(){
+    let clientList = await clientArray(id)
+    nameSearch.addEventListener("keyup" , function (e){
+        const search = e.target.value;
+    let filterClientList = clientList.filter(client => {
+        return (
+            client[0].toLowerCase().includes(search.toLowerCase()) ||
+            client[1].toLowerCase().includes(search.toLowerCase())
+        );
+    })
+        editCard(filterClientList);
+    })
+}
 
-
+setUpSearchBar();
 
 async function clientArray(id){
     let url = "/api/user/" + id, clientArr;

@@ -2,7 +2,6 @@ package com.example.coachescorner.controllers;
 
 
 import com.example.coachescorner.model.ClientInformation;
-import com.example.coachescorner.model.InformationType;
 import com.example.coachescorner.model.User;
 import com.example.coachescorner.repositories.ClientInformationRepository;
 import com.example.coachescorner.repositories.InformationTypeRepository;
@@ -13,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -36,7 +34,6 @@ public class ApiController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable(value = "id") long id) {
-//        long helper = id;
         Optional<User> user = Optional.ofNullable(userRepository.findById(id));
 
         if(user.isPresent()) {
@@ -52,18 +49,21 @@ public class ApiController {
         return userRepository.save(user);
     }
 
-//    @PostMapping("/{id}/details")
-//    public ClientInformation saveInfo(@Validated @RequestBody ClientInformation clientInformation, @PathVariable(value = "id") long id, @RequestBody Map<String, Object> requestBody) {
-//        User user = userRepository.findById(id);
 
-        //ensure we have an id for the infoType
-//        long typeId = Long.parseLong(requestBody.get("id").toString());
-//        InformationType infoType = infoTypeDao.findById(typeId);
-//        System.out.println(typeId);
-//        clientInformation.setUserId(user);
-//        clientInformation.setInformationType(infoType);
-//        return infoDao.save(clientInformation);
-//    }
+    @PostMapping("/{id}/details")
+    public ClientInformation saveInfo(@Validated @RequestBody ClientInformation clientInformation, @PathVariable(value = "id") long id) {
+        User user = userRepository.findById(id); //ensure we have an id for the infoType
+        clientInformation.setUserId(user);
+        System.out.println(clientInformation);
+        return infoDao.save(clientInformation);
+    }
+
+    @GetMapping("/{id}/details")
+    public ResponseEntity<List<ClientInformation>> clientInfo(@PathVariable(value = "id") long id) {
+        User user = userRepository.findById(id);
+        Optional<List<ClientInformation>> info = Optional.ofNullable(user.getClientInformationList());
+        return ResponseEntity.ok().body(info.get());
+    }
 /**
  * Testing out the following JSON msg:
  * const csrfToken = document.querySelector('meta[name="_csrf"]').content;

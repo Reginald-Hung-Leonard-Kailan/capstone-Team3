@@ -96,4 +96,15 @@ public class ClientInformation {
 //    public void setInformationType(InformationType informationType) {
 //        InformationType = informationType;
 //    }
+
+    @Override
+    public String toString() {
+        return "ClientInformation{" +
+                "id=" + id +
+                ", clientInformation='" + clientInformation + '\'' +
+                ", date=" + date +
+                ", userId=" + userId +
+                ", type=" + type +
+                '}';
+    }
 }

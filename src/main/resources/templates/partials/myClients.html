@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="myClients" id="myClients" class="tabcontent">
+  <div class="client-search-holder">
   <form id="client-search">
     <input   class="search" type="text" placeholder="Client">
     <button class="search-button">Search</button>
-  </form>
+  </form><button class="tablinks" id="client-button"><a href="/client">New Client</a></button>
+  </div>
   <div id="client-holder">
     <div>
       <div class="client-card">

@@ -18,7 +18,7 @@ function editCard(clients){
         <hr>
         <div>first.Last@email.com</div>
         <hr>
-        <form><button>Edit</button></form>
+        <form action="/client-edit/${client[3]}"><button>Edit</button></form>
         <button class="viewer" value="${client[3]}">Stats</button>
       </div>
     </div>`

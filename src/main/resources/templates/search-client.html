@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<H1>Search Client</H1>
+<div th:each="user : ${users}">
+<span th:text="${user.firstName}"></span>
+<span th:text="${user.LastName}"></span>
+</div>
+</body>
+</html>

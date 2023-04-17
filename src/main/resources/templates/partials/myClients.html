@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="myClients" id="myClients" class="tabcontent">
   <div class="client-search-holder">
-  <form id="client-search">
-    <input   class="search" type="text" placeholder="Client">
-    <button class="search-button">Search</button>
-  </form><button class="tablinks" id="client-button"><a href="/client">New Client</a></button>
+<!--  <form  th:action="@{/users/search}" id="client-search">-->
+    <input   id="name" name="name" class="search" type="text" placeholder="name">
+<!--    <button type="submit" class="search-button">Search</button>-->
+<!--  </form>-->
+    <button class="tablinks" id="client-button"><a href="/client">New Client</a></button>
   </div>
   <div id="client-holder">
     <div>

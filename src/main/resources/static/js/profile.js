@@ -73,12 +73,8 @@ closeEditChart.addEventListener('click',()=>{
 })
 
 const injuryModal = document.querySelector('#injury-modal');
-const viewInjury = document.querySelector('#view-injury');
 const closeInjury = document.querySelector('#close-injury');
 
-viewInjury.addEventListener('click',()=>{
-    injuryModal.showModal();
-})
 closeInjury.addEventListener('click',()=>{
     injuryModal.close();
 })

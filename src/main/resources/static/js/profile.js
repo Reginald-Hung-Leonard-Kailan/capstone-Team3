@@ -78,6 +78,13 @@ const closeInjury = document.querySelector('#close-injury');
 closeInjury.addEventListener('click',()=>{
     injuryModal.close();
 })
+
+const reloadClients= document.querySelector('#defaultOpen');
+reloadClients.addEventListener('click', ()=>{
+    reloadClients.addEventListener('click', ()=>{
+        location.href = location.href;
+    })
+})
 //
 // const editInjuryModal = document.querySelector('#edit-injury-modal');
 // const editInjury = document.querySelector('#edit-injury');

@@ -43,7 +43,7 @@ function editCard(clients){
             document.querySelector('meta[name="view"]').content = this.value;
             // allInfo();
             start();
-
+            graphInfo();
         });
     }
 

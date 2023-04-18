@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "client_information")
 public class ClientInformation {
     public enum Type{
-        alert, workoutPlan, bodyWeight, bodyFatPercent, squat, bench, deadlift, sleep, fatigue, shoulderPress
+        alert, workoutPlan, bodyWeight, bodyFatPercent, squat, bench, deadlift, sleep, fatigue
     }
 
 

@@ -9,30 +9,67 @@ let workoutPlanArr = [],
     fatigueArr = [];
 
 
+function renderSleep(){
+    let id = document.querySelector("#edit-sleep"),
+        html=``,
+        today = new Date(),
+        weekNames = getWeekdayNames();
 
-function renderSleep(sleepArr){
-    let id = document.querySelector("#edit-sleep"), html=``;
+    // console.log(dayOfWeek); // Output: the name of the current day of the week
 
-    for(let i=0; i<sleepArr.length; i++){
+    for(let i=0; i<7; i++){
         let sleep = sleepArr[i];
         html += `
-                 <div>${sleep.date +': '+ sleep.clientInformation}</div>
+                 <div><strong>${weekNames[i]}</strong>: 0</div>
                  <hr>`
     }
 
     id.innerHTML = html;
 }
 
-function renderFatigue(fatigueArr){
-    let id = document.querySelector("#edit-fatigue"), html=``;
+function renderFatigue(){
+    let id = document.querySelector("#fatigue-days"),
+        html=``,
+        weekNames = getWeekdayNames(),
+        oneWeekAgo = new Date(),
+        total = 0,
+        count = 0;
 
-    for(let i=0; i<fatigueArr.length; i++){
-        let fatigue = fatigueArr[i];
+        let entries =[];
+
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    let weekOldFatigue = fatigueArr.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= oneWeekAgo;
+    });
+
+    weekOldFatigue.map(obj => {
+        let {date, clientInformation, id, type} = obj,
+            weekDay = getDayOfWeek( date );
+        entries.push({ weekDay, clientInformation, id, type} );
+    })
+
+    for(let i=0; i<7; i++){
+        let rating = 0;
+        entries.map(entry => {
+            if(entry.weekDay === weekNames[i]){
+                rating = parseInt(entry.clientInformation);
+                total += rating;
+                count++;
+            }
+        })
+
+        // if(entries.includes(weekNames[i])){
+        //     console.log("The index is: " + fatigueArr.indexOf(weekNames[i]))
+        // }
         html += `
-                <div>${fatigue.date +':'+ fatigue.clientInformation}</div>
+                <div>${weekNames[i]}: ${rating}</div>
                 <hr>`
     }
-
+    console.log(typeof total, typeof count)
+    console.log(total, count)
+    document.querySelector("#fatigue-average").innerHTML = (total / count);
     id.innerHTML = html;
 }
 
@@ -168,8 +205,8 @@ async function graphInfo(){
                 break;
         }
     })
-    renderSleep(sleepArr);
-    renderFatigue(fatigueArr);
+    renderSleep();
+    renderFatigue();
     benchChart();
     bodyFatChart();
     bodyWeightChart();
@@ -248,6 +285,30 @@ function addOneDay(newDate) {
     var month = ('0' + (dateObj.getUTCMonth() + 1)).slice(-2);
     var day = ('0' + dateObj.getUTCDate()).slice(-2);
     return year + '-' + month + '-' + day;
+}
+
+function getDayOfWeek(dateString) {
+     let daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         date = new Date(dateString),
+         dayOfWeekIndex = date.getDay(),
+         dayOfWeek = daysOfWeek[dayOfWeekIndex];
+    return dayOfWeek;
+}
+
+
+
+function getWeekdayNames(){
+    const today = new Date();
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const todayIndex = today.getDay();
+    const lastWeekDays = [];
+
+    for (let i = todayIndex; i >= todayIndex - 6; i--) {
+        const index = i < 0 ? i + 7 : i;
+        lastWeekDays.push(daysOfWeek[index]);
+    }
+
+    return lastWeekDays;
 }
 
 function resetAll(){

@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<dialog th:fragment="chart" class="modal-wide" id="chart-modal">
+<dialog th:fragment="bodyfat-chart" class="modal-wide" id="chart-modal">
     <button id="close-chart">❌</button>
     <div class="chart-title">Body Fat %</div>
 <!--    <img src="img/chart.png" class="chart-zoom">-->
     <div style="height: 500px; width: 900px">
-    <canvas id="bodyFatChart1" class="chart-zoom"  style="max-width:100%;"></canvas>
+    <canvas id="bodyFatModal" class="chart-zoom"  style="max-width:100%;"></canvas>
     </div>
-    <button id="edit-chart">Edit</button>
+    <button id="edit-chart">Add</button>
+</dialog>
+
+<dialog th:fragment="bodyweight-chart" class="modal-wide" id="bodyweight-chart-modal">
+    <button id="close-bodyweight-chart">❌</button>
+    <div class="chart-title">Body Weight </div>
+    <!--    <img src="img/chart.png" class="chart-zoom">-->
+    <div style="height: 500px; width: 900px">
+        <canvas id="bodyWeightModal" class="chart-zoom"  style="max-width:100%;"></canvas>
+    </div>
+    <button id="edit-bodyweight-chart">Add</button>
+</dialog>
+
+<dialog th:fragment="squat-chart" class="modal-wide" id="squat-chart-modal">
+    <button id="close-squat-chart">❌</button>
+    <div class="chart-title">Squat</div>
+    <!--    <img src="img/chart.png" class="chart-zoom">-->
+    <div style="height: 500px; width: 900px">
+        <canvas id="squatModal" class="chart-zoom"  style="max-width:100%;"></canvas>
+    </div>
+    <button id="edit-squat-chart">Add</button>
+</dialog>
+
+<dialog th:fragment="bench-chart" class="modal-wide" id="bench-chart-modal">
+    <button id="close-bench-chart">❌</button>
+    <div class="chart-title">Bench </div>
+    <!--    <img src="img/chart.png" class="chart-zoom">-->
+    <div style="height: 500px; width: 900px">
+        <canvas id="benchModal" class="chart-zoom"  style="max-width:100%;"></canvas>
+    </div>
+    <button id="edit-bench-chart">Add</button>
+</dialog>
+
+<dialog th:fragment="deadlift-chart" class="modal-wide" id="deadlift-chart-modal">
+    <button id="close-deadlift-chart">❌</button>
+    <div class="chart-title">Deadlift </div>
+    <!--    <img src="img/chart.png" class="chart-zoom">-->
+    <div style="height: 500px; width: 900px">
+        <canvas id="deadliftModal" class="chart-zoom"  style="max-width:100%;"></canvas>
+    </div>
+    <button id="edit-deadlift-chart">Add</button>
 </dialog>
 </html>

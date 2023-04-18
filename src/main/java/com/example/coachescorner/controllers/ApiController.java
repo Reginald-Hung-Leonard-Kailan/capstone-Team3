@@ -64,6 +64,21 @@ public class ApiController {
         Optional<List<ClientInformation>> info = Optional.ofNullable(user.getClientInformationList());
         return ResponseEntity.ok().body(info.get());
     }
+
+//    For deleting
+@DeleteMapping("/{id}/details/{infoId}")
+public ResponseEntity<Void> deleteInfo(@PathVariable(value = "id") long id, @PathVariable(value = "infoId") long infoId) {
+    User user = userRepository.findById(id);
+    Optional<ClientInformation> info = Optional.ofNullable(infoDao.findById(infoId));
+
+    if (user == null || info.isEmpty() || !user.equals(info.get().getUserId())) {
+        return ResponseEntity.notFound().build();
+    }
+
+    infoDao.delete(info.get());
+    return ResponseEntity.noContent().build();
+}
+
 /**
  * Testing out the following JSON msg:
  * const csrfToken = document.querySelector('meta[name="_csrf"]').content;

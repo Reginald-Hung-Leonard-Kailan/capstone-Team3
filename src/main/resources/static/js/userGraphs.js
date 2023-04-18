@@ -35,8 +35,8 @@ function renderFatigue(fatigueArr){
 
     id.innerHTML = html;
 }
-// Body Fat %
 
+// Body Fat %
 function bodyFatChart() {
     const ctx = document.getElementById('bodyFatChart').getContext('2d');
 
@@ -88,8 +88,7 @@ function bodyFatChart() {
     });
 }
 
-// Body Weight %
-
+// Body Weight
 function bodyWeightChart() {
     const ctx = document.getElementById('bodyWeightChart').getContext('2d');
 
@@ -142,7 +141,6 @@ function bodyWeightChart() {
 }
 
 // Squat
-
 function squatChart() {
     const ctx = document.getElementById('squatChart').getContext('2d');
 
@@ -194,9 +192,7 @@ function squatChart() {
     });
 }
 
-
 // BenchChart
-
 function benchChart() {
     const ctx = document.getElementById('benchChart').getContext('2d');
 
@@ -247,8 +243,8 @@ function benchChart() {
         options: options
     });
 }
-// Body Fat %
 
+// Body Fat %
 function deadLiftChart() {
     const ctx = document.getElementById('deadLiftChart').getContext('2d');
 
@@ -300,7 +296,6 @@ function deadLiftChart() {
     });
 }
 
-
 async function graphInfo(){
     let id = document.querySelector('meta[name="view"]').content;
     let url = "/api/user/" + id + '/details';
@@ -337,7 +332,6 @@ async function graphInfo(){
                 break;
         }
     })
-    console.log(fatigueArr);
     renderSleep(sleepArr);
     renderFatigue(fatigueArr);
     benchChart();
@@ -347,16 +341,54 @@ async function graphInfo(){
     deadLiftChart();
 }
 
-function addinfo(userId, discription, date, type) {
-    //date format: "2023-01-01" && type is spelt out
+function addInfo( info, date, type){
     var clientInformation = {
-        clientInformation: discription,
+        clientInformation: info,
         date: date,
         type: type
     };
+    touchApi(clientInformation);
+}
+
+function editInfo(id, info, date, type){
+    let detailId = parseInt(id);
+    var clientInfo = {
+        id: detailId,
+        clientInformation: info,
+        date: date,
+        type: type
+    };
+    touchApi(clientInfo);
+}
+
+function deleteInfo(infoId) {
     const csrfToken = document.querySelector('meta[name="_csrf"]').content;
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
-    fetch('/api/user/' + userId + '/details', {
+    let id = document.querySelector('meta[name="view"]').content;
+
+    fetch(`/api/user/${id}/details/${infoId}`, {
+        method: 'DELETE',
+        headers: {
+            [csrfHeader]: csrfToken
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Deleted ClientInformation with ID ${infoId}`);
+            } else {
+                console.error(`Error deleting ClientInformation with ID ${infoId}: ${response.status} ${response.statusText}`);
+            }
+        })
+        .catch(error => console.error(`Error deleting ClientInformation with ID ${infoId}: ${error}`));
+}
+
+
+function touchApi( clientInformation) {
+    //date format: "2023-01-01" && type is spelt out
+    let id = document.querySelector('meta[name="view"]').content;
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
+    fetch('/api/user/' + id + '/details', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",

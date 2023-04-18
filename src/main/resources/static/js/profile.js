@@ -54,23 +54,23 @@ const chartModal = document.querySelector('#chart-modal');
 const viewChart = document.querySelector('#view-chart');
 const closeChart = document.querySelector('#close-chart');
 
-// viewChart.addEventListener('click',()=>{
-//     chartModal.showModal();
-// })
-// closeChart.addEventListener('click',()=>{
-//     chartModal.close();
-// })
-//
-// const editChartModal = document.querySelector('#edit-chart-modal');
-// const editChart = document.querySelector('#edit-chart');
-// const closeEditChart = document.querySelector('#close-edit-chart');
-//
-// editChart.addEventListener('click',()=>{
-//     editChartModal.showModal();
-// })
-// closeEditChart.addEventListener('click',()=>{
-//     editChartModal.close();
-// })
+viewChart.addEventListener('click',()=>{
+    chartModal.showModal();
+})
+closeChart.addEventListener('click',()=>{
+    chartModal.close();
+})
+
+const editChartModal = document.querySelector('#edit-chart-modal');
+const editChart = document.querySelector('#edit-chart');
+const closeEditChart = document.querySelector('#close-edit-chart');
+
+editChart.addEventListener('click',()=>{
+    editChartModal.showModal();
+})
+closeEditChart.addEventListener('click',()=>{
+    editChartModal.close();
+})
 
 const injuryModal = document.querySelector('#injury-modal');
 const closeInjury = document.querySelector('#close-injury');

@@ -14,9 +14,9 @@
 <form th:action="@{/client-edit/{id}(id=${user.id})}" th:method="POST" id="edit-client-form" class="modal-form">
 <div class="edit-heading">Client Edit</div>
     <label for="first-name">First Name:</label><br>
-    <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br>
+    <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br><br>
     <label for="last-name">Last Name:</label><br>
-    <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br>
+    <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br><br>
     <label for="email">Email:</label><br>
     <input id="email" type="text" name="email" th:value="${user.email}"><br><br>
     <button>Submit</button>

@@ -29,9 +29,11 @@ function editCard(clients){
         <hr>
         <div>first.Last@email.com</div>
         <hr>
-        <form action="/client-edit/${client[3]}"><button class="search-button">Edit</button></form>
-        <div><form action="/add-injury/${client[3]}"><button>Add Injury</button></form></div>
-        <button class="viewer tablinks search-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
+        <div id="client-card-button-holder">
+        <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
+        <form action="/add-injury/${client[3]}"><button class="search-button">Add Injury</button></form>
+        <button class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
+        </div>
       </div>
     </div>`
     }
@@ -43,6 +45,7 @@ function editCard(clients){
     for (let i = 0; i < viewerBtns.length; i++) {
         viewerBtns[i].addEventListener('click', function() {
             document.querySelector('meta[name="view"]').content = this.value;
+            document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
             // allInfo();
             start();
             graphInfo();

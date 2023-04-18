@@ -35,7 +35,7 @@
     <div id="createClients" class="tabcontent">
         <dialog open class="create-user" id="user-dialog">
 
-            <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form">
+            <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form" style="padding-top: 30px">
                 <!--            <label for="firstName">First Name:</label><br>-->
                 <!--            <input type="text" th:field="*{username}" placeholder="Username" id="newUsername"><br>-->
                 <!--            <label for="role">Role:</label>-->
@@ -44,11 +44,11 @@
                 <!--            </select><br><br> -->
                 <input type="hidden" value="false" name="role" id="role">
                 <label for="firstName">First Name:</label><br>
-                <input type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br>
+                <input type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br><br>
                 <label for="lastName">Last Name</label><br>
-                <input type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br>
+                <input type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br><br>
                 <label for="email">email:</label><br>
-                <input type="text" th:field="*{email}" placeholder="email" id="email"><br>
+                <input type="text" th:field="*{email}" placeholder="email" id="email"><br><br>
                 <input type="hidden" value="true" name="isActive" id="isActive">
             <button class="search-button"><a href="/home">cancel</a></button>
                 <button class="search-button">add</button>

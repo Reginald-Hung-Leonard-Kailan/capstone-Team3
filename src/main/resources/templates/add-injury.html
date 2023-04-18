@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add Injury</h1>
+<form th:action="@{/add-injury/{id}(id=${user.id})}" th:object="${injury}" th:method="Post" >
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" th:field="*{description}"><br>
+    <label for="injury-date">Injury Date:</label><br>
+    <input  id="injury-date"  th:field="*{injuryDate}"><br>
+    <label for="status">Status:</label><br>
+    <select id="status" name="status">
+        <option value=active>Active</option>
+        <option value=past>Past</option>
+    </select><br>
+<!--    <input type="number" id="status"  th:field="*{status}"><br>-->
+    <label for="title">Title:</label><br>
+    <input type="text" id="title"  th:field="*{title}"><br><br>
+<!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->
+    <button>Submit</button>
+</form>
+
+</body>
+</html>

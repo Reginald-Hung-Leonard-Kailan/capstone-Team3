@@ -43,6 +43,14 @@ public class Injury {
         this.userId = userId;
     }
 
+    public Injury(Injury injury) {
+        this.injuryDate = injury.injuryDate;
+        this.status = injury.status;
+        this.title = injury.title;
+        this.description = injury.description;
+        this.userId = injury.userId;
+    }
+
     public long getId() {
         return id;
     }

@@ -30,6 +30,7 @@ function editCard(clients){
         <div>first.Last@email.com</div>
         <hr>
         <form action="/client-edit/${client[3]}"><button class="search-button">Edit</button></form>
+        <div><form action="/add-injury/${client[3]}"><button>Add Injury</button></form></div>
         <button class="viewer tablinks search-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
       </div>
     </div>`
@@ -100,6 +101,7 @@ function Injury(clients){
 }
 function smallInjury(clients){
     let html=``;
+    let id = document.querySelector('meta[name="view"]').content;
 
     for(let i=0; i<clients.length; i++){
         let client=clients[i];
@@ -110,6 +112,9 @@ function smallInjury(clients){
         <p>${client[2]}</p>
         <p>${client[1]}</p>
         </div>
+        
+        
+        
 <!--<br>-->
      
         `
@@ -167,6 +172,7 @@ async function injuryArray(id){
             return clientInfo
         }).catch(error => console.error(error));
    // Injury(injury);
+    console.log(injury.userId);
     return injury;
 }
 async function smallInjuryArray(id){

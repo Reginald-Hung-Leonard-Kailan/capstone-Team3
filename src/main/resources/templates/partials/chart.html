@@ -3,7 +3,8 @@
 <dialog th:fragment="chart" class="modal-wide" id="chart-modal">
     <button id="close-chart">❌</button>
     <div class="chart-title">Body Fat %</div>
-    <img src="img/chart.png" class="chart-zoom">
+<!--    <img src="img/chart.png" class="chart-zoom">-->
+    <canvas id="bodyFatChart" class="chart-zoom" width="440" height="300" style="max-width:100%;"></canvas>
     <button id="edit-chart">Edit</button>
 </dialog>
 </html>

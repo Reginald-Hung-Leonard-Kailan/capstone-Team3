@@ -116,6 +116,51 @@ closeEditChart.addEventListener('click',()=>{
     editChartModal.close();
 })
 
+
+const editBodyWeightModal = document.querySelector('#edit-bodyWeight-modal');
+const editBodyWeight = document.querySelector('#edit-bodyweight-chart');
+const closeBodyWeightChart = document.querySelector('#close-edit-bodyWeight-chart');
+
+editBodyWeight.addEventListener('click',()=>{
+    editBodyWeightModal.showModal();
+})
+closeBodyWeightChart.addEventListener('click',()=>{
+    editBodyWeightModal.close();
+})
+
+const editSquatModal = document.querySelector('#edit-squat-modal');
+const editSquat = document.querySelector('#edit-squat-chart');
+const closeSquatChart2 = document.querySelector('#close-edit-squat-chart');
+
+editSquat.addEventListener('click',()=>{
+    editSquatModal.showModal();
+})
+closeSquatChart2.addEventListener('click',()=>{
+    editSquatModal.close();
+})
+
+const editBenchModal = document.querySelector('#edit-bench-modal');
+const editBench= document.querySelector('#edit-bench-chart');
+const closeBenchChart2 = document.querySelector('#close-edit-bench-chart');
+
+editBench.addEventListener('click',()=>{
+    editBenchModal.showModal();
+})
+closeBenchChart2.addEventListener('click',()=>{
+    editBenchModal.close();
+})
+
+const editDeadliftModal = document.querySelector('#edit-deadlift-modal');
+const editDeadlift = document.querySelector('#edit-deadlift-chart');
+const closeDeadlift2= document.querySelector('#close-edit-deadlift-chart');
+
+editDeadlift.addEventListener('click',()=>{
+    editDeadliftModal.showModal();
+})
+closeDeadlift2.addEventListener('click',()=>{
+    editDeadliftModal.close();
+})
+
 const injuryModal = document.querySelector('#injury-modal');
 const closeInjury = document.querySelector('#close-injury');
 

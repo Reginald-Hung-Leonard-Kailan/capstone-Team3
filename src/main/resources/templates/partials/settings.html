@@ -11,18 +11,19 @@
         <!--        </select><br><br>-->
         <div class="edit-heading"> Edit Profile</div>
         <label for="first-name" id="firstname">First Name:</label><br>
-        <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br>
+        <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br><br>
         <label for="last-name">Last Name:</label><br>
-        <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br>
+        <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br><br>
         <label for="email">Email:</label><br>
-        <input id="email" type="text" name="email" th:value="${user.email}"><br>
+        <input id="email" type="text" name="email" th:value="${user.email}"><br><br>
         <!--        <label for="username">Username:</label><br>-->
         <!--        <input id="username" type="text" name="username" th:value="${user.username}"><br>-->
         <!--        button for profile picture -->
+        <label for="upload-btn">Profile Picture:</label><br>
         <button type="button" id="upload-btn">Upload photo</button>
-        <input type="text" id="user-input" name="picture"/>
+        <input type="text" id="user-input" name="picture"/><br><br>
         <!--        button end-->
-        <br>
+
         <button>Submit</button>
     </form>
 <!--    <button href="#" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete Your Account')">Delete</button>-->

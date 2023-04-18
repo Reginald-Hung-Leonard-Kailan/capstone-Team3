@@ -43,6 +43,7 @@
     padding: 0 0 10px 0 ;
     width: 50%;
     display: inline-block;
+    line-height: 30px;
 }
 #edit-client-holder{
     margin-top: 10px;
@@ -60,6 +61,25 @@
     padding: 0 0 10px 0 ;
     width: 50%;
     display: inline-block;
+    line-height: 30px;
+}
+#add-injury-holder{
+    margin-top: 10px;
+    text-align: center;
+}
+#add-injury-form{
+    margin-top: 100px;
+    border: white solid 10px;
+    border-radius: 30px;
+    /*background-color: lightgray;*/
+    background-color: rgba(98, 180, 255, 0.96);
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 100ch;
+    padding: 0 0 10px 0 ;
+    width: 50%;
+    display: inline-block;
+    line-height: 30px;
 }
 #profile-form{
     border: white solid 10px;
@@ -240,17 +260,25 @@ border: solid black 1px ;
     font-size: 25px;
 }
 .search-button{
-height: 35px;
+height: 43px;
     width: 70px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 7px;
     border: solid black 1px ;
+}
+#client-card-button-holder{
+    display: flex;
+    justify-content: space-around;
+    vertical-align: top;
 }
 #client-search{
     /*align-items: center;*/
     /*text-align: center;*/
     /*justify-content: center;*/
     /*margin-bottom: 5px;*/
+}
+.client-allign-button{
+    margin-top: 13px;
 }
 .client-search-holder{
     display: flex;
@@ -436,7 +464,7 @@ img{
     /*background-color: lightgray;*/
     background-color: rgba(98, 180, 255, 0.96);
     padding: 10px 3px 10px 10px;
-    line-height: 45px;
+    line-height: 30px;
     font-size: 30px;
     text-align: center;
     /*width: 500px;*/

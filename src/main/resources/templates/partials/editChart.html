@@ -11,4 +11,48 @@
         <button id="add-body-fat">Submit</button>
     </form>
 </dialog>
+<dialog th:fragment="editBodyWeightChart" class="modal-wide" id="edit-bodyWeight-modal">
+    <button id="close-edit-bodyWeight-chart">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="body-weight-date">Date:</label><br>
+        <input id="body-weight-date" type="date"><br>
+        <label for="body-weight-info">Body Weight:</label><br>
+        <input id="body-weight-info" type="number" min="0" max="500">
+        <br>
+        <button id="add-body-weight">Submit</button>
+    </form>
+</dialog>
+<dialog th:fragment="editSquatChart" class="modal-wide" id="edit-squat-modal">
+    <button id="close-edit-squat-chart">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="squat-date">Date:</label><br>
+        <input id="squat-date" type="date"><br>
+        <label for="squat-info">Squat:</label><br>
+        <input id="squat-info" type="number" min="0" max="1200">
+        <br>
+        <button id="add-squat">Submit</button>
+    </form>
+</dialog>
+<dialog th:fragment="editBenchChart" class="modal-wide" id="edit-bench-modal">
+    <button id="close-edit-bench-chart">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="bench-date">Date:</label><br>
+        <input id="bench-date" type="date"><br>
+        <label for="bench-info">Bench:</label><br>
+        <input id="bench-info" type="number" min="0" max="900">
+        <br>
+        <button id="add-bench">Submit</button>
+    </form>
+</dialog>
+<dialog th:fragment="editDeadlift" class="modal-wide" id="edit-deadlift-modal">
+    <button id="close-edit-deadlift-chart">❌</button>
+    <form method="dialog" class="modal-form">
+        <label for="deadlift-date">Date:</label><br>
+        <input id="deadlift-date" type="date"><br>
+        <label for="deadlift-info">Deadlift:</label><br>
+        <input id="deadlift-info" type="number" min="0" max="1300">
+        <br>
+        <button id="add-deadlift">Submit</button>
+    </form>
+</dialog>
 </html>

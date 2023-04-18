@@ -5,6 +5,7 @@
 
     <ul th:fragment="navbar" id="nav-bar" >
         <li><a href="/">Home</a></li>
+        <li th:if="${isAuthenticated}"><a href="/home">Profile</a></li>
 <!--        link once mvp is done  <li><a href="">Find a Coach</a></li>-->
         <li th:if="${isAuthenticated}"><a href="/">Logout</a></li>
 <!--        link once mvp is done <li ><a href="">Contact</a></li>-->

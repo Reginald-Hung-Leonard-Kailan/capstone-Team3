@@ -39,6 +39,7 @@ function renderFatigue(fatigueArr){
 
 function bodyFatChart() {
     const ctx = document.getElementById('bodyFatChart').getContext('2d');
+    const ctx1 = document.getElementById('bodyFatChart1').getContext('2d');
 
 // this is the data how it should appear from the database when populating
     let bodyFat = [];
@@ -82,6 +83,11 @@ function bodyFatChart() {
 
 // eslint-disable-next-line no-undef,no-unused-vars
     const myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+    const myChart1 = new Chart(ctx1, {
         type: 'line',
         data: data,
         options: options

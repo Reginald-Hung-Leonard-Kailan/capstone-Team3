@@ -1,5 +1,4 @@
 
-
 let workoutPlanArr = [],
     bodyWeightArr = [],
     bodyFatPercentArr = [],
@@ -13,24 +12,23 @@ function renderSleep(sleepArr){
     let id = document.querySelector("#edit-sleep"), html=``;
 
     for(let i=0; i<sleepArr.length; i++){
-        let sleep=sleepArr[i];
+        let sleep = sleepArr[i];
         html += `
-        <div>${sleep.date +':'+ sleep.clientInformation}</div>
-      <hr>
-    `
+                 <div>${sleep.date +': '+ sleep.clientInformation}</div>
+                 <hr>`
     }
 
     id.innerHTML = html;
 }
+
 function renderFatigue(fatigueArr){
     let id = document.querySelector("#edit-fatigue"), html=``;
 
     for(let i=0; i<fatigueArr.length; i++){
-        let fatigue=fatigueArr[i];
+        let fatigue = fatigueArr[i];
         html += `
-        <div>${fatigue.date +':'+ fatigue.clientInformation}</div>
-      <hr>
-    `
+                <div>${fatigue.date +':'+ fatigue.clientInformation}</div>
+                <hr>`
     }
 
     id.innerHTML = html;
@@ -38,235 +36,62 @@ function renderFatigue(fatigueArr){
 
 // Body Fat %
 function bodyFatChart() {
-    const ctx = document.getElementById('bodyFatChart').getContext('2d');
-    const ctx1 = document.getElementById('bodyFatChart1').getContext('2d');
-
-// this is the data how it should appear from the database when populating
-    let bodyFat = [];
-    let weighInDate = [];
+    let bodyFat = [], weighInDate = [];
     bodyFatPercentArr.map(data => {
-        bodyFat.unshift( parseInt( data.clientInformation ) );
-        weighInDate.unshift( data.date );
+        bodyFat.unshift(parseInt(data.clientInformation));
+        weighInDate.unshift(data.date);
     })
-
-    const data = {
-        labels: weighInDate,
-        datasets: [{
-            label: 'Body Fat %',
-            data: bodyFat,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-        }],
-    };
-
-// axis labels are not populating...
-    const options = {
-        scales: {
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Weight in lb'
-                }
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Months throughout the Year'
-                },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
-
-// eslint-disable-next-line no-undef,no-unused-vars
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
-    const myChart1 = new Chart(ctx1, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
+    populateGraph("bodyFatChart1", weighInDate, bodyFat, "Body Fat %");
 }
 
 // Body Weight
 function bodyWeightChart() {
-    const ctx = document.getElementById('bodyWeightChart').getContext('2d');
-
-// this is the data how it should appear from the database when populating
-    let bodyWeight = [];
-    let bodyweightInDate = [];
+    let bodyWeight = [], bodyweightInDate = [];
     bodyWeightArr.map(data => {
         bodyWeight.unshift( parseInt( data.clientInformation ) );
         bodyweightInDate.unshift( data.date );
     })
-
-    const data = {
-        labels: bodyweightInDate,
-        datasets: [{
-            label: 'Body Weight',
-            data: bodyWeight,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-        }],
-    };
-
-// axis labels are not populating...
-    const options = {
-        scales: {
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Weight in lb'
-                }
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Months throughout the Year'
-                },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
-
-// eslint-disable-next-line no-undef,no-unused-vars
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    populateGraph("bodyWeightChart", bodyweightInDate, bodyWeight, "Body Weight");
 }
 
 // Squat
 function squatChart() {
-    const ctx = document.getElementById('squatChart').getContext('2d');
-
-// this is the data how it should appear from the database when populating
-    let squatWeight = [];
-    let squatDate = [];
+    let squatWeight = [], squatDate = [];
     squatArr.map(data => {
         squatWeight.unshift( parseInt( data.clientInformation ) );
         squatDate.unshift( data.date );
     })
-
-    const data = {
-        labels: squatDate,
-        datasets: [{
-            label: 'Squat Weight',
-            data: squatWeight,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-        }],
-    };
-
-// axis labels are not populating...
-    const options = {
-        scales: {
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Weight in lb'
-                }
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Months throughout the Year'
-                },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
-
-// eslint-disable-next-line no-undef,no-unused-vars
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
 }
 
 // BenchChart
 function benchChart() {
-    const ctx = document.getElementById('benchChart').getContext('2d');
-
-// this is the data how it should appear from the database when populating
-    let benchWeight = [];
-    let benchDate = [];
+    let benchWeight = [], benchDate = [];
     benchArr.map(data => {
         benchWeight.unshift( parseInt( data.clientInformation ) );
         benchDate.unshift( data.date );
     })
-
-    const data = {
-        labels: benchDate,
-        datasets: [{
-            label: 'bench',
-            data: benchWeight,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-        }],
-    };
-
-// axis labels are not populating...
-    const options = {
-        scales: {
-            yAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Weight in lb'
-                }
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Months throughout the Year'
-                },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
-
-// eslint-disable-next-line no-undef,no-unused-vars
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    populateGraph('benchChart', benchDate, benchWeight, 'Bench');
 }
 
 // Body Fat %
 function deadLiftChart() {
-    const ctx = document.getElementById('deadLiftChart').getContext('2d');
-
-// this is the data how it should appear from the database when populating
-    let deadLift = [];
-    let liftDate = [];
+    let deadLift = [], liftDate = [];
     deadliftArr.map(data => {
         deadLift.unshift( parseInt( data.clientInformation ) );
         liftDate.unshift( data.date );
     })
+    populateGraph('deadLiftChart', liftDate, deadLift, 'Deadlift');
+}
 
+function populateGraph(elemId, dateArr, statArr, title){
+    const ctx = document.getElementById(elemId).getContext('2d');
     const data = {
-        labels: liftDate,
+        labels: dateArr,
         datasets: [{
-            label: 'Dead Lift',
-            data: deadLift,
+            label: title,
+            data: statArr,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1,
@@ -294,20 +119,19 @@ function deadLiftChart() {
         }
     };
 
-// eslint-disable-next-line no-undef,no-unused-vars
     const myChart = new Chart(ctx, {
         type: 'line',
         data: data,
         options: options
     });
 }
+//Simplify
 
 async function graphInfo(){
     let id = document.querySelector('meta[name="view"]').content;
     let url = "/api/user/" + id + '/details';
     let personalStats = await fetch(url).then(response => response.json())
                                 .then(data => {
-                                    // console.log(data);
                                     return data.sort((b, a) => new Date(a.date) - new Date(b.date));
                                 }).catch(e => console.error(e));
     personalStats.map(data => {
@@ -348,7 +172,7 @@ async function graphInfo(){
 }
 
 function addInfo( info, date, type){
-    var clientInformation = {
+    let clientInformation = {
         clientInformation: info,
         date: date,
         type: type
@@ -357,8 +181,8 @@ function addInfo( info, date, type){
 }
 
 function editInfo(id, info, date, type){
-    let detailId = parseInt(id);
-    var clientInfo = {
+    let detailId = parseInt(id),
+        clientInfo = {
         id: detailId,
         clientInformation: info,
         date: date,
@@ -368,8 +192,8 @@ function editInfo(id, info, date, type){
 }
 
 function deleteInfo(infoId) {
-    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
-    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content,
+        csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
     let id = document.querySelector('meta[name="view"]').content;
 
     fetch(`/api/user/${id}/details/${infoId}`, {
@@ -377,8 +201,7 @@ function deleteInfo(infoId) {
         headers: {
             [csrfHeader]: csrfToken
         }
-    })
-        .then(response => {
+    }).then(response => {
             if (response.ok) {
                 console.log(`Deleted ClientInformation with ID ${infoId}`);
             } else {
@@ -388,7 +211,7 @@ function deleteInfo(infoId) {
         .catch(error => console.error(`Error deleting ClientInformation with ID ${infoId}: ${error}`));
 }
 
-
+//This is for editing or adding
 function touchApi( clientInformation) {
     //date format: "2023-01-01" && type is spelt out
     let id = document.querySelector('meta[name="view"]').content;
@@ -406,5 +229,3 @@ function touchApi( clientInformation) {
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }
-
-

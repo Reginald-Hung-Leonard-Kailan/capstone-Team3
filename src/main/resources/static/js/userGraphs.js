@@ -9,6 +9,32 @@ let workoutPlanArr = [],
     sleepArr = [],
     fatigueArr = [];
 
+function renderSleep(sleepArr){
+    let id = document.querySelector("#edit-sleep"), html=``;
+
+    for(let i=0; i<sleepArr.length; i++){
+        let sleep=sleepArr[i];
+        html += `
+        <div>${sleep.date +':'+ sleep.clientInformation}</div>
+      <hr>
+    `
+    }
+
+    id.innerHTML = html;
+}
+function renderFatigue(fatigueArr){
+    let id = document.querySelector("#edit-fatigue"), html=``;
+
+    for(let i=0; i<fatigueArr.length; i++){
+        let fatigue=fatigueArr[i];
+        html += `
+        <div>${fatigue.date +':'+ fatigue.clientInformation}</div>
+      <hr>
+    `
+    }
+
+    id.innerHTML = html;
+}
 // Body Fat %
 
 function bodyFatChart() {
@@ -311,7 +337,9 @@ async function graphInfo(){
                 break;
         }
     })
-    // console.log(benchArr);
+    console.log(fatigueArr);
+    renderSleep(sleepArr);
+    renderFatigue(fatigueArr);
     benchChart();
     bodyFatChart();
     bodyWeightChart();
@@ -340,3 +368,5 @@ function addinfo(userId, discription, date, type) {
         .then(data => console.log(data))
         .catch(error => console.error(error));
 }
+
+

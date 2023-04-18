@@ -61,6 +61,50 @@ closeChart.addEventListener('click',()=>{
     chartModal.close();
 })
 
+const bodyweightChartModal = document.querySelector('#bodyweight-chart-modal');
+const viewBodyweightChart = document.querySelector('#view-bodyWeight-chart');
+const closeBodyweightChart = document.querySelector('#close-bodyweight-chart');
+
+viewBodyweightChart.addEventListener('click',()=>{
+    bodyweightChartModal.showModal();
+})
+closeBodyweightChart.addEventListener('click',()=>{
+    bodyweightChartModal.close();
+})
+
+const squatChartModal = document.querySelector('#squat-chart-modal');
+const viewSquatChart = document.querySelector('#view-squat-chart');
+const closeSquatChart = document.querySelector('#close-squat-chart');
+
+viewSquatChart.addEventListener('click',()=>{
+    squatChartModal.showModal();
+})
+closeSquatChart.addEventListener('click',()=>{
+    squatChartModal.close();
+})
+
+const benchChartModal = document.querySelector('#bench-chart-modal');
+const viewBenchChart = document.querySelector('#view-bench-chart');
+const closeBenchChart = document.querySelector('#close-bench-chart');
+
+viewBenchChart.addEventListener('click',()=>{
+    benchChartModal.showModal();
+})
+closeBenchChart.addEventListener('click',()=>{
+    benchChartModal.close();
+})
+
+const deadliftChartModal = document.querySelector('#deadlift-chart-modal');
+const viewDeadliftChart = document.querySelector('#view-deadlift-chart');
+const closeDeadliftChart = document.querySelector('#close-deadlift-chart');
+
+viewDeadliftChart.addEventListener('click',()=>{
+    deadliftChartModal.showModal();
+})
+closeDeadliftChart.addEventListener('click',()=>{
+    deadliftChartModal.close();
+})
+
 const editChartModal = document.querySelector('#edit-chart-modal');
 const editChart = document.querySelector('#edit-chart');
 const closeEditChart = document.querySelector('#close-edit-chart');

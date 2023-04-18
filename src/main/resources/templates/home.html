@@ -37,7 +37,11 @@
         <div th:replace="partials/personalStats :: personalStats"></div>
         <div th:replace="partials/fatigue :: fatigue"></div>
         <div th:replace="partials/sleep :: sleep"></div>
-        <div th:replace="partials/chart :: chart"></div>
+        <div th:replace="partials/chart :: bodyfat-chart"></div>
+        <div th:replace="partials/chart :: bodyweight-chart"></div>
+        <div th:replace="partials/chart :: squat-chart"></div>
+        <div th:replace="partials/chart :: bench-chart"></div>
+        <div th:replace="partials/chart :: deadlift-chart"></div>
         <div th:replace="partials/editChart :: editChart"></div>
         <div th:replace="partials/injury :: injury"></div>
 <!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
@@ -47,6 +51,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/userGraphs.js"></script>
     <script src="/js/clientsList.js"></script>
+    <script src="/js/crudGraphs.js"></script>
     <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </body>
 </html>

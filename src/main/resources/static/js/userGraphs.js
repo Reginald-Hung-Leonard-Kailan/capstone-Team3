@@ -8,6 +8,8 @@ let workoutPlanArr = [],
     sleepArr = [],
     fatigueArr = [];
 
+
+
 function renderSleep(sleepArr){
     let id = document.querySelector("#edit-sleep"), html=``;
 
@@ -42,7 +44,7 @@ function bodyFatChart() {
         weighInDate.unshift(data.date);
     })
     populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
-    populateGraph("bodyFatChart1", weighInDate, bodyFat, "Body Fat %");
+    populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
 }
 
 // Body Weight
@@ -53,6 +55,7 @@ function bodyWeightChart() {
         bodyweightInDate.unshift( data.date );
     })
     populateGraph("bodyWeightChart", bodyweightInDate, bodyWeight, "Body Weight");
+    populateGraph("bodyWeightModal", bodyweightInDate, bodyWeight, "Body Weight");
 }
 
 // Squat
@@ -63,6 +66,7 @@ function squatChart() {
         squatDate.unshift( data.date );
     })
     populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
+    populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
 }
 
 // BenchChart
@@ -73,6 +77,7 @@ function benchChart() {
         benchDate.unshift( data.date );
     })
     populateGraph('benchChart', benchDate, benchWeight, 'Bench');
+    populateGraph('benchModal', benchDate, benchWeight, 'Bench');
 }
 
 // Body Fat %
@@ -83,6 +88,7 @@ function deadLiftChart() {
         liftDate.unshift( data.date );
     })
     populateGraph('deadLiftChart', liftDate, deadLift, 'Deadlift');
+    populateGraph('deadliftModal', liftDate, deadLift, 'Deadlift');
 }
 
 function populateGraph(elemId, dateArr, statArr, title){
@@ -174,10 +180,11 @@ async function graphInfo(){
 function addInfo( info, date, type){
     let clientInformation = {
         clientInformation: info,
-        date: date,
+        date: addOneDay(date),
         type: type
     };
     touchApi(clientInformation);
+
 }
 
 function editInfo(id, info, date, type){
@@ -185,10 +192,10 @@ function editInfo(id, info, date, type){
         clientInfo = {
         id: detailId,
         clientInformation: info,
-        date: date,
+        date: addOneDay(date),
         type: type
     };
-    touchApi(clientInfo);
+    (info !== '0')? touchApi(clientInfo):deleteInfo(id);
 }
 
 function deleteInfo(infoId) {
@@ -209,6 +216,8 @@ function deleteInfo(infoId) {
             }
         })
         .catch(error => console.error(`Error deleting ClientInformation with ID ${infoId}: ${error}`));
+    resetAll();
+    graphInfo();
 }
 
 //This is for editing or adding
@@ -228,4 +237,26 @@ function touchApi( clientInformation) {
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error(error));
+    resetAll();
+    graphInfo();
+}
+
+function addOneDay(newDate) {
+    var dateObj = new Date(newDate + 'T00:00:00Z');
+    dateObj.setUTCDate(dateObj.getUTCDate() + 1);
+    var year = dateObj.getUTCFullYear();
+    var month = ('0' + (dateObj.getUTCMonth() + 1)).slice(-2);
+    var day = ('0' + dateObj.getUTCDate()).slice(-2);
+    return year + '-' + month + '-' + day;
+}
+
+function resetAll(){
+    workoutPlanArr = [],
+        bodyWeightArr = [],
+        bodyFatPercentArr = [],
+        squatArr = [],
+        benchArr = [],
+        deadliftArr = [],
+        sleepArr = [],
+        fatigueArr = [];
 }

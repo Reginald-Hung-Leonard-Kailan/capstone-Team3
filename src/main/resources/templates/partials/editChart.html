@@ -3,12 +3,12 @@
 <dialog th:fragment="editChart" class="modal-wide" id="edit-chart-modal">
     <button id="close-edit-chart">❌</button>
     <form method="dialog" class="modal-form">
-        <label for="date3">Date:</label><br>
-        <input id="date3" type="text"><br>
-        <label for="body-fat">Body Fat Percentage:</label><br>
-        <input id="body-fat" type="text">
+        <label for="body-fat-date">Date:</label><br>
+        <input id="body-fat-date" type="date"><br>
+        <label for="body-fat-info">Body Fat Percentage:</label><br>
+        <input id="body-fat-info" type="number" min="0" max="60">
         <br>
-        <button>Submit</button>
+        <button id="add-body-fat">Submit</button>
     </form>
 </dialog>
 </html>

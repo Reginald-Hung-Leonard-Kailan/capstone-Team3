@@ -65,8 +65,8 @@ function squatChart() {
         squatWeight.unshift( parseInt( data.clientInformation ) );
         squatDate.unshift( data.date );
     })
-    populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
-    populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
+    populateGraph("squatChart", squatDate, squatWeight, "Squat");
+    populateGraph("squatModal", squatDate, squatWeight, "Squat");
 }
 
 // BenchChart

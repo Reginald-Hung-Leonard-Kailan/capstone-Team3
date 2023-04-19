@@ -31,7 +31,6 @@ function editCard(clients){
         <hr>
         <div id="client-card-button-holder">
         <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
-        <form action="/add-injury/${client[3]}"><button class="search-button">Add Injury</button></form>
         <button class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
         </div>
       </div>

@@ -24,6 +24,26 @@
                 <div th:text="${user.email}"></div>
 <!--                <button  id="profile-button" class="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>-->
             </div>
+            <div id="program-holder">
+                <div   id="program-header">Program</div><br>
+            <div id="program-edit">
+            <form id="program-input-form">
+                <!--                <div class="stats-title">Fatigue Rating:</div>z-->
+                <label for="profile-section"  id="profile-input-label" class="program-subheader">Edit</label><br>
+                <input type="text" id="program-input">
+                <button id="program-input-button">add</button >
+            </form>
+            <form id="program-selection-form">
+                <label for="profile-section"  id="profile-section-label" class="program-subheader">Select</label><br>
+<!--                <div class="stats-title">Fatigue Rating:</div>z-->
+                <select id="program-selection">
+                    <option class="program">Add Program</option>
+                    <option class="program">yyyy-mm-dd (current)</option>
+                    <option class="program">2023-04-19</option>
+                </select>
+            </form>
+            </div>
+            </div>
         </div>
         <hr id="main-hr">
         <!-- Tab links -->
@@ -56,6 +76,7 @@
     <script src="/js/userGraphs.js"></script>
     <script src="/js/clientsList.js"></script>
     <script src="/js/crudGraphs.js"></script>
+    <script src="/js/programs.js"></script>
     <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </body>
 </html>

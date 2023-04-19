@@ -102,7 +102,7 @@ function bodyFatChart() {
     // chartBF.destroy();
     // modalBF.destroy();
     bodyFatPercentArr.map(data => {
-        bodyFat.unshift(parseInt(data.clientInformation));
+        bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
         weighInDate.unshift(data.date);
     })
     chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");

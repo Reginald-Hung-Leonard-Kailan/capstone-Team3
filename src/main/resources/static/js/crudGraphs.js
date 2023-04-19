@@ -19,63 +19,83 @@ addBodyFatBtn.addEventListener('click',async ()=>{
 });
 
 const addBodyWeightBtn = document.getElementById('add-body-weight');
-addBodyWeightBtn.addEventListener('click',()=>{
+addBodyWeightBtn.addEventListener('click',async ()=>{
     let newDate = document.getElementById('body-weight-date').value,
         newInfo = document.getElementById('body-weight-info').value,
         findIndex = bodyWeightArr.findIndex(obj => obj.date === newDate);
 
     if (findIndex === -1) {
-        addInfo(newInfo, newDate, 'bodyWeight');
+       await addInfo(newInfo, newDate, 'bodyWeight');
         // location.href = location.href;
     } else {
         const {id, clientInformation, date, type} = bodyWeightArr[findIndex];
-        editInfo(id, newInfo, newDate, type);
+        await editInfo(id, newInfo, newDate, type);
     }
+    bodyWeightArr = [];
+    await setAllArr();
+    await chartBW.destroy();
+    await modalBW.destroy();
+    await bodyWeightChart();
 });
 
 const addSquatBtn = document.getElementById('add-squat');
-addSquatBtn.addEventListener('click',()=>{
+addSquatBtn.addEventListener('click',async ()=>{
     let newDate = document.getElementById('squat-date').value,
         newInfo = document.getElementById('squat-info').value,
         findIndex = squatArr.findIndex(obj => obj.date === newDate);
 
     if (findIndex === -1) {
-        addInfo(newInfo, newDate, 'squat');
+        await addInfo(newInfo, newDate, 'squat');
         // location.href = location.href;
     } else {
         const {id, clientInformation, date, type} = squatArr[findIndex];
-        editInfo(id, newInfo, newDate, type);
+        await editInfo(id, newInfo, newDate, type);
     }
+    squatArr = [];
+    await setAllArr();
+    await chartS.destroy();
+    await modalS.destroy();
+    await squatChart();
 });
 
 const addBenchBtn = document.getElementById('add-bench');
-addBenchBtn.addEventListener('click',()=>{
+addBenchBtn.addEventListener('click',async ()=>{
     let newDate = document.getElementById('bench-date').value,
         newInfo = document.getElementById('bench-info').value,
         findIndex = benchArr.findIndex(obj => obj.date === newDate);
 
     if (findIndex === -1) {
-        addInfo(newInfo, newDate, 'bench');
+        await addInfo(newInfo, newDate, 'bench');
         // location.href = location.href;
     } else {
         const {id, clientInformation, date, type} = benchArr[findIndex];
-        editInfo(id, newInfo, newDate, type);
+        await editInfo(id, newInfo, newDate, type);
     }
+    benchArr = [];
+    await setAllArr();
+    await chartB.destroy();
+    await modalB.destroy();
+    await benchChart();
 });
 
 const addDeadliftBtn = document.getElementById('add-deadlift');
-addDeadliftBtn.addEventListener('click',()=>{
+addDeadliftBtn.addEventListener('click',async ()=>{
     let newDate = document.getElementById('deadlift-date').value,
         newInfo = document.getElementById('deadlift-info').value,
         findIndex = deadliftArr.findIndex(obj => obj.date === newDate);
 
     if (findIndex === -1) {
-        addInfo(newInfo, newDate, 'deadlift');
+        await addInfo(newInfo, newDate, 'deadlift');
         // location.href = location.href;
     } else {
         const {id, clientInformation, date, type} = deadliftArr[findIndex];
-        editInfo(id, newInfo, newDate, type);
+        await editInfo(id, newInfo, newDate, type);
     }
+    deadliftArr = [];
+    await setAllArr();
+    await chartDL.destroy();
+    await modalDL.destroy();
+    await deadLiftChart();
 });
 
 const addFatigueBtn = document.getElementById("add-fatigue");

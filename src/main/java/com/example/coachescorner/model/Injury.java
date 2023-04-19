@@ -30,7 +30,7 @@ public class Injury {
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     public Injury() {
     }
@@ -40,7 +40,7 @@ public class Injury {
         this.status = status;
         this.title = title;
         this.description = description;
-        this.userId = userId;
+        this.user = userId;
     }
 
     public Injury(Injury injury) {
@@ -48,7 +48,12 @@ public class Injury {
         this.status = injury.status;
         this.title = injury.title;
         this.description = injury.description;
-        this.userId = injury.userId;
+        this.user = injury.user;
+    }
+
+    public Injury(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     public long getId() {
@@ -91,11 +96,23 @@ public class Injury {
         this.description = description;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User userId) {
+        this.user = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Injury{" +
+                "id=" + id +
+                ", injuryDate=" + injuryDate +
+                ", status=" + status +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", user=" + user +
+                '}';
     }
 }

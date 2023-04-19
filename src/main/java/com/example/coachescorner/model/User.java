@@ -45,7 +45,7 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "client")
     private List<UserClient> coaches;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Injury> injuries;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
@@ -72,6 +72,11 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        isCoach = copy.isCoach;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        phoneNumber = copy.phoneNumber;
+        profilePicture = copy.profilePicture;
     }
 
     public long getId() {

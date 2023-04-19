@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <dialog  th:fragment="editInjury" class="modal-wide" id="edit-injury-modal">
     <button id="close-edit-injury">❌</button>
-    <form th:action="@{/clients/injury/{id}/edit(id=${id})}" th:method="POST" th:object="${injury}" class="modal-form">
+    <form th:action="@{/injury/edit/{id}(id=${injury.id})}" th:method="POST" class="modal-form">
         <label for="Status">Status:</label>
         <select name="status" id="Status">
             <option value="current">Current</option>
             <option value="past">Past</option>
         </select><br><br>
         <label for="date4">Date:</label><br>
-        <input id="date4" type="text" th:field="*{injuryDate}"><br>
+        <input id="date4" th:value="${injury.injuryDate}" name="injuryDate"><br>
         <label for="injury">Injury:</label><br>
-        <input id="injury" type="text" th:field="*{title}"><br>
+        <input id="injury" type="text" th:value="${injury.title}" name="title"><br>
         <label for="injury-description">Injury description:</label><br>
-        <textarea th:field="*{description}" id="injury-description" type="text" placeholder="brief description on injury and how it occurred"></textarea>
+        <textarea name="description" id="injury-description" type="text" th:value="${injury.description}"></textarea>
         <br>
         <button>Submit</button>
     </form>

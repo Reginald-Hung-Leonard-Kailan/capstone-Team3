@@ -9,86 +9,152 @@ let workoutPlanArr = [],
     fatigueArr = [];
 
 
+function renderSleep(){
+    let id = document.querySelector("#sleep-days"),
+        html=``,
+        weekNames = getWeekdayNames(),
+        oneWeekAgo = new Date(),
+        total = 0,
+        count = 0;
 
-function renderSleep(sleepArr){
-    let id = document.querySelector("#edit-sleep"), html=``;
+    let entries =[];
 
-    for(let i=0; i<sleepArr.length; i++){
-        let sleep = sleepArr[i];
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    let weekOldSleep = sleepArr.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= oneWeekAgo;
+    });
+
+    weekOldSleep.map(obj => {
+        let {date, clientInformation, id, type} = obj,
+            weekDay = getDayOfWeek( date );
+        entries.push({ weekDay, clientInformation, id, type} );
+    });
+
+    for(let i=0; i<7; i++){
+        let rating = 0;
+        entries.map(entry => {
+            if(entry.weekDay === weekNames[i]){
+                rating = parseInt(entry.clientInformation);
+                total += rating;
+                count++;
+            }
+        })
         html += `
-                 <div>${sleep.date +': '+ sleep.clientInformation}</div>
+                 <div>${weekNames[i]}: ${rating}</div>
                  <hr>`
     }
+
+    document.querySelector("#sleep-average").innerHTML = (total / count).toFixed(1);
 
     id.innerHTML = html;
 }
 
-function renderFatigue(fatigueArr){
-    let id = document.querySelector("#edit-fatigue"), html=``;
+function renderFatigue(){
+    let id = document.querySelector("#fatigue-days"),
+        html=``,
+        weekNames = getWeekdayNames(),
+        oneWeekAgo = new Date(),
+        total = 0,
+        count = 0;
 
-    for(let i=0; i<fatigueArr.length; i++){
-        let fatigue = fatigueArr[i];
+        let entries =[];
+
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    let weekOldFatigue = fatigueArr.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= oneWeekAgo;
+    });
+
+    weekOldFatigue.map(obj => {
+        let {date, clientInformation, id, type} = obj,
+            weekDay = getDayOfWeek( date );
+        entries.push({ weekDay, clientInformation, id, type} );
+    });
+
+    for(let i=0; i<7; i++){
+        let rating = 0;
+        entries.map(entry => {
+            if(entry.weekDay === weekNames[i]){
+                rating = parseInt(entry.clientInformation);
+                total += rating;
+                count++;
+            }
+        })
+
+        // if(entries.includes(weekNames[i])){
+        //     console.log("The index is: " + fatigueArr.indexOf(weekNames[i]))
+        // }
         html += `
-                <div>${fatigue.date +':'+ fatigue.clientInformation}</div>
+                <div>${weekNames[i]}: ${rating}</div>
                 <hr>`
     }
-
+    document.querySelector("#fatigue-average").innerHTML = (total / count).toFixed(1);
     id.innerHTML = html;
 }
 
 // Body Fat %
+let chartBF , modalBF;
 function bodyFatChart() {
     let bodyFat = [], weighInDate = [];
+    // chartBF.destroy();
+    // modalBF.destroy();
     bodyFatPercentArr.map(data => {
-        bodyFat.unshift(parseInt(data.clientInformation));
+        bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
         weighInDate.unshift(data.date);
     })
-    populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
-    populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
+    chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
+    modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
 }
 
 // Body Weight
+let chartBW, modalBW
 function bodyWeightChart() {
     let bodyWeight = [], bodyweightInDate = [];
     bodyWeightArr.map(data => {
         bodyWeight.unshift( parseInt( data.clientInformation ) );
         bodyweightInDate.unshift( data.date );
     })
-    populateGraph("bodyWeightChart", bodyweightInDate, bodyWeight, "Body Weight");
-    populateGraph("bodyWeightModal", bodyweightInDate, bodyWeight, "Body Weight");
+    chartBW = populateGraph("bodyWeightChart", bodyweightInDate, bodyWeight, "Body Weight");
+    modalBW = populateGraph("bodyWeightModal", bodyweightInDate, bodyWeight, "Body Weight");
 }
 
 // Squat
+let chartS, modalS;
 function squatChart() {
     let squatWeight = [], squatDate = [];
     squatArr.map(data => {
         squatWeight.unshift( parseInt( data.clientInformation ) );
         squatDate.unshift( data.date );
     })
-    populateGraph("squatChart", squatDate, squatWeight, "Squat");
-    populateGraph("squatModal", squatDate, squatWeight, "Squat");
+    chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
+    modalS = populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
 }
 
 // BenchChart
+let chartB, modalB;
 function benchChart() {
     let benchWeight = [], benchDate = [];
     benchArr.map(data => {
         benchWeight.unshift( parseInt( data.clientInformation ) );
         benchDate.unshift( data.date );
     })
-    populateGraph('benchChart', benchDate, benchWeight, 'Bench');
-    populateGraph('benchModal', benchDate, benchWeight, 'Bench');
+    chartB = populateGraph('benchChart', benchDate, benchWeight, 'Bench');
+    modalB = populateGraph('benchModal', benchDate, benchWeight, 'Bench');
 }
 
-// Body Fat %
+// deadLift chart
+let chartDL, modalDL;
 function deadLiftChart() {
     let deadLift = [], liftDate = [];
     deadliftArr.map(data => {
         deadLift.unshift( parseInt( data.clientInformation ) );
         liftDate.unshift( data.date );
     })
-    populateGraph('deadLiftChart', liftDate, deadLift, 'Deadlift');
-    populateGraph('deadliftModal', liftDate, deadLift, 'Deadlift');
+    chartDL = populateGraph('deadLiftChart', liftDate, deadLift, 'Deadlift');
+    modalDL = populateGraph('deadliftModal', liftDate, deadLift, 'Deadlift');
 }
 
 function populateGraph(elemId, dateArr, statArr, title){
@@ -109,14 +175,12 @@ function populateGraph(elemId, dateArr, statArr, title){
         scales: {
             yAxes: [{
                 scaleLabel: {
-                    display: true,
-                    labelString: 'Weight in lb'
+                    display: true
                 }
             }],
             xAxes: [{
                 scaleLabel: {
-                    display: true,
-                    labelString: 'Months throughout the Year'
+                    display: true
                 },
                 ticks: {
                     beginAtZero: true
@@ -125,7 +189,7 @@ function populateGraph(elemId, dateArr, statArr, title){
         }
     };
 
-    const myChart = new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'line',
         data: data,
         options: options
@@ -133,7 +197,7 @@ function populateGraph(elemId, dateArr, statArr, title){
 }
 //Simplify
 
-async function graphInfo(){
+async function setAllArr(){
     let id = document.querySelector('meta[name="view"]').content;
     let url = "/api/user/" + id + '/details';
     let personalStats = await fetch(url).then(response => response.json())
@@ -168,8 +232,12 @@ async function graphInfo(){
                 break;
         }
     })
-    renderSleep(sleepArr);
-    renderFatigue(fatigueArr);
+
+}
+
+function popAll(){
+    renderSleep();
+    renderFatigue();
     benchChart();
     bodyFatChart();
     bodyWeightChart();
@@ -177,17 +245,17 @@ async function graphInfo(){
     deadLiftChart();
 }
 
-function addInfo( info, date, type){
+async function addInfo( info, date, type){
     let clientInformation = {
         clientInformation: info,
         date: addOneDay(date),
         type: type
     };
-    touchApi(clientInformation);
+    await touchApi(clientInformation);
 
 }
 
-function editInfo(id, info, date, type){
+async function editInfo(id, info, date, type){
     let detailId = parseInt(id),
         clientInfo = {
         id: detailId,
@@ -195,15 +263,15 @@ function editInfo(id, info, date, type){
         date: addOneDay(date),
         type: type
     };
-    (info !== '0')? touchApi(clientInfo):deleteInfo(id);
+    (info !== '0')? await touchApi(clientInfo): await deleteInfo(id);
 }
 
-function deleteInfo(infoId) {
+async function deleteInfo(infoId) {
     const csrfToken = document.querySelector('meta[name="_csrf"]').content,
         csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
     let id = document.querySelector('meta[name="view"]').content;
 
-    fetch(`/api/user/${id}/details/${infoId}`, {
+    await fetch(`/api/user/${id}/details/${infoId}`, {
         method: 'DELETE',
         headers: {
             [csrfHeader]: csrfToken
@@ -216,17 +284,17 @@ function deleteInfo(infoId) {
             }
         })
         .catch(error => console.error(`Error deleting ClientInformation with ID ${infoId}: ${error}`));
-    resetAll();
-    graphInfo();
+    // resetAll();
+    // graphInfo();
 }
 
 //This is for editing or adding
-function touchApi( clientInformation) {
+async function touchApi( clientInformation) {
     //date format: "2023-01-01" && type is spelt out
     let id = document.querySelector('meta[name="view"]').content;
     const csrfToken = document.querySelector('meta[name="_csrf"]').content;
     const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
-    fetch('/api/user/' + id + '/details', {
+    await fetch('/api/user/' + id + '/details', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -235,10 +303,10 @@ function touchApi( clientInformation) {
         body: JSON.stringify(clientInformation)
     })
         .then(response => response.json())
-        .then(data => console.log(data))
+        // .then(data => console.log(data))
         .catch(error => console.error(error));
-    resetAll();
-    graphInfo();
+    // await resetAll();
+    // await graphInfo();
 }
 
 function addOneDay(newDate) {
@@ -250,13 +318,45 @@ function addOneDay(newDate) {
     return year + '-' + month + '-' + day;
 }
 
-function resetAll(){
-    workoutPlanArr = [],
-        bodyWeightArr = [],
-        bodyFatPercentArr = [],
-        squatArr = [],
-        benchArr = [],
-        deadliftArr = [],
-        sleepArr = [],
-        fatigueArr = [];
+function getDayOfWeek(dateString) {
+     let daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+         date = new Date(dateString),
+         dayOfWeekIndex = date.getDay(),
+         dayOfWeek = daysOfWeek[dayOfWeekIndex];
+    return dayOfWeek;
+}
+
+function getWeekdayNames(){
+    const today = new Date();
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const todayIndex = today.getDay();
+    const lastWeekDays = [];
+
+    for (let i = todayIndex; i >= todayIndex - 6; i--) {
+        const index = i < 0 ? i + 7 : i;
+        lastWeekDays.push(daysOfWeek[index]);
+    }
+
+    return lastWeekDays;
+}
+
+async function resetAll(){
+    workoutPlanArr = [];
+    bodyWeightArr = [];
+    bodyFatPercentArr = [];
+    squatArr = [];
+    benchArr = [];
+    deadliftArr = [];
+    sleepArr = [];
+    fatigueArr = [];
+
+
+    chartBW.destroy();
+    modalBW.destroy();
+    chartS.destroy();
+    modalS.destroy();
+    chartB.destroy();
+    modalB.destroy();
+    chartDL.destroy();
+    modalDL.destroy();
 }

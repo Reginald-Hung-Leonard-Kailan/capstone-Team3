@@ -14,6 +14,7 @@ function start(){
 
 // MY Clients Card
 function editCard(clients){
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
     let id = document.querySelector("#client-holder"), html=``;
 
     for(let i=0; i<clients.length; i++){
@@ -31,6 +32,10 @@ function editCard(clients){
         <hr>
         <div id="client-card-button-holder">
         <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
+        <form action="/add-injury/${client[3]}"><button class="search-button">Add Injury</button></form>
+        <form action="/client-false/${client[3]}" method="POST">
+        <input type="hidden" name="_csrf" value="${csrfToken}">
+        <button id="close-edit-injury">❌</button></form>
         <button class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
         </div>
       </div>
@@ -47,11 +52,16 @@ function editCard(clients){
             document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
             // allInfo();
             start();
-            graphInfo();
-            // showPlans();
+            graphInfo(); //watch this...
+            run();
         });
     }
 
+}
+async function run() {
+    await setAllArr();
+    await popAll();
+    showPlans();
 }
 
 async function allInfo(id){
@@ -67,8 +77,9 @@ async function allInfo(id){
 
 // Injury Cards
 function Injury(clients){
+    const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+    const csrfHeader = document.querySelector('meta[name="_csrf_header"]').content;
     let id = document.querySelector("#big-injury"), html=``;
-
     for(let i=0; i<clients.length; i++){
         let client=clients[i];
         html += `
@@ -81,7 +92,12 @@ function Injury(clients){
         <div>${client[2]}</div>
         <hr>
         <div>${client[3]}</div>
-        <form action="/client-edit/${client[3]}"><button>Edit</button></form>
+        <hr>
+        <div>${client[4]}</div>
+        <form action="/injury/edit/${client[4]}"><button>Edit</button></form>
+        <form method="POST" action="/injury/delete/${client[4]}">
+        <input type="hidden" name="_csrf" value="${csrfToken}">
+        <button>Delete</button></form>
       </div>
 <!--</div>-->
 <!--<br>-->
@@ -155,8 +171,15 @@ async function clientArray(id){
     let client = await fetch(url)
         .then(response => response.json() )
         .then(data => {
-            let clientInfo = data.clients.map(rel => rel.client);
+            let clientInfo = [];
+            data.clients.map(rel => {
+                console.log(rel.active);
+                if(rel.active === true) {
+                    clientInfo.push(rel.client);
+                }
+            });
             clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
+            // console.log(clientInfo)
             return clientInfo
         }).catch(error => console.error(error));
     editCard(client);
@@ -170,12 +193,12 @@ async function injuryArray(id){
         .then(response => response.json() )
         .then(data => {
             let clientInfo = data.injuries;
-            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description])
+            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description, injury.id])
             // clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
             return clientInfo
         }).catch(error => console.error(error));
+    console.log(injury);
    // Injury(injury);
-    console.log(injury.userId);
     return injury;
 }
 async function smallInjuryArray(id){
@@ -184,7 +207,7 @@ async function smallInjuryArray(id){
         .then(response => response.json() )
         .then(data => {
             let clientInfo = data.injuries;
-            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description])
+            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description, injury.id])
             return clientInfo
         }).catch(error => console.error(error));
     smallInjury(injury);

@@ -6,7 +6,10 @@ import com.example.coachescorner.repositories.InjuryRepository;
 import com.example.coachescorner.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -58,7 +61,7 @@ public class InjuryController {
 
     @GetMapping("/add-injury/{id}")
     public String showInjuryForm(Model model, @PathVariable long id){
-        model.addAttribute("injury", new Injury());
+//        model.addAttribute("injury", new Injury());
        User user = userDao.findById(id);
        model.addAttribute("user", user);
         return "add-injury";
@@ -66,12 +69,29 @@ public class InjuryController {
 
 
     @PostMapping("/add-injury/{id}")
-    public String addInjuryButton(@ModelAttribute Injury injury, @PathVariable long id, @RequestParam Injury.Status status){
+    public String addInjuryButton(@RequestParam String title, @RequestParam String description, @PathVariable long id, @RequestParam Injury.Status status,
+                                  @RequestParam String injuryDate){
+
+        // convert date
+        Date date = new Date(Long.parseLong(injuryDate));
+
+        // getting user id
         User client = userDao.findById(id);
-        injury.setStatus(status);
-        injury.setUser(client);
+
+        // save into new injury object
+        Injury injury = new Injury(date, status, title, description, client);
+
+        // re set to new injury object
         Injury newInjury = new Injury(injury);
         injuryDao.save(newInjury);
+
+        return "redirect:/home";
+    }
+
+    @PostMapping("/injury/delete/{id}")
+    public String deleteInjury(@PathVariable long id){
+        System.out.println(id);
+        injuryDao.deleteById(id);
 
         return "redirect:/home";
     }

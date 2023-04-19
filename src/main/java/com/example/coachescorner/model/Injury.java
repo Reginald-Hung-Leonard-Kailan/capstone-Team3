@@ -51,6 +51,11 @@ public class Injury {
         this.user = injury.user;
     }
 
+    public Injury(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }
@@ -97,5 +102,17 @@ public class Injury {
 
     public void setUser(User userId) {
         this.user = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Injury{" +
+                "id=" + id +
+                ", injuryDate=" + injuryDate +
+                ", status=" + status +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", user=" + user +
+                '}';
     }
 }

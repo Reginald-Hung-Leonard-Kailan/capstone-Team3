@@ -4,6 +4,8 @@ import com.example.coachescorner.model.User;
 import com.example.coachescorner.model.UserClient;
 import com.example.coachescorner.repositories.UserClientRepository;
 import com.example.coachescorner.repositories.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,6 +58,30 @@ public class clientController {
         client.setLastName(lastname);
         client.setEmail(email);
         userDao.save(client);
+        return "redirect:/home";
+    }
+
+    @PostMapping("/client-false/{id}")
+    public String removeRel(@PathVariable long id) throws JsonProcessingException {
+        //getting the coach
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User coach = userDao.findByUsername(userLogIn.getUsername());
+
+        //getting client
+        User client = userDao.findById(id);
+
+        //getting UserClient table
+        UserClient userClient = clientsDao.findByCoachAndClient(coach, client);
+
+        // set is_Active to false
+        userClient.setActive(false);
+
+        // save
+        clientsDao.save(userClient);
+
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(userClient));
+
         return "redirect:/home";
     }
 

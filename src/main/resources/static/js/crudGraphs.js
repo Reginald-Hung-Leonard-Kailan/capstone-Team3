@@ -1,16 +1,21 @@
 const addBodyFatBtn = document.getElementById('add-body-fat');
-addBodyFatBtn.addEventListener('click',()=>{
+addBodyFatBtn.addEventListener('click',async ()=>{
     let newDate = document.getElementById('body-fat-date').value,
         newInfo = document.getElementById('body-fat-info').value,
         findIndex = bodyFatPercentArr.findIndex(obj => obj.date === newDate);
 
     if (findIndex === -1) {
-        addInfo(newInfo, newDate, 'bodyFatPercent');
+        await addInfo(newInfo, newDate, 'bodyFatPercent');
         // location.href = location.href;
     } else {
         const {id, clientInformation, date, type} = bodyFatPercentArr[findIndex];
-        editInfo(id, newInfo, newDate, type);
+        await editInfo(id, newInfo, newDate, type);
     }
+    bodyFatPercentArr = [];
+    await setAllArr();
+    await chartBF.destroy();
+    await modalBF.destroy();
+    await bodyFatChart();
 });
 
 const addBodyWeightBtn = document.getElementById('add-body-weight');
@@ -97,12 +102,12 @@ addFatigueBtn.addEventListener('click', ()=>{
         let id = fatigueArr[findIndex].id;
         editInfo(id, newInfo, helper, "fatigue");
     }
-    resetAll();
-    graphInfo();
+    // resetAll();
+    // graphInfo();
 })
 
 const addSleepBtn = document.getElementById("add-sleep");
-addSleepBtn.addEventListener('click', ()=>{
+addSleepBtn.addEventListener('click', async () => {
     let newDate = document.getElementById('sleep-date').value,
         newInfo = document.getElementById('sleep-rating').value;
     let currentDate = new Date(), helper = [],
@@ -120,11 +125,12 @@ addSleepBtn.addEventListener('click', ()=>{
 
     findIndex = sleepArr.findIndex(obj => obj.date === helper);
     if( findIndex === -1) {
-        addInfo(newInfo, helper, "sleep");
+        await addInfo(newInfo, helper, "sleep");
     } else {
         let id = sleepArr[findIndex].id;
-        editInfo(id, newInfo, helper, "sleep");
+        await editInfo(id, newInfo, helper, "sleep");
     }
-    resetAll();
-    graphInfo();
+    sleepArr
 })
+
+

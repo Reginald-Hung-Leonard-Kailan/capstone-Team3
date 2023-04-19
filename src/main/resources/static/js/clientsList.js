@@ -48,10 +48,14 @@ function editCard(clients){
             document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
             // allInfo();
             start();
-            graphInfo();
+            run();
         });
     }
 
+}
+async function run() {
+    await setAllArr();
+    await popAll();
 }
 
 async function allInfo(id){

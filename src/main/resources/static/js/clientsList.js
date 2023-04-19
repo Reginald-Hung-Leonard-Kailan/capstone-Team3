@@ -48,6 +48,7 @@ function editCard(clients){
             // allInfo();
             start();
             graphInfo();
+            // showPlans();
         });
     }
 

@@ -52,6 +52,7 @@ function editCard(clients){
             document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
             // allInfo();
             start();
+            graphInfo(); //watch this...
             run();
         });
     }
@@ -60,6 +61,7 @@ function editCard(clients){
 async function run() {
     await setAllArr();
     await popAll();
+    showPlans();
 }
 
 async function allInfo(id){

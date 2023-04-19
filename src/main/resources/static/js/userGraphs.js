@@ -48,7 +48,7 @@ function renderFatigue(){
         let {date, clientInformation, id, type} = obj,
             weekDay = getDayOfWeek( date );
         entries.push({ weekDay, clientInformation, id, type} );
-    })
+    });
 
     for(let i=0; i<7; i++){
         let rating = 0;
@@ -67,9 +67,7 @@ function renderFatigue(){
                 <div>${weekNames[i]}: ${rating}</div>
                 <hr>`
     }
-    console.log(typeof total, typeof count)
-    console.log(total, count)
-    document.querySelector("#fatigue-average").innerHTML = (total / count);
+    document.querySelector("#fatigue-average").innerHTML = (total / count).toFixed(1);
     id.innerHTML = html;
 }
 
@@ -272,7 +270,7 @@ function touchApi( clientInformation) {
         body: JSON.stringify(clientInformation)
     })
         .then(response => response.json())
-        .then(data => console.log(data))
+        // .then(data => console.log(data))
         .catch(error => console.error(error));
     resetAll();
     graphInfo();
@@ -294,8 +292,6 @@ function getDayOfWeek(dateString) {
          dayOfWeek = daysOfWeek[dayOfWeekIndex];
     return dayOfWeek;
 }
-
-
 
 function getWeekdayNames(){
     const today = new Date();

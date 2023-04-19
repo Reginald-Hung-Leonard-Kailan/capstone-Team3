@@ -68,7 +68,6 @@ async function allInfo(id){
 // Injury Cards
 function Injury(clients){
     let id = document.querySelector("#big-injury"), html=``;
-
     for(let i=0; i<clients.length; i++){
         let client=clients[i];
         html += `
@@ -81,7 +80,9 @@ function Injury(clients){
         <div>${client[2]}</div>
         <hr>
         <div>${client[3]}</div>
-        <form action="/client-edit/${client[3]}"><button>Edit</button></form>
+        <hr>
+        <div>${client[4]}</div>
+        <form action="/injury/edit/${client[4]}"><button>Edit</button></form>
       </div>
 <!--</div>-->
 <!--<br>-->
@@ -170,12 +171,12 @@ async function injuryArray(id){
         .then(response => response.json() )
         .then(data => {
             let clientInfo = data.injuries;
-            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description])
+            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description, injury.id])
             // clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
             return clientInfo
         }).catch(error => console.error(error));
+    console.log(injury);
    // Injury(injury);
-    console.log(injury.userId);
     return injury;
 }
 async function smallInjuryArray(id){
@@ -184,7 +185,7 @@ async function smallInjuryArray(id){
         .then(response => response.json() )
         .then(data => {
             let clientInfo = data.injuries;
-            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description])
+            clientInfo= clientInfo.map(injury => [injury.status, injury.title, injury.injuryDate, injury.description, injury.id])
             return clientInfo
         }).catch(error => console.error(error));
     smallInjury(injury);

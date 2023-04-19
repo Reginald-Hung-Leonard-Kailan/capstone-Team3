@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Injury Edit</h1>
+<form th:action="@{/injury/edit/{id}(id=${injury.id})}" th:method="Post" >
+<!--    <input type="hidden" name="user" th:value="${injury.user}"/>-->
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description" th:value="${injury.description}"><br>
+    <label for="injury-date">Injury Date:</label><br>
+    <input  id="injury-date" name="injuryDate" th:value="${injury.injuryDate}"><br>
+    <label for="status">Status:</label><br>
+    <select id="status" name="status">
+        <option value=active>Active</option>
+        <option value=past>Past</option>
+    </select><br>
+    <!--    <input type="number" id="status"  th:field="*{status}"><br>-->
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" th:value="${injury.title}"><br><br>
+    <!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->
+    <button>Submit</button>
+</form>
+</body>
+</html>

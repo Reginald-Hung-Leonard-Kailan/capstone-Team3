@@ -72,3 +72,59 @@ addDeadliftBtn.addEventListener('click',()=>{
         editInfo(id, newInfo, newDate, type);
     }
 });
+
+const addFatigueBtn = document.getElementById("add-fatigue");
+addFatigueBtn.addEventListener('click', ()=>{
+    let newDate = document.getElementById('fatigue-date').value,
+        newInfo = document.getElementById('fatigue-rating').value;
+    let currentDate = new Date(), helper = [],
+        findIndex;
+    currentDate.setDate(currentDate.getDate() - newDate)
+    currentDate = currentDate.toLocaleDateString('en-US')
+        .split("/");
+    helper.push(currentDate[2]);
+    if( currentDate[0].length < 2 ){
+        currentDate[0] = '0' + currentDate[0];
+    }
+    helper.push(currentDate[0]);
+    helper.push(currentDate[1]);
+    helper = helper.join('-');
+
+    findIndex = fatigueArr.findIndex(obj => obj.date === helper);
+    if( findIndex === -1) {
+        addInfo(newInfo, helper, "fatigue");
+    } else {
+        let id = fatigueArr[findIndex].id;
+        editInfo(id, newInfo, helper, "fatigue");
+    }
+    resetAll();
+    graphInfo();
+})
+
+const addSleepBtn = document.getElementById("add-sleep");
+addSleepBtn.addEventListener('click', ()=>{
+    let newDate = document.getElementById('sleep-date').value,
+        newInfo = document.getElementById('sleep-rating').value;
+    let currentDate = new Date(), helper = [],
+        findIndex;
+    currentDate.setDate(currentDate.getDate() - newDate)
+    currentDate = currentDate.toLocaleDateString('en-US')
+        .split("/");
+    helper.push(currentDate[2]);
+    if( currentDate[0].length < 2 ){
+        currentDate[0] = '0' + currentDate[0];
+    }
+    helper.push(currentDate[0]);
+    helper.push(currentDate[1]);
+    helper = helper.join('-');
+
+    findIndex = sleepArr.findIndex(obj => obj.date === helper);
+    if( findIndex === -1) {
+        addInfo(newInfo, helper, "sleep");
+    } else {
+        let id = sleepArr[findIndex].id;
+        editInfo(id, newInfo, helper, "sleep");
+    }
+    resetAll();
+    graphInfo();
+})

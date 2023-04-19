@@ -10,19 +10,43 @@ let workoutPlanArr = [],
 
 
 function renderSleep(){
-    let id = document.querySelector("#edit-sleep"),
+    let id = document.querySelector("#sleep-days"),
         html=``,
-        today = new Date(),
-        weekNames = getWeekdayNames();
+        weekNames = getWeekdayNames(),
+        oneWeekAgo = new Date(),
+        total = 0,
+        count = 0;
 
-    // console.log(dayOfWeek); // Output: the name of the current day of the week
+    let entries =[];
+
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    let weekOldSleep = sleepArr.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= oneWeekAgo;
+    });
+
+    weekOldSleep.map(obj => {
+        let {date, clientInformation, id, type} = obj,
+            weekDay = getDayOfWeek( date );
+        entries.push({ weekDay, clientInformation, id, type} );
+    });
 
     for(let i=0; i<7; i++){
-        let sleep = sleepArr[i];
+        let rating = 0;
+        entries.map(entry => {
+            if(entry.weekDay === weekNames[i]){
+                rating = parseInt(entry.clientInformation);
+                total += rating;
+                count++;
+            }
+        })
         html += `
-                 <div><strong>${weekNames[i]}</strong>: 0</div>
+                 <div>${weekNames[i]}: ${rating}</div>
                  <hr>`
     }
+
+    document.querySelector("#sleep-average").innerHTML = (total / count).toFixed(1);
 
     id.innerHTML = html;
 }

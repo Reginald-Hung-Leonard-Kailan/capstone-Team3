@@ -3,25 +3,25 @@
 <dialog th:fragment="sleep" class="modal" id="sleep-modal">
     <button id="close-sleep">❌</button>
     <form method="dialog" class="modal-form">
-        <label for="date2">Day:</label>
-        <select id="date2">
-            <option value="1">Sunday</option>
-            <option value="2">Monday</option>
-            <option value="3">Tuesday</option>
-            <option value="4">Wednesday</option>
-            <option value="5">Thursday</option>
-            <option value="6">Friday</option>
-            <option value="7">Saturday</option>
+        <label for="sleep-date">Day:</label>
+        <select id="sleep-date">
+            <option value="0">Today</option>
+            <option value="1">Yesterday</option>
+            <option value="2">2 Days Ago</option>
+            <option value="3">3 Days Ago</option>
+            <option value="4">4 Days Ago</option>
+            <option value="5">5 Days Ago</option>
+            <option value="6">6 Days Ago</option>
         </select>&nbsp;&nbsp;<br>
-        <label for="rating2">Sleep Rating</label>
-        <select id="rating2">
+        <label for="sleep-rating">Sleep Rating</label>
+        <select id="sleep-rating">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
         </select><br>
-        <button>Submit</button>
+        <button id="add-sleep">Submit</button>
     </form>
 </dialog>
 </html>

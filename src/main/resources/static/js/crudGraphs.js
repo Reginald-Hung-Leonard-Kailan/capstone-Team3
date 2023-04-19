@@ -72,3 +72,12 @@ addDeadliftBtn.addEventListener('click',()=>{
         editInfo(id, newInfo, newDate, type);
     }
 });
+
+const addFatigueBtn = document.getElementById("add-fatigue");
+addFatigueBtn.addEventListener('click', ()=>{
+    let newDate = document.getElementById('fatigue-date').value,
+        newInfo = document.getElementById('fatigue-rating').value;
+    let helper = new Date();
+    helper.setDate(helper.getDate() - newDate)
+    alert(`New Date: ${helper} New input: ${newInfo}`);
+})

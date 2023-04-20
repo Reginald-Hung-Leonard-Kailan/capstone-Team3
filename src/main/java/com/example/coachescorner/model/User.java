@@ -2,6 +2,7 @@ package com.example.coachescorner.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -15,12 +16,15 @@ public class User {
     private long id;
 
     @Column(length = 20)
+    @Size(min = 1, message = "Username must be at least 1 character long")
     private String username;
 
-    @Column(length = 50)
+    @Column(unique = true)
+    @Size(min = 1, message = "Email must be at least 1 character long")
     private String email;
 
 @JsonIgnore
+@Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
 @Column(nullable = true)
@@ -32,8 +36,8 @@ public class User {
     @Column(length = 50)
     private String lastName;
 
-    @Column(length = 10)
-    private int phoneNumber;
+    @Column(length = 50)
+    private String phoneNumber;
 
     @JsonIgnore
     private String profilePicture;
@@ -55,7 +59,7 @@ public class User {
     }
 
 
-    public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, int phoneNumber, String profilePicture) {
+    public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, String phoneNumber, String profilePicture) {
 
         this.username = username;
         this.email = email;
@@ -137,11 +141,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

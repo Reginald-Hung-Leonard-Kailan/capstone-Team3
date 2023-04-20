@@ -7,6 +7,7 @@
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta th:name="view" th:content="${user.getId()}"/>
     <title>Coach's Corner</title>
+    <link href="img/favicon.jpg" rel="icon">
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
@@ -27,18 +28,18 @@
             <div id="program-holder">
                 <div   id="program-header">Program</div><br>
             <div id="program-edit">
-            <form id="program-input-form">
+            <div id="program-input-form">
                 <!--                <div class="stats-title">Fatigue Rating:</div>z-->
                 <label for="profile-section"  id="profile-input-label" class="program-subheader">Edit</label><br>
-                <input type="text" id="program-input" placeholder="PlaceExcelLinkHere">
+                <input type="text" id="program-input" placeholder="Copy & Paste link here!">
                 <button id="program-input-button">add</button >
-            </form>
+            </div>
             <form id="program-selection-form">
                 <label for="profile-section"  id="profile-section-label" class="program-subheader">Select</label><br>
 <!--                <div class="stats-title">Fatigue Rating:</div>z-->
                 <select id="program-selection">
-                    <option class="program">Add Program</option>
-                    <option class="program">yyyy-mm-dd (current)</option>
+                    <option class="program" value="-1">Add Program</option>
+                    <option class="program" value="0">yyyy-mm-dd (current)</option>
                     <option class="program">2023-04-19</option>
                 </select>
             </form>

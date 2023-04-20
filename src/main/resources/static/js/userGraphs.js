@@ -8,7 +8,7 @@ let workoutPlanArr = [],
     sleepArr = [],
     fatigueArr = [];
 
-
+//Sleep
 function renderSleep(){
     let id = document.querySelector("#sleep-days"),
         html=``,
@@ -19,7 +19,7 @@ function renderSleep(){
 
     let entries =[];
 
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
 
     let weekOldSleep = sleepArr.filter(entry => {
         const entryDate = new Date(entry.date);
@@ -51,6 +51,7 @@ function renderSleep(){
     id.innerHTML = html;
 }
 
+// Fatigue
 function renderFatigue(){
     let id = document.querySelector("#fatigue-days"),
         html=``,
@@ -61,7 +62,7 @@ function renderFatigue(){
 
         let entries =[];
 
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
 
     let weekOldFatigue = fatigueArr.filter(entry => {
         const entryDate = new Date(entry.date);
@@ -350,7 +351,8 @@ async function resetAll(){
     sleepArr = [];
     fatigueArr = [];
 
-
+    chartBF.destroy();
+    modalBF.destroy();
     chartBW.destroy();
     modalBW.destroy();
     chartS.destroy();

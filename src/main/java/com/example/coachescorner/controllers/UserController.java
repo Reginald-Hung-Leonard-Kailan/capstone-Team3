@@ -58,11 +58,12 @@ public class UserController {
             String hash = passwordDao.encode(user.getPassword());
             user.setPassword(hash);
             user.setCoach(isCoach);
+            if (user.getProfilePicture().length() < 5) {
+                user.setProfilePicture("https://cdn.filestackcontent.com/rt98e0dMRMyqc7grZeHR");
+            }
             userDao.save(user);
             return "redirect:/";
         }
-
-
     }
 
     @GetMapping("/home")

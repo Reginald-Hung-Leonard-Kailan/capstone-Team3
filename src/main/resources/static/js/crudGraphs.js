@@ -99,39 +99,45 @@ addDeadliftBtn.addEventListener('click',async ()=>{
 });
 
 const addFatigueBtn = document.getElementById("add-fatigue");
-addFatigueBtn.addEventListener('click', ()=>{
+addFatigueBtn.addEventListener('click', async ()=>{
     let newDate = document.getElementById('fatigue-date').value,
-        newInfo = document.getElementById('fatigue-rating').value;
-    let currentDate = new Date(), helper = [],
+        newInfo = document.getElementById('fatigue-rating').value,
+        date = todayRightFormat(newDate),
         findIndex;
-    currentDate.setDate(currentDate.getDate() - newDate)
-    currentDate = currentDate.toLocaleDateString('en-US')
-        .split("/");
-    helper.push(currentDate[2]);
-    if( currentDate[0].length < 2 ){
-        currentDate[0] = '0' + currentDate[0];
-    }
-    helper.push(currentDate[0]);
-    helper.push(currentDate[1]);
-    helper = helper.join('-');
 
-    findIndex = fatigueArr.findIndex(obj => obj.date === helper);
+    findIndex = fatigueArr.findIndex(obj => obj.date === date);
     if( findIndex === -1) {
-        addInfo(newInfo, helper, "fatigue");
+        await addInfo(newInfo, date, "fatigue");
     } else {
         let id = fatigueArr[findIndex].id;
-        editInfo(id, newInfo, helper, "fatigue");
+        await editInfo(id, newInfo, date, "fatigue");
     }
-    // resetAll();
-    // graphInfo();
+    fatigueArr = [];
+    await setAllArr();
+    await renderFatigue();
 })
 
 const addSleepBtn = document.getElementById("add-sleep");
 addSleepBtn.addEventListener('click', async () => {
     let newDate = document.getElementById('sleep-date').value,
-        newInfo = document.getElementById('sleep-rating').value;
-    let currentDate = new Date(), helper = [],
+        newInfo = document.getElementById('sleep-rating').value,
+        date = todayRightFormat(newDate),
         findIndex;
+
+    findIndex = sleepArr.findIndex(obj => obj.date === date);
+    if( findIndex === -1) {
+        await addInfo(newInfo, date, "sleep");
+    } else {
+        let id = sleepArr[findIndex].id;
+        await editInfo(id, newInfo, date, "sleep");
+    }
+    sleepArr = [];
+    await setAllArr();
+    await renderSleep();
+})
+
+function todayRightFormat(newDate = 0){
+    let currentDate = new Date(), helper = [];
     currentDate.setDate(currentDate.getDate() - newDate)
     currentDate = currentDate.toLocaleDateString('en-US')
         .split("/");
@@ -142,15 +148,5 @@ addSleepBtn.addEventListener('click', async () => {
     helper.push(currentDate[0]);
     helper.push(currentDate[1]);
     helper = helper.join('-');
-
-    findIndex = sleepArr.findIndex(obj => obj.date === helper);
-    if( findIndex === -1) {
-        await addInfo(newInfo, helper, "sleep");
-    } else {
-        let id = sleepArr[findIndex].id;
-        await editInfo(id, newInfo, helper, "sleep");
-    }
-    sleepArr
-})
-
-
+    return helper
+}

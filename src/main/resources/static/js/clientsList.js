@@ -5,10 +5,13 @@ const nameSearch = document.getElementById("name");
 let runMyFetch = clientArray(id);
 let injuryFetch= injuryArray(id);
 let smallInjuryFetch= smallInjuryArray(id);
-function start(){
+
+async function start(){
     const id = document.querySelector("meta[name='view']").content;
     let injuryFetch= injuryArray(id);
     let smallInjuryFetch= smallInjuryArray(id);
+    // await resetAll();
+    await run();
 }
 
 
@@ -28,7 +31,7 @@ function editCard(clients){
         <hr>
         <div>${client[2]}</div>
         <hr>
-        <div>first.Last@email.com</div>
+        <div>Coach Created Account*</div>
         <hr>
         <div id="client-card-button-holder">
         <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
@@ -47,21 +50,24 @@ function editCard(clients){
     const viewerBtns = document.getElementsByClassName('viewer');
 
     for (let i = 0; i < viewerBtns.length; i++) {
-        viewerBtns[i].addEventListener('click', function() {
+        viewerBtns[i].addEventListener('click', async function() {
             document.querySelector('meta[name="view"]').content = this.value;
             document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
             // allInfo();
-            start();
-            graphInfo(); //watch this...
-            run();
+            await resetAll();
+            await start();
+            // graphInfo(); //watch this...
+
+            await run();
         });
     }
 
 }
+
 async function run() {
     await setAllArr();
     await popAll();
-    showPlans();
+    await showPlans();
 }
 
 async function allInfo(id){
@@ -93,7 +99,7 @@ function Injury(clients){
         <hr>
         <div>${client[3]}</div>
         <hr>
-        <div>${client[4]}</div>
+<!--        <div>${client[4]}</div>-->
         <form action="/injury/edit/${client[4]}"><button>Edit</button></form>
         <form method="POST" action="/injury/delete/${client[4]}">
         <input type="hidden" name="_csrf" value="${csrfToken}">
@@ -173,7 +179,6 @@ async function clientArray(id){
         .then(data => {
             let clientInfo = [];
             data.clients.map(rel => {
-                console.log(rel.active);
                 if(rel.active === true) {
                     clientInfo.push(rel.client);
                 }
@@ -197,7 +202,6 @@ async function injuryArray(id){
             // clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
             return clientInfo
         }).catch(error => console.error(error));
-    console.log(injury);
    // Injury(injury);
     return injury;
 }

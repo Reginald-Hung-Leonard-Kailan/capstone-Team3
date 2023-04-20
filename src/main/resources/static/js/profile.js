@@ -170,6 +170,7 @@ closeInjury.addEventListener('click',()=>{
 
 const reloadClients= document.querySelector('#defaultOpen');
 reloadClients.addEventListener('click', ()=>{
+    document.querySelector('meta[name="view"]').content = document.querySelector('meta[name="loggedInId"]').content;
     reloadClients.addEventListener('click', ()=>{
         location.href = location.href;
     })

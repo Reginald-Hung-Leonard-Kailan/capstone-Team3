@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <dialog th:fragment="editChart" class="modal-wide" id="edit-chart-modal">
     <button id="close-edit-chart">❌</button>
-    <form method="dialog" class="modal-form">
+    <form method="dialog" class="modal-form" onsubmit="return validateForm()">
         <label for="body-fat-date">Date:</label><br>
         <input id="body-fat-date" type="date"><br>
         <label for="body-fat-info">Body Fat Percentage:</label><br>

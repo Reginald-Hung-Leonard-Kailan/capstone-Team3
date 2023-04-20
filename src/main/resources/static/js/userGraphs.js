@@ -84,13 +84,7 @@ function renderFatigue(){
                 count++;
             }
         })
-
-        // if(entries.includes(weekNames[i])){
-        //     console.log("The index is: " + fatigueArr.indexOf(weekNames[i]))
-        // }
-        html += `
-                <div>${weekNames[i]}: ${rating}</div>
-                <hr>`
+        html += `<div>${weekNames[i]}: ${rating}</div> <hr>`
     }
     document.querySelector("#fatigue-average").innerHTML = (total / count).toFixed(1);
     id.innerHTML = html;

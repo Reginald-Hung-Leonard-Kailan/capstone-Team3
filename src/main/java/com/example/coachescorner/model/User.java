@@ -2,6 +2,7 @@ package com.example.coachescorner.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -14,13 +15,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 20)
+    @Column(unique = true, length = 20)
+    @Size(min = 1, message = "Username must be at least 1 character long")
     private String username;
 
-    @Column(length = 50)
+    @Column(unique = true)
+    @Size(min = 1, message = "Email must be at least 1 character long")
     private String email;
 
 @JsonIgnore
+@Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
 @Column(nullable = true)
@@ -32,11 +36,14 @@ public class User {
     @Column(length = 50)
     private String lastName;
 
-    @Column(length = 10)
-    private int phoneNumber;
+    @Column(length = 50)
+    private String phoneNumber;
 
     @JsonIgnore
     private String profilePicture;
+
+    @Column(length = 255)
+    private String bio;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "coach")
     private List<UserClient> clients;
@@ -55,7 +62,7 @@ public class User {
     }
 
 
-    public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, int phoneNumber, String profilePicture) {
+    public User(String username, String email, String password, boolean isCoach, String firstName, String lastName, String phoneNumber, String profilePicture, String bio) {
 
         this.username = username;
         this.email = email;
@@ -65,6 +72,7 @@ public class User {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.profilePicture = profilePicture;
+        this.bio = bio;
     }
 
     public User(User copy) {
@@ -77,6 +85,7 @@ public class User {
         lastName = copy.lastName;
         phoneNumber = copy.phoneNumber;
         profilePicture = copy.profilePicture;
+        bio = copy.bio;
     }
 
     public long getId() {
@@ -137,11 +146,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -187,5 +196,13 @@ public class User {
 
     public User(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

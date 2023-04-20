@@ -16,6 +16,26 @@
     justify-content: flex-end;
     align-items: center;
 }
+#profile-pic-placeholder{
+    border-radius: 50%;
+    height: 180px;
+    width: 160px;
+    /*border: black solid 1px;*/
+    box-shadow: black;
+    margin: 30px 0 0 10px;
+    /*background-image: url("../img/profilepic.jpeg");*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.placeholder-img{
+    height: 160px;
+    width:160px;
+}
 #profile-pic img{
 
     height: 160px;
@@ -102,7 +122,7 @@
     border: solid black 1px ;
     width: 80px;
 position: absolute;
- margin-bottom: 10px;
+ margin-bottom: 15px;
 }
 
 .profile-button{
@@ -307,6 +327,20 @@ height: 43px;
 .client-search-holder{
     display: flex;
     margin-top: 10px;
+}
+
+#client-image{
+    width: 200px;
+    height: 200px;
+}
+#delete-client-form{
+    /*margin-right: auto;*/
+    display: flex;
+    /*align-items: ;*/
+}
+#delete-client{
+ height: 30px;
+    width: 30px;
 }
 
 

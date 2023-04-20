@@ -25,6 +25,10 @@ function editCard(clients){
         html += `
      <div>
       <div class="client-card">
+        <form  id="delete-client-form" action="/client-false/${client[3]}" method="POST">
+        <input type="hidden" name="_csrf" value="${csrfToken}">
+        <button id="delete-client">❌</button></form>
+        <div><img src="../img/profilePicPlaceholder.png" id="client-image"></div>
         <div>${client[0]}</div>
         <hr>
         <div>${client[1]}</div>
@@ -35,10 +39,6 @@ function editCard(clients){
         <hr>
         <div id="client-card-button-holder">
         <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
-        <form action="/add-injury/${client[3]}"><button class="search-button">Add Injury</button></form>
-        <form action="/client-false/${client[3]}" method="POST">
-        <input type="hidden" name="_csrf" value="${csrfToken}">
-        <button id="close-edit-injury">❌</button></form>
         <button class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
         </div>
       </div>

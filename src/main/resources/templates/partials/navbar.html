@@ -7,7 +7,9 @@
         <li><a href="/">Home</a></li>
         <li th:if="${isAuthenticated}"><a href="/home">Profile</a></li>
 <!--        link once mvp is done  <li><a href="">Find a Coach</a></li>-->
-        <li th:if="${isAuthenticated}"><a href="/">Logout</a></li>
+        <li th:if="${isAuthenticated}" >
+            <form th:method="POST" th:action="@{/logout}">
+                <button type="submit" >Logout</button></form></li>
 <!--        link once mvp is done <li ><a href="">Contact</a></li>-->
         <li th:unless="${isAuthenticated}" id="open-login" class="form">Login</li>
         <li th:unless="${isAuthenticated}" id="open-register" class="form"><a href="/register">Register</a></li>

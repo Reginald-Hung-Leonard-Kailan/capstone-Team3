@@ -380,7 +380,7 @@ height: 43px;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
-    box-shadow: 0 0 10px 0 #000000;
+    box-shadow: 0 0 5px 0 #000000;
     width: 240px;
     height: 150px;
     color: white;
@@ -403,7 +403,7 @@ height: 43px;
     border-radius: 10px;
     margin: 17px;
     padding: 10px 10px 24px 10px;
-    box-shadow: 0 0 10px 0 #000000;
+    box-shadow: 0 0 5px 0 #000000;
     width: 240px;
     height: 410px;
     color: white;
@@ -472,7 +472,7 @@ height: 43px;
     text-align: center;
     font-size: 25px;
     /*background-color: rgba(98, 180, 255, 0.96);*/
-    box-shadow: 0 0 20px 0 #000000;
+    box-shadow: 0 0 5px 0 #000000;
     color: black;
 }
 .chart-title{

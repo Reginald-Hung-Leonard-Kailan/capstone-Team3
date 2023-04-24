@@ -73,7 +73,7 @@ width: 500px;
 
 .modal-form{
     /*background-color: lightgray;*/
-    background-color: rgba(98, 180, 255, 0.96);
+    background-color: rgba(98, 180, 255, 1);
     padding: 10px 3px 10px 10px;
     line-height: 30px;
     font-size: 30px;
@@ -85,7 +85,7 @@ width: 500px;
 
 .modal-form2{
     /*background-color: lightgray;*/
-    background-color: rgba(98, 180, 255, 0.96);
+    background-color: rgba(98, 180, 255, 1);
     padding: 10px 3px 10px 10px;
     line-height: 30px;
     font-size: 30px;
@@ -100,7 +100,7 @@ width: 500px;
     border: white solid 10px;
     border-radius: 30px;
     /*background-color: lightgray;*/
-    background-color: rgba(98, 180, 255, 0.96);
+    background-color: rgba(98, 180, 255, 1);
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     max-width: 100ch;

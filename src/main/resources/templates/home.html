@@ -38,15 +38,21 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="index.html">
                                 <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Personal Stats</span>
+                            </a>
+                        </li>
+<!--                        <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
+                        <li class="sidebar-item active">
+                            <a class="sidebar-link" >
+                                <i class="align-middle" data-feather="users"></i> <span class="align-middle tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" id="program-header">
-                                <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Program</span>
+                                <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle tablinks" onclick="openCity(event, 'program')">Program</span>
                             </a>
                         </li>
 
@@ -305,7 +311,7 @@
 
 <!--        end of template-->
 
-        <div id="profile-section">
+<!--        <div id="profile-section">-->
 <!--            <div id="profile-pic"><img th:src="${user.getProfilePicture()}">-->
 <!--                <button  id="settings-button" class="tablinks" onclick="openCity(event, 'settings')">Settings</button>-->
 <!--            </div>-->
@@ -313,31 +319,31 @@
 <!--                <div th:text="${user.email}"></div>-->
 <!--                <button  id="profile-button" class="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>-->
 <!--            </div>-->
-            <div id="program-holder">
-<!--                <div   id="program-header">Program</div><br>-->
-            <div id="program-edit">
-            <div id="program-input-form">
-                <!--                <div class="stats-title">Fatigue Rating:</div>z-->
-                <label for="profile-section"  id="profile-input-label" class="program-subheader">Edit</label><br>
-                <input type="text" id="program-input" placeholder="Copy & Paste link here!">
-                <button id="program-input-button">add</button >
-            </div>
-            <form id="program-selection-form">
-                <label for="profile-section"  id="profile-section-label" class="program-subheader">Select</label><br>
-<!--                <div class="stats-title">Fatigue Rating:</div>z-->
-                <select id="program-selection">
-                    <option class="program" value="-1">Add Program</option>
-                    <option class="program" value="0">yyyy-mm-dd (current)</option>
-                    <option class="program">2023-04-19</option>
-                </select>
-            </form>
-            </div>
-            </div>
-        </div>
+<!--            <div id="program-holder">-->
+<!--&lt;!&ndash;                <div   id="program-header">Program</div><br>&ndash;&gt;-->
+<!--            <div id="program-edit">-->
+<!--            <div id="program-input-form">-->
+<!--                &lt;!&ndash;                <div class="stats-title">Fatigue Rating:</div>z&ndash;&gt;-->
+<!--                <label for="profile-section"  id="profile-input-label" class="program-subheader">Edit</label><br>-->
+<!--                <input type="text" id="program-input" placeholder="Copy & Paste link here!">-->
+<!--                <button id="program-input-button">add</button >-->
+<!--            </div>-->
+<!--            <form id="program-selection-form">-->
+<!--                <label for="profile-section"  id="profile-section-label" class="program-subheader">Select</label><br>-->
+<!--&lt;!&ndash;                <div class="stats-title">Fatigue Rating:</div>z&ndash;&gt;-->
+<!--                <select id="program-selection">-->
+<!--                    <option class="program" value="-1">Add Program</option>-->
+<!--                    <option class="program" value="0">yyyy-mm-dd (current)</option>-->
+<!--                    <option class="program">2023-04-19</option>-->
+<!--                </select>-->
+<!--            </form>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <hr id="main-hr">
         <!-- Tab links -->
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>
+<!--            <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
 <!--            <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>-->
 <!--            <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>-->
 <!--            <button class="tablinks" onclick="openCity(event, 'settings')">Settings</button>-->
@@ -359,7 +365,7 @@
         <div th:replace="partials/injury :: injury"></div>
 <!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
         <div th:replace="partials/settings :: settings"></div>
-        <div th:replace="partials/program :: "></div>
+        <div th:replace="partials/program :: program"></div>
                     </div>
                 </main>
                 <footer class="footer">

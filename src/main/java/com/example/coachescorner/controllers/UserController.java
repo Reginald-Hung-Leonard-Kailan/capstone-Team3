@@ -94,32 +94,11 @@ public class UserController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/users/search")
-//    public String showClients (@RequestParam String name, Model model){
-//
-//        // coach login
-//
-//        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User coach = userDao.findById(userLogIn.getId());
-//
-//        // check for relationship
-//       List<UserClient> users = coach.getClients();
-//
-//       List<User> clients = new ArrayList<>();
-//
-//       for (UserClient client : users) {
-//            User user = client.getClient();
-//            if(
-//                    user.getFirstName().toLowerCase().contains(name.toLowerCase()) ||
-//                    user.getLastName().toLowerCase().contains(name.toLowerCase())
-//                )
-//
-//               clients.add(user);
-//       }
-//
-//        // display search result
-//        model.addAttribute("users", clients);
-//        return "search-client";
-//    }
-
+    @GetMapping("/stats")
+    public String showStats(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        return "stats";
+    }
 }

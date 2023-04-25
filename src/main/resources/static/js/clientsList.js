@@ -18,33 +18,11 @@ async function start(){
 // MY Clients Card
 function editCard(clients){
     const csrfToken = document.querySelector('meta[name="_csrf"]').content;
-    let id = document.querySelector("#client-holder"), html=``, html1='';
+    let id = document.querySelector("#client-holder"), html=``;
 
     for(let i=0; i<clients.length; i++){
         let client=clients[i];
         html += `
-     <div>
-      <div class="col-md-4">
-        <div class="card profile-card">
-            <form  id="delete-client-form" action="/client-false/${client[3]}" method="POST">
-                <input type="hidden" name="_csrf" value="${csrfToken}">
-                <button id="delete-client">❌</button>
-            </form>
-            <div><img src="../img/profilePicPlaceholder.png" class="avatar-lg" id="client-image"></div>
-            <div class="card-body">
-                <h2>${client[0]} ${client[1]}</h2>
-                <div>${client[2]}</div>
-            </div>
-            <div>Coach Created Account*</div>
-            <div id="client-card-button-holder" class="d-flex align-content-between">
-                <form action="/client-edit/${client[3]}"><button class="search-button client-allign-button">Edit</button></form>
-                <button class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" value="${client[3]}">Stats</button>
-            </div>
-        </div>
-      </div>
-    </div>`
-
-        html1 += `
        <div class="col-lg-4 col-sm-6">
         <div class="card profile-card-3">
         <form  id="delete-client-form" action="/client-false/${client[3]}" method="POST" style="background-color: #efefef" >
@@ -75,7 +53,7 @@ function editCard(clients){
 </div>`
     }
 
-    id.innerHTML = html1;
+    id.innerHTML = html;
 
     const viewerBtns = document.getElementsByClassName('viewer');
 

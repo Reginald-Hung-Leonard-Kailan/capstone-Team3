@@ -226,6 +226,7 @@
               </div>
               <div class="card-body px-4">
 <!--                CARROSEL GOES INSIDE OF THIS-->
+
                 <div class="container">
                   <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner rounded">
@@ -233,11 +234,8 @@
                         <div class=" d-none d-md-block" >
                           <h5>Squat chart</h5>
                         </div>
-                        <img
-                                src="../img/profilepic.jpeg"
-                                class="d-block w-100"
-                                alt="Members Gathering around for a picture"
-                        />
+                        <canvas id="bodyFatChart"></canvas>
+                <div th:replace="partials/chart :: bodyfat-chart"></div>
                       </div>
                       <div class="carousel-item">
                         <div class=" d-none d-md-block" >

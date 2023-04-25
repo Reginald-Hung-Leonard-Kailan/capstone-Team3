@@ -92,6 +92,11 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/about")
+    public String showAboutPage(){
+        return "about";
+    }
+
     @GetMapping("/stats")
     public String showStats(Model model){
         User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

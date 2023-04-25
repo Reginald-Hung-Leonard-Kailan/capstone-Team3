@@ -4,24 +4,52 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="css/layout.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+<!--    <link href="css/home.css" rel="stylesheet">-->
     <script src="js/home.js"></script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+        *{
+            font-family: "Carrois Gothic SC", sans-serif;
+        }
+    </style>
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper" id="index">
     <div th:replace="partials/navbar :: navbar"></div>
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col">
+            <h1 style="color: whitesmoke"> At Coaches Corner,<br>
+            <strong style="font-size: 70px">TOGETHER WE BRING</strong></h1>
+        </div>
 
-<div id="header"> Coach's Corner</div>
-    <div id="symbol-center">
-    <img src="img/CC%20example.png" id="symbol"/>
     </div>
-
-<p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.
-</p>
-<!--    <div th:replace="partials/register :: register"></div>-->
-    <div th:replace="partials/login :: login"></div>
 </div>
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <span><img src="/img/coach.jpg" class="rounded-circle" alt="coach"></span>
+            <h3 style="color: whitesmoke">Coaches <strong style="font-size: 40px">now</strong> you have the ability to manage your Clients in one simple location</h3>
+        </div>
+        <div class="col">
+            <span><img src="/img/trainee.jpg" class="rounded" alt="trainee"></span>
+            <h3 style="color: whitesmoke">Coaches Corner leverage's raw data, such as Sleep Patterns / Daily Fatigue Levels. Incorporating line graphs to maximized <strong>GAINS!</strong></h3>
+        </div>
+    </div>
+</div>
+
+
+<!--<p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.-->
+<!--</p>-->
+<!--    <div th:replace="partials/register :: register"></div>-->
+<!--    <div th:replace="partials/login :: login"></div>-->
+</div>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
 </body>
 </html>

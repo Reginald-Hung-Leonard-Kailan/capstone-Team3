@@ -6,53 +6,91 @@
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
     <link href="css/layout.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+<!--    <link href="css/home.css" rel="stylesheet">-->
     <script src="js/home.js"></script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+        *{
+            font-family: "Carrois Gothic SC", sans-serif;
+        }
+    </style>
 </head>
 <body>
-<div class="page-wrapper">
-    <div th:replace="partials/navbar :: navbar"></div>
-    <div id="header"> Coach's Corner</div>
-    <div id="symbol-center">
-        <img src="img/CC%20example.png" id="symbol"/>
+<div class="page-wrapper" id="index">
+
+    <div class="container text-center">
+
+        <div class="row">
+            <div class="col align-items-start">
+                <a href="/" ><button type="button" class="btn btn-secondary custom mt-3">Back</button></a>
+                <div class="card text-bg-secondary my-3">
+                    <div class="card-header">
+<!--                        <h1 class="my-5">-->
+<!--                            Coach's Corner-->
+<!--                        </h1>-->
+                        <img src="/img/watermark.png" alt="watermark">
+                    </div>
+                    <div class="card-body">
+                        <!--            <div id="symbol-center">-->
+                        <!--                <img src="img/CC%20example.png" id="symbol"/>-->
+                        <!--            </div>-->
+
+                        <!--    <p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.-->
+                        <!--    </p>-->
+                        <!--    <dialog open class="modal" id="register-model" >-->
+                        <!--    <button id="close-register" class="close"><a href="/">❌</a>-->
+                        <!--    </button>-->
+                        <form th:action="@{/register}" th:object="${user}" method="POST" id="register-form" class="modal-form">
+                            <label for="role">Role:</label>
+                            <select id="role" name="role">
+                                <option value=true>Coach</option>
+                                <option value=false>Client</option>
+                            </select><br><br>
+                            <label for="firstName">First Name:</label><br>
+                            <input id="firstName" class="form-control form-control-lg bg-light" th:field="*{firstName}"/><br><br>
+                            <label for="lastName">Last Name:</label><br>
+                            <input id="lastName" class="form-control form-control-lg bg-light" th:field="*{lastName}"/><br><br>
+                            <label for="email">Email:</label><br>
+                            <input id="email" class="form-control form-control-lg bg-light" th:field="*{email}"/><br><br>
+                            <label for="userName">Username:</label><br>
+                            <input id="userName" class="form-control form-control-lg bg-light" th:field="*{username}"/><br><br>
+                            <label for="password">Password:</label><br>
+                            <input type="password" class="form-control form-control-lg bg-light" id="password" th:field="*{password}"/><br><br>
+                            <label for="user-input">Profile Picture:</label><br>
+                            <input type="text" id="user-input" class="form-control form-control-lg my-2 bg-light" th:field="*{profilePicture}"/>
+                            <!--        button for profile picture -->
+                            <button type="button" id="upload-btn" class="btn btn-secondary " >Upload photo</button><br><br>
+                            <!--        button end-->
+                            <button type="submit" class="btn btn-secondary" >Register</button>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="background: red"></p>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{email}" style="background: red"></p>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{username}" style="background: red"></p>
+                        </form>
+                        <!--    </dialog>-->
+                        <!--    <div th:replace="partials/navbar :: navbar"></div>-->
+                    </div>
+
+            </div>
+
+           </div>
+
+
+        </div>
+
+
     </div>
 
-    <p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.
-    </p>
-    <dialog open class="modal" id="register-model" >
-    <button id="close-register" class="close"><a href="/">❌</a>
-    </button>
-    <form th:action="@{/register}" th:object="${user}" method="POST" id="register-form" class="modal-form">
-        <label for="role">Role:</label>
-        <select id="role" name="role">
-            <option value=true>Coach</option>
-            <option value=false>Client</option>
-        </select><br><br>
-        <label for="firstName">First Name:</label><br>
-        <input id="firstName"  th:field="*{firstName}"/><br><br>
-        <label for="lastName">Last Name:</label><br>
-        <input id="lastName" th:field="*{lastName}"/><br><br>
-        <label for="email">Email:</label><br>
-        <input id="email" th:field="*{email}"/><br><br>
-        <label for="userName">Username:</label><br>
-        <input id="userName" th:field="*{username}"/><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" th:field="*{password}"/><br><br>
-        <label for="user-input">Profile Picture:</label><br>
-        <input type="text" id="user-input" th:field="*{profilePicture}"/>
-        <!--        button for profile picture -->
-        <button type="button" id="upload-btn">Upload photo</button><br><br>
-        <!--        button end-->
-        <button type="submit" class="button">Register</button>
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="background: red"></p>
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{email}" style="background: red"></p>
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{username}" style="background: red"></p>
-    </form>
-    <!--    script for fileStackAPI-->
-    <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
-    </dialog>
+
+
 </div>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
+<!--    script for fileStackAPI-->
+<script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </body>
 </html>

@@ -9,6 +9,18 @@
     flex-direction: column;
 }
 
+#index {
+    background: radial-gradient(circle, rgba(0,0,0,.9) 0%, rgba(0,0,0,.0) 100%), url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*custom button css*/
+
+.custom {
+    width: 78px;
+}
 /*
     The "container", sometimes referred to as a "section", is a container
     element (semantic when applicable) that vertically separates different
@@ -119,3 +131,9 @@
 .wrap {
     flex-wrap: wrap;
 }
+
+/*.form{*/
+/*    background-color: #CCCCCC;*/
+/*    border-radius: 5px;*/
+/*    border: black solid 1px;*/
+/*}*/

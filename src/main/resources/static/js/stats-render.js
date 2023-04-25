@@ -25,7 +25,6 @@ async function allInfo(id = viewId){
         .then(data => {
             // const {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data;
             viewerInfo(data);
-            console.log("data is: " + data);
             data = data.clientInformationList
             return data.sort((b, a) => new Date(a.date) - new Date(b.date));
         }).catch(e => console.error(e));

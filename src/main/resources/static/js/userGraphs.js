@@ -19,7 +19,7 @@ function renderSleep(){
 
     let entries =[];
 
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     let weekOldSleep = sleepArr.filter(entry => {
         const entryDate = new Date(entry.date);
@@ -62,7 +62,7 @@ function renderFatigue(){
 
         let entries =[];
 
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     let weekOldFatigue = fatigueArr.filter(entry => {
         const entryDate = new Date(entry.date);

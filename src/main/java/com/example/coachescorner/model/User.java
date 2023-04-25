@@ -39,7 +39,6 @@ public class User {
     @Column(length = 50)
     private String phoneNumber;
 
-    @JsonIgnore
     private String profilePicture;
 
     @Column(length = 255)

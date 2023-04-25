@@ -1,79 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="myClients" id="myClients" class="tabcontent">
-  <div class="client-search-holder">
-<!--  <form  th:action="@{/users/search}" id="client-search">-->
-    <input   id="name" name="name" class="search" type="text" placeholder="name">
-<!--    <button type="submit" class="search-button">Search</button>-->
-<!--  </form>-->
-    <button class="tablinks" id="client-button"><a href="/client">New Client</a></button>
+<div th:fragment="myClients" id="myClients" class="tabcontent container-fluid">
+  <div class="client-search-holder d-flex justify-content-around">
+      <a class="tablinks" id="client-button" href="/client">
+          <i class="align-middle" data-feather="user-plus"></i>
+      </a>
+    <form  th:action="@{/users/search}" id="client-search" class="d-flex">
+        <input   id="name" name="name" class="search form-control" type="text" placeholder="name">
+        <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
   </div>
-  <div id="client-holder">
-<!--    <div>-->
-<!--      <div class="client-card">-->
-<!--        <div>Username</div>-->
-<!--        <hr>-->
-<!--        <div>First name</div>-->
-<!--        <hr>-->
-<!--        <div>Last name</div>-->
-<!--        <hr>-->
-<!--        <div>first.Last@email.com</div>-->
-<!--        <hr>-->
-<!--        <div>Bio</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <div class="client-card">-->
-<!--        <div>Username</div>-->
-<!--        <hr>-->
-<!--        <div>First name</div>-->
-<!--        <hr>-->
-<!--        <div>Last name</div>-->
-<!--        <hr>-->
-<!--        <div>first.Last@email.com</div>-->
-<!--        <hr>-->
-<!--        <div>Bio</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <div class="client-card">-->
-<!--        <div>Username</div>-->
-<!--        <hr>-->
-<!--        <div>First name</div>-->
-<!--        <hr>-->
-<!--        <div>Last name</div>-->
-<!--        <hr>-->
-<!--        <div>first.Last@email.com</div>-->
-<!--        <hr>-->
-<!--        <div>Bio</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <div class="client-card">-->
-<!--        <div>Username</div>-->
-<!--        <hr>-->
-<!--        <div>First name</div>-->
-<!--        <hr>-->
-<!--        <div>Last name</div>-->
-<!--        <hr>-->
-<!--        <div>first.Last@email.com</div>-->
-<!--        <hr>-->
-<!--        <div>Bio</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <div class="client-card">-->
-<!--        <div>Username</div>-->
-<!--        <hr>-->
-<!--        <div>First name</div>-->
-<!--        <hr>-->
-<!--        <div>Last name</div>-->
-<!--        <hr>-->
-<!--        <div>first.Last@email.com</div>-->
-<!--        <hr>-->
-<!--        <div>Bio</div>-->
-<!--      </div>-->
-<!--    </div>-->
+
+
+  <div id="client-holder" class="row">
+
   </div>
 </div>
 </html>

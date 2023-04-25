@@ -64,6 +64,9 @@ function viewerInfo(data){
     let {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data,
         id = document.querySelector("#personal-info"),
         html = "";
+        if(profilePicture === null){
+            profilePicture= "../img/profilePicPlaceholder.png";
+    }
 
     html = `<div class="card-content"> 
 <div style="display: flex; justify-content: center;"><img id="user-stats-picture" src="${profilePicture}"/></div>
@@ -86,8 +89,8 @@ function renderSleep(arr = sleepArr){
         let {clientInformation, date, id} = data;
         html+= `
  <div class="card d-flex">
-        <div>${clientInformation}</div> 
         <div>${date}</div> 
+        <div>${clientInformation}</div> 
         <div>${id}</div>
 </div>`
     })

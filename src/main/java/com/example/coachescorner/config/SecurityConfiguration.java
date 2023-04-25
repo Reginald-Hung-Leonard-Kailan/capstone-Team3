@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                     /* Pages that require authentication */
                 .and()
                     .authorizeHttpRequests()
-                    .requestMatchers("/", "/register", "/login", "/css/**", "/js/**", "/img/**") // anyone can see home, the ads pages, and sign up
+                    .requestMatchers("/", "/register", "/login", "/css/**", "/js/**", "/img/**", "/error/*", "/privacyPolicy", "/termsOfService") // anyone can see home, the ads pages, and sign up
                     .permitAll()
                 .and()
                     .authorizeHttpRequests()
@@ -65,6 +65,9 @@ public class SecurityConfiguration {
                             "/client", "/edit/{id}", "/client-edit/{id}", "/users/search", "/add-injury/{id}", "/add-injury/**", "/injury/edit/{id}", "/injury/delete/{id}", "/client-false/{id}", "/api/user/**" , "/api/user" // only authenticated users can edit ads
                     )
                     .authenticated()
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers("/**")
         ;
         return http.build();
     }

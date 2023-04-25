@@ -396,11 +396,11 @@ a {
 /*#close-register a{*/
 /*    text-decoration: none;*/
 /*}*/
-/*@media screen and (min-width: 768px) {*/
-/*    body {*/
-/*        display: flex;*/
-/*        flex-direction: row;*/
-/*        justify-content: space-between;*/
-/*        flex-wrap: wrap;*/
-/*    }*/
-/*}*/
+@media screen and (min-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

@@ -222,13 +222,68 @@
           <div class="col-12 col-md-12 col-lg-7 d-flex order-3 order-xxl-2">
             <div class="card flex-fill w-100">
               <div class="card-header">
-
                 <h5 class="card-title mb-0">Real-Time</h5>
               </div>
               <div class="card-body px-4">
 <!--                CARROSEL GOES INSIDE OF THIS-->
-                <canvas id="bodyFatChart"></canvas>
+
+                <div class="container">
+                  <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner rounded">
+                      <div class="carousel-item active" >
+                        <div class=" d-none d-md-block" >
+                          <h5>Squat chart</h5>
+                        </div>
+                        <canvas id="bodyFatChart"></canvas>
                 <div th:replace="partials/chart :: bodyfat-chart"></div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class=" d-none d-md-block" >
+                          <h5>Bench chart</h5>
+                        </div>
+                        <img
+                                src="../img/profilepic.jpeg"
+                                class="d-block w-100"
+                                alt="Members smiling at a tailgate"
+                        />
+                      </div>
+                      <div class="carousel-item">
+                        <div class=" d-none d-md-block" >
+                          <h5>Deadlift chart</h5>
+                        </div>
+                        <img
+                                src="../img/profilepic.jpeg"
+                                class="d-block w-100"
+                                alt="Members reay for a picture"
+                        />
+                      </div>
+                    </div>
+                    <button
+                            class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#carouselExample"
+                            data-bs-slide="prev"
+                    >
+              <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+              ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                            class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#carouselExample"
+                            data-bs-slide="next"
+                    >
+              <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+              ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
 <!--                END OF CARROSEL-->
               </div>
             </div>

@@ -66,12 +66,12 @@ function viewerInfo(data){
         html = "";
 
     html = `<div class="card-content"> 
-<h1>First/Last: ${firstName} ${lastName}</h1>
-<div>Phone num: ${phoneNumber}</div>
-<div>bio: ${bio}</div>
-<div>pic: ${profilePicture}</div>
-<div>username:  ${username}</div>
-<div>email: ${email}</div>
+<div style="display: flex; justify-content: center;"><img id="user-stats-picture" src="${profilePicture}"/></div>
+<h1>${firstName} ${lastName}</h1>
+<div> ${phoneNumber}</div>
+<div> ${email}</div>
+<!--<div>bio: ${bio}</div>-->
+
 </div>`;
 
     id.innerHTML = html;

@@ -16,6 +16,10 @@ async function render(){
     await allInfo();
     renderSleep();
     bodyFatChart();
+    bodyWeightChart()
+    squatChart()
+    benchChart()
+    deadliftChart()
 }
 
 //retrieve from REST API
@@ -25,7 +29,7 @@ async function allInfo(id = viewId){
         .then(data => {
             // const {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data;
             viewerInfo(data);
-            data = data.clientInformationList
+            data = data.clientInformationList;
             return data.sort((b, a) => new Date(a.date) - new Date(b.date));
         }).catch(e => console.error(e));
 
@@ -109,52 +113,52 @@ function renderSleep(arr = sleepArr){
 //Graphs!!
 
 //Body Fat
-let chartBF , modalBF;
-function bodyFatChart() {
-    let bodyFat = [], weighInDate = [];
-    bodyFatPercentArr.map(data => {
-        bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
-        weighInDate.unshift(data.date);
-    })
-    chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
-    modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
-}
+// let chartBF , modalBF;
+// function bodyFatChart() {
+//     let bodyFat = [], weighInDate = [];
+//     bodyFatPercentArr.map(data => {
+//         bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
+//         weighInDate.unshift(data.date);
+//     })
+//     chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
+//     // modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
+// }
 
-function populateGraph(elemId, dateArr, statArr, title){
-    const ctx = document.getElementById(elemId).getContext('2d');
-    const data = {
-        labels: dateArr,
-        datasets: [{
-            label: title,
-            data: statArr,
-            backgroundColor: 'rgba(78,93,180,0.48)',
-            borderColor: 'rgb(103,124,245)',
-            borderWidth: 1,
-        }],
-    };
-
-// axis labels are not populating...
-    const options = {
-        scales: {
-            yAxes: [{
-                scaleLabel: {
-                    display: true
-                }
-            }],
-            xAxes: [{
-                scaleLabel: {
-                    display: true
-                },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
-
-    return new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
-}
+// function populateGraph(elemId, dateArr, statArr, title){
+//     const ctx = document.getElementById(elemId).getContext('2d');
+//     const data = {
+//         labels: dateArr,
+//         datasets: [{
+//             label: title,
+//             data: statArr,
+//             backgroundColor: 'rgba(78,93,180,0.48)',
+//             borderColor: 'rgb(103,124,245)',
+//             borderWidth: 1,
+//         }],
+//     };
+//
+// // axis labels are not populating...
+//     const options = {
+//         scales: {
+//             yAxes: [{
+//                 scaleLabel: {
+//                     display: true
+//                 }
+//             }],
+//             xAxes: [{
+//                 scaleLabel: {
+//                     display: true
+//                 },
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     };
+//
+//     return new Chart(ctx, {
+//         type: 'line',
+//         data: data,
+//         options: options
+//     });
+// }

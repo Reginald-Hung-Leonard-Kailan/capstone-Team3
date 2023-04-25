@@ -14,7 +14,7 @@ async function start(){
     await run();
 }
 
-
+let newHelper;
 // MY Clients Card
 function editCard(clients){
     const csrfToken = document.querySelector('meta[name="_csrf"]').content;
@@ -44,7 +44,7 @@ function editCard(clients){
                 <a href="/client-edit/${client[3]}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 </a>
-                <a class="viewer tablinks search-button client-allign-button" onclick="openCity(event, 'Personal-Stats')" href="#" value="${client[3]}">
+                <a class="viewer tablinks search-button client-allign-button" href="/stats/${client[3]}" value="${client[3]}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders align-middle"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
                 </a>
                 </div>
@@ -59,14 +59,15 @@ function editCard(clients){
 
     for (let i = 0; i < viewerBtns.length; i++) {
         viewerBtns[i].addEventListener('click', async function() {
-            document.querySelector('meta[name="view"]').content = this.value;
-            document.querySelector('form[name="addInjury"]').action = "/add-injury/"+this.value;
+            let value = this.getAttribute('value')
+            document.querySelector('meta[name="view"]').content = value;
+            document.querySelector('form[name="addInjury"]').action = "/add-injury/"+value;
             // allInfo();
-            await resetAll();
-            await start();
+            // await resetAll();
+            // await start();
             // graphInfo(); //watch this...
 
-            await run();
+            // await run();
         });
     }
 

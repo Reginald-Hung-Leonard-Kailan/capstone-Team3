@@ -94,6 +94,11 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/about")
+    public String showAboutPage(){
+        return "about";
+    }
+
 //    @GetMapping("/users/search")
 //    public String showClients (@RequestParam String name, Model model){
 //

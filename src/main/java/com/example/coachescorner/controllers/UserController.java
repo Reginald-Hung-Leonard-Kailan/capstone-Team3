@@ -9,10 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -94,32 +92,41 @@ public class UserController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/users/search")
-//    public String showClients (@RequestParam String name, Model model){
-//
-//        // coach login
-//
-//        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User coach = userDao.findById(userLogIn.getId());
-//
-//        // check for relationship
-//       List<UserClient> users = coach.getClients();
-//
-//       List<User> clients = new ArrayList<>();
-//
-//       for (UserClient client : users) {
-//            User user = client.getClient();
-//            if(
-//                    user.getFirstName().toLowerCase().contains(name.toLowerCase()) ||
-//                    user.getLastName().toLowerCase().contains(name.toLowerCase())
-//                )
-//
-//               clients.add(user);
-//       }
-//
-//        // display search result
-//        model.addAttribute("users", clients);
-//        return "search-client";
+    @GetMapping("/about")
+    public String showAboutPage(){
+        return "about";
+    }
+
+    @GetMapping("/stats")
+    public String showStats(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+//        if(id != user.getId()){
+//            model.addAttribute("viewNum", id);
+//            System.out.println("GET method sees attempt with: " + id);
+//        } else {
+//            model.addAttribute("viewNum", user.getId());
+//            System.out.println("GET method DOES NOT see sticking with: " + user.getId());
+//        }
+        model.addAttribute("user", user);
+        return "stats";
+    }
+
+//    @PostMapping("/stats")
+//    public String hiddenViewer(Model model, @ModelAttribute("viewerNum") long id){
+//        model.addAttribute("viewNum", id);
+//        System.out.println("Post method sees attempt with: " + id);
+//        return "stats";
 //    }
 
+    @GetMapping("/stats/{id}")
+    public String customView(@PathVariable long id, Model model){
+//        redirect.addAttribute("viewerNum", id);
+        model.addAttribute("viewerNum", id);
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        System.out.println(id);
+        return "stats";
+    }
 }

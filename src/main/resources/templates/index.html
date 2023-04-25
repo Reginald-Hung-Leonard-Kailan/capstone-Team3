@@ -1,109 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<!--    <link href="css/layout.css" rel="stylesheet">-->
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+<!--    <link href="css/home.css" rel="stylesheet">-->
     <script src="js/home.js"></script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+        *{
+            font-family: "Carrois Gothic SC", sans-serif;
+        }
+    </style>
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper" id="index">
     <div th:replace="partials/navbar :: navbar"></div>
-    <div id="header"> Coach's Corner</div>
-    <div id="symbol-center">
-        <img src="img/stickmanandTrainer.png" id="symbol"/>
+<div class="container text-center">
+    <div class="row align-items-start">
+        <div class="col">
+            <h1 style="color: whitesmoke"> At Coaches Corner,<br>
+            <strong style="font-size: 70px">TOGETHER WE BRING</strong></h1>
+        </div>
+
     </div>
-    <!--  Body Weight Container  -->
-    <div class="container chartContainer">
-        <div class="column col-shrink">
-            <div class="chartInfo">
-                <h3>Body Weight</h3>
-                <p>The body weight line graph allows the user to input their body weight along with the date using an
-                    "add" button, and edit or delete the information as needed. Keeping track of body weight over time
-                    can be important for monitoring progress and making adjustments to diet and exercise routines, as
-                    well as identifying potential health issues.</p>
-            </div>
-        </div>
-        <div class="column columnChart">
-            <img src="img/bodyweight.png" class="img-chart"/>
-        </div>
-    </div>
-    <!--  Body fat % Container  -->
-    <div class="container chartContainer">
-        <div class="column columnChart">
-            <img src="img/bodyfat.png" class="img-chart"/>
-        </div>
-        <div class="column col-shrink">
-            <div class="chartInfo">
-                <h3>Body Fat %</h3>
-                <p>The Body Fat % line graph tracks the user's body fat percentage over time. Keeping track of body fat
-                    percentage can help individuals monitor changes in their body composition and make informed
-                    decisions about their diet
-                    and exercise routine.</p>
-            </div>
-        </div>
-    </div>
-    <!--  Bench Container  -->
-    <div class="container chartContainer">
-        <div class="column col-shrink">
-            <div class="chartInfo">
-                <h3>Bench</h3>
-                <p>The Bench Press line graph would display data points of weight lifted . The user can input data by
-                    clicking the add button and edit or delete it as needed. Keeping track of Bench press progress is
-                    important to monitor strength gains, track workout patterns, and set realistic goals for continued
-                    improvement.</p>
-            </div>
-        </div>
-        <div class="column columnChart">
-            <img src="img/bench.png" class="img-chart"/>
-        </div>
-    </div>
-    <!--  Squat Container  -->
-    <div class="container chartContainer">
-        <div class="column columnChart">
-            <img src="img/squat.png" class="img-chart"/>
-        </div>
-        <div class="column col-shrink">
-            <div class="chartInfo">
-                <h3>Squat</h3>
-                <p>The squat line graph allows the Coach to enter the date and weight of their clients squat workout, and add,
-                    edit or delete this information as needed using the add button. By keeping track of progress
-                    over time, Coach's can identify trends and measure their clients improvements, enabling them to set goals and
-                    adjust the workouts accordingly for better results. Regularly tracking this information can help
-                    clients stay motivated, maintain accountability, and achieve their fitness goals.
-                </p>
-            </div>
-        </div>
-    </div>
-    <!--  DeadLift Container  -->
-    <div class="container chartContainer">
-        <div class="column col-shrink">
-            <div class="chartInfo">
-                <h3>Dead Lift</h3>
-                <p>The Dead Lift line graph displays a clients progress in lifting weight over time. The user inputs
-                    their date and weight information through the add button, and can edit or delete their records as
-                    necessary. Tracking progress is important in order to monitor improvements, identify areas for
-                    growth, and establish attainable goals for weight lifting.</p>
-            </div>
-        </div>
-        <div class="column columnChart">
-            <img src="img/deadlift.png" class="img-chart"/>
-        </div>
-    </div>
-<!--    <p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can-->
-<!--        lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury-->
-<!--        reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more-->
-<!--        efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform-->
-<!--        handles the administrative tasks, saving time and improving overall efficiency.-->
-<!--    </p>-->
-    <!--    <div th:replace="partials/register :: register"></div>-->
-    <div th:replace="partials/login :: login"></div>
 </div>
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <span><img src="/img/coach.jpg" class="rounded-circle" alt="coach"></span>
+            <h3 style="color: whitesmoke">Coaches <strong style="font-size: 40px">now</strong> you have the ability to manage your Clients in one simple location</h3>
+        </div>
+        <div class="col">
+            <span><img src="/img/trainee.jpg" class="rounded" alt="trainee"></span>
+            <h3 style="color: whitesmoke">Coaches Corner leverage's raw data, such as Sleep Patterns / Daily Fatigue Levels. Incorporating line graphs to maximized <strong>GAINS!</strong></h3>
+        </div>
+    </div>
+</div>
+
+
+<!--<p id="verbiage">Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.-->
+<!--</p>-->
+<!--    <div th:replace="partials/register :: register"></div>-->
+<!--    <div th:replace="partials/login :: login"></div>-->
+</div>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
 </body>
 </html>

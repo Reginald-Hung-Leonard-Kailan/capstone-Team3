@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<dialog  th:fragment="login" class="modal" id="login-modal">
+<dialog open th:fragment="login" class="modal" id="login-modal">
     <button id="close-login" class="close">❌</button>
     <div th:if="${param.error}">
         Invalid Username and Password.

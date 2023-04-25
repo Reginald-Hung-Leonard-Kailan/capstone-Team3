@@ -21,7 +21,7 @@
         <!--        button for profile picture -->
         <label for="upload-btn">Profile Picture:</label><br>
         <button type="button" id="upload-btn">Upload photo</button>
-        <input type="text" id="user-input" name="picture"/><br><br>
+        <input type="text" id="user-input" name="picture" th:value="${user.profilePicture}"/><br><br>
         <!--        button end-->
 
         <button>Submit</button>

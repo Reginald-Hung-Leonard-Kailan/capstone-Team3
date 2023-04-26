@@ -1,6 +1,7 @@
 package com.example.coachescorner.controllers;
 
 import com.example.coachescorner.model.User;
+import com.example.coachescorner.repositories.InjuryRepository;
 import com.example.coachescorner.repositories.UserClientRepository;
 import com.example.coachescorner.repositories.UserRepository;
 import jakarta.validation.Valid;
@@ -9,8 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -21,10 +24,13 @@ public class UserController {
 
     private PasswordEncoder passwordDao;
 
-    public UserController(UserRepository userDao, UserClientRepository userClientDao, PasswordEncoder passwordDao) {
+    private InjuryRepository injuryDao;
+
+    public UserController(UserRepository userDao, UserClientRepository userClientDao, PasswordEncoder passwordDao, InjuryRepository injuryDao) {
         this.userDao = userDao;
         this.userClientDao = userClientDao;
         this.passwordDao = passwordDao;
+        this.injuryDao = injuryDao;
     }
 
     @GetMapping("/")

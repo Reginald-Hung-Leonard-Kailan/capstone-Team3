@@ -38,6 +38,7 @@
                     <div class="card-body">
 <!--                        <h1>Injury Edit</h1>-->
                         <form th:action="@{/injury/edit/{id}(id=${injury.id})}" th:method="Post" >
+                            <div class="edit-heading"><h1>Edit Injury</h1></div>
                             <!--    <input type="hidden" name="user" th:value="${injury.user}"/>-->
                             <label for="description">Description:</label><br>
                             <textarea class="form-control" type="text" id="description" name="description" th:value="${injury.description}"></textarea><br>

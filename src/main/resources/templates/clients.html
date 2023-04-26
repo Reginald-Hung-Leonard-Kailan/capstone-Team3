@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <meta th:name="loggedInId" th:content="${user.getId()}"/>
-    <meta th:name="_csrf" th:content="${_csrf.token}"/>
-    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
-    <title>Title</title>
-    <link href="css/profile.css" rel="stylesheet">
-    <link href="css/layout.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Client Edit</title>
+    <link href="/css/layout.css" rel="stylesheet">
+    <!--    <link href="css/home.css" rel="stylesheet">-->
+    <script src="/js/home.js"></script>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+        *{
+            font-family: "Carrois Gothic SC", sans-serif;
+        }
+    </style>
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper" id="index">
     <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
 <!--    <div id="profile-section">-->
 <!--        <div id="profile-pic"><img th:src="${user.getProfilePicture()}">-->
@@ -23,39 +29,63 @@
 <!--            <div th:text="${user.email}"></div>-->
 <!--        </div>-->
 <!--    </div>-->
-    <hr id="main-hr">
+<!--    <hr id="main-hr">-->
     <!-- Tab links -->
-    <div class="tab">
-        <button class="tablinks"  onclick="openCity(event, 'myClients')">My Clients</button>
-        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'createClients')">Create Clients</button>
-        <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>
-        <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>
-    </div>
+<!--    <div class="tab">-->
+<!--        <button class="tablinks"  onclick="openCity(event, 'myClients')">My Clients</button>-->
+<!--        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'createClients')">Create Clients</button>-->
+<!--        <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>-->
+<!--        <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>-->
+<!--    </div>-->
 
-    <div id="createClients" class="tabcontent">
-        <dialog open class="create-user" id="user-dialog">
+<!--        <dialog open class="create-user" id="user-dialog">-->
+        <div class="container text-center">
 
-            <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form" style="padding-top: 30px">
-                <!--            <label for="firstName">First Name:</label><br>-->
-                <!--            <input type="text" th:field="*{username}" placeholder="Username" id="newUsername"><br>-->
-                <!--            <label for="role">Role:</label>-->
-                <!--            <select id="clientRole" name="role" >-->
-                <!--                <option  value=false>Client</option>-->
-                <!--            </select><br><br> -->
-                <input type="hidden" value="false" name="role" id="role">
-                <label for="firstName">First Name:</label><br>
-                <input type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br><br>
-                <label for="lastName">Last Name</label><br>
-                <input type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br><br>
-                <label for="email">email:</label><br>
-                <input type="text" th:field="*{email}" placeholder="email" id="email"><br><br>
-                <input type="hidden" value="true" name="isActive" id="isActive">
-            <button class="search-button"><a href="/home">cancel</a></button>
-                <button class="search-button">add</button>
-            </form>
-        </dialog>
-    </div>
-    <div id="client-holder">
+            <div class="row align-items-start">
+
+                <div class="col">
+
+                    <div class="card text-bg-secondary my-3">
+
+                        <div class="card-header">
+                            <img src="/img/watermark.png" alt="watermark">
+                        </div>
+
+                        <div class="card-body">
+
+                            <form th:action="@{/client}" th:object="${user}" th:method="POST" id="newClient" class="create-user-form" style="padding-top: 30px">
+                                <!--            <label for="firstName">First Name:</label><br>-->
+                                <!--            <input type="text" th:field="*{username}" placeholder="Username" id="newUsername"><br>-->
+                                <!--            <label for="role">Role:</label>-->
+                                <!--            <select id="clientRole" name="role" >-->
+                                <!--                <option  value=false>Client</option>-->
+                                <!--            </select><br><br> -->
+                                <div class="edit-heading"><h1>Add Client</h1></div>
+                                <input type="hidden" value="false" name="role" id="role">
+                                <label for="firstName">First Name:</label><br>
+                                <input class="form-control form-control-lg bg-light" type="text" th:field="*{firstName}" placeholder="First name" id="firstName"><br><br>
+                                <label for="lastName">Last Name</label><br>
+                                <input class="form-control form-control-lg bg-light" type="text" th:field="*{lastName}" placeholder="Last name" id="lastName"><br><br>
+                                <label for="email">email:</label><br>
+                                <input class="form-control form-control-lg bg-light" type="text" th:field="*{email}" placeholder="email" id="email"><br><br>
+                                <input type="hidden" value="true" name="isActive" id="isActive">
+                                <button class="btn btn-secondary custom"><a href="/home" style="text-decoration: none; color: whitesmoke">cancel</a></button>
+                                <button class="btn btn-secondary custom">add</button>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+<!--        </dialog>-->
+
+<!--    <div id="client-holder">-->
 <!--        <div>-->
 <!--            <div class="client-card">-->
 <!--                <div>Username</div>-->
@@ -121,7 +151,7 @@
 <!--                <div>Bio</div>-->
 <!--            </div>-->
 <!--        </div>-->
-    </div>
+<!--    </div>-->
 </div>
 <script>
 

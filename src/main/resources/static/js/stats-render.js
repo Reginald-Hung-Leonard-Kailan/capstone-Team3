@@ -159,9 +159,9 @@ function renderSleep(arr = sleepArr){
         }
 
         html+= `
- <div class="card d-flex" id="sleep-card">
-         <div>${today}</div>
-         <div>${date}</div> 
+ <div class="card d-flex" style="text-align: center;" id="sleep-card">
+         <div class="card-title">${today}</div>
+         <div class="card-title">${date}</div> 
          <hr style="margin-top: 0px;">
          <div>${sheepPop}</div> 
 <!--         <div>${id}</div>-->

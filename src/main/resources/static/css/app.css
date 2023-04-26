@@ -216,10 +216,11 @@
   }
 
   #sleep-div{
-      background-color: rgb(35,46,60);
+      background: linear-gradient(to left, rgba(35,46,60,1), rgb(255, 255, 255));
   }
 #sleep-div-header{
-    background-color: rgb(35,46,60);
+    background: linear-gradient(to left, rgba(35,46,60,1), rgb(255, 255, 255));
+    /*background-color: rgb(35,46,60);*/
     color: white;
 }
 

@@ -1,11 +1,12 @@
 
 //checking for the fields are not incomplete
 //Sleep
-function saveChangesSleep() {
+async function saveChangesSleep() {
     // Get the date and value inputs
-    const dateInput = document.getElementById("sleep-date"),
+    let dateInput = document.getElementById("sleep-date"),
         valueInput = document.getElementById("sleep-rating"),
-     modal = document.getElementById('sleepModal');
+        modal = document.getElementById('sleepModal'),
+        findIndex;
 
     // Validate the date input
     if (!dateInput.value) {
@@ -20,37 +21,30 @@ function saveChangesSleep() {
         return;
     }
 
-    // Log the date and value
-    console.log("Date:", dateInput.value);
-    console.log("Value:", valueInput.value);
 
-    //close the mod
+    // Log the date and value
+    dateInput = dateInput.value;
+    valueInput = valueInput.value;
+    console.log("Date:", dateInput);
+    console.log("Value:", valueInput);
+
+    //close the modal
     const modalBS = bootstrap.Modal.getInstance(modal);
     modalBS.hide();
+
+    //save/edit/delete in db
+    findIndex = sleepArr.findIndex(obj => obj.date === dateInput);
+    if( findIndex === -1) {
+        await addInfo(valueInput, dateInput, "sleep");
+    } else {
+        let id = sleepArr[findIndex].id;
+        await editInfo(id, valueInput, dateInput, "sleep");
+    }
+
+    await render();
 }
 
 //fatigue
 
 //etc.
 
-
-// Get the element with the id "edit-sleep" this shows the model
-// const editSleep = document.getElementById('edit-sleep');
-// editSleep.addEventListener('click', function() {
-//     alert("I was clicked");
-// });
-
-//old code
-const sleepModal = document.querySelector('#sleep-modal');
-const editSleep = document.querySelector('#edit-sleep');
-const closeSleep = document.querySelector('#close-sleep');
-
-editSleep.addEventListener('click',()=>{
-    sleepModal.showModal();
-})
-closeSleep.addEventListener('click',()=>{
-    sleepModal.close();
-})
-
-//This is for the newDate and newInfo btn
-//                <a id="edit-sleep" class="align-middle" data-bs-toggle="modal" data-bs-target="#sleepModal"><i class="align-middle" data-feather="edit-3"></i></a>

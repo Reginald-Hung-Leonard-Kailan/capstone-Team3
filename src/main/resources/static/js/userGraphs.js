@@ -1,11 +1,3 @@
-let test = [
-    ['1/6/2019', 2],
-    ['1/9/2019', 1],
-    ['1/10/2019', 4],
-    ['1/11/2019', 3],
-    ['1/12/2019', 5],
-    ['2/12/2019', 5]
-];
 
 
 //Fatigue Calendar
@@ -17,7 +9,6 @@ function fatigueCalendar(data = fatigueArr){
         let date = dateToMMDDYYYY(obj.date);
         formatData.push([date, rating])
     })
-
     chartFatigue = JSC.chart('datetimepicker-dashboard', {
         debug: true,
         type: 'calendar month solid',
@@ -209,12 +200,13 @@ function populateGraph(elemId, dateArr, statArr, title){
 
 function popAll(){
     renderSleep();
-    renderFatigue();
+    // renderFatigue();
     benchChart();
     bodyFatChart();
     bodyWeightChart();
     squatChart();
     deadliftChart();
+    // fatigueCalendar()
 }
 
 async function addInfo( info, date, type){

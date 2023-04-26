@@ -20,15 +20,23 @@ async function render(){
     await squatChart();
     await benchChart();
     await deadliftChart();
-    console.log(fatigueArr);
     await fatigueCalendar();
-    await renderProgram();
+    // await renderProgram();
 
 }
 
 //retrieve from REST API
 async function allInfo(id = viewId){
     let url = "/api/user/" + id, newToOld;
+    workoutPlanArr = [];
+    bodyWeightArr = [];
+    bodyFatPercentArr = [];
+    squatArr = [];
+    benchArr = [];
+    deadliftArr = [];
+    sleepArr = [];
+    fatigueArr = [];
+
     let personalStats = await fetch(url).then(response => response.json())
         .then(data => {
             // const {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data;
@@ -37,7 +45,7 @@ async function allInfo(id = viewId){
             data = data.clientInformationList;
             return data.sort((b, a) => new Date(a.date) - new Date(b.date));
         }).catch(e => console.error(e));
-    personalStats.map(data => {
+    await personalStats.map(data => {
         switch (data.type){
             case "workoutPlan":
                 workoutPlanArr.push(data);
@@ -65,6 +73,7 @@ async function allInfo(id = viewId){
                 break;
         }
     })
+    // await fatigueCalendar();
 }
 
 //Personal Info card
@@ -115,7 +124,6 @@ function showInjury(data){
 
     id.innerHTML = html;
 }
-
 
 
 //Sleep Ratings

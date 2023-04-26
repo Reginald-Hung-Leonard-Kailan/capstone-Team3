@@ -135,4 +135,32 @@ public class UserController {
         System.out.println(id);
         return "stats";
     }
+
+    @GetMapping("/setting")
+    public String statsSettingsView(Model model) {
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(userLogIn.getId());
+        model.addAttribute("user", user);
+        return "setting";
+    }
+
+    @PostMapping("/setting/{id}")
+    public String saveSettingForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String picture){
+        User user = userDao.findById(id);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setEmail(email);
+        user.setProfilePicture(picture);
+        userDao.save(user);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/profile")
+        public String showProfileView(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        return "profile";
+        }
+
 }

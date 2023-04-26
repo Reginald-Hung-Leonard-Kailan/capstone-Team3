@@ -61,6 +61,7 @@ public class InjuryController {
 
     @GetMapping("/add-injury/{id}")
     public String showInjuryForm(Model model, @PathVariable long id){
+
 //        model.addAttribute("injury", new Injury());
        User user = userDao.findById(id);
        model.addAttribute("user", user);

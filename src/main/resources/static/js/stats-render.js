@@ -16,10 +16,11 @@ async function render(){
     await allInfo();
     renderSleep();
     bodyFatChart();
-    bodyWeightChart()
-    squatChart()
-    benchChart()
-    deadliftChart()
+    bodyWeightChart();
+    squatChart();
+    benchChart();
+    deadliftChart();
+    fatigueCalendar();
 }
 
 //retrieve from REST API

@@ -68,6 +68,12 @@
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="sidebar-link" href="/setting">
+                                <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Edit Profile</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="/">
                                 <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span>
                             </a>
@@ -175,7 +181,7 @@
                                     <a class="dropdown-item" href="/profile"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                     <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                     <div class="dropdown-divider"></div>
-                                    <a id="settings-button" onclick="openCity(event, 'settings')" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="settings"></i>Settings</a>
+                                    <a id="settings-button" href="setting" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="settings"></i>Settings</a>
                                     <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Log out</a>
@@ -244,8 +250,8 @@
 <!--        <div th:replace="partials/editChart :: editDeadlift"></div>-->
 <!--        <div th:replace="partials/injury :: injury"></div>-->
 <!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
-<!--        <div th:replace="partials/settings :: settings"></div>-->
-<!--        <div th:replace="partials/program :: program"></div>-->
+        <div th:replace="partials/settings :: settings"></div>
+        <div th:replace="partials/program :: program"></div>
                     </div>
                 </main>
                 <footer class="footer">
@@ -265,7 +271,7 @@
                                         <a class="text-muted" href="#" target="_blank">Help Center</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="#" target="_blank">Privacy</a>
+                                        <a class="text-muted" href="/privacyPolicy" target="_blank">Privacy</a>
                                     </li>
                                     <li class="list-inline-item">
                                         <a class="text-muted" href="#" target="_blank">Terms</a>

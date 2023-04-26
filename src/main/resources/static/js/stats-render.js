@@ -14,13 +14,15 @@ render();
 //This is our starting method
 async function render(){
     await allInfo();
-    renderSleep();
-    bodyFatChart();
-    bodyWeightChart();
-    squatChart();
-    benchChart();
-    deadliftChart();
-    fatigueCalendar();
+    await renderSleep();
+    await bodyFatChart();
+    await bodyWeightChart();
+    await squatChart();
+    await benchChart();
+    await deadliftChart();
+    console.log(fatigueArr);
+    await fatigueCalendar();
+    await renderProgram();
 
 }
 
@@ -114,9 +116,10 @@ function showInjury(data){
     id.innerHTML = html;
 }
 
+
+
 //Sleep Ratings
 function renderSleep(arr = sleepArr){
-    const lastSevenElements = arr.slice(-7);
 
     let id = document.querySelector("#sleep-cards"),
         html = "",
@@ -153,12 +156,10 @@ function renderSleep(arr = sleepArr){
                 rating = parseInt(entry.rating);
             }
         })
-
         // repeat the sheep populating based off rating score!
         for(let j = 0; j < rating; j++){
             sheepPop += sheep;
         }
-
         html+= `
  <div class="card d-flex" style="text-align: center;" id="sleep-card">
          <div class="card-title">${today}</div>
@@ -168,33 +169,6 @@ function renderSleep(arr = sleepArr){
 <!--         <div>${id}</div>-->
  </div>`
     }
-
-//     lastSevenElements.forEach(data => {
-//         let {clientInformation, date, id} = data;
-//
-//         if (clientInformation === '1'){
-//             clientInformation=sheep
-//         }
-//     if (clientInformation === '2'){
-//         clientInformation=sheep+sheep
-//     }
-//         if (clientInformation === '3'){
-//             clientInformation=sheep+sheep+sheep
-//         }
-//         if (clientInformation === '4'){
-//             clientInformation=sheep+sheep+sheep+sheep
-//         }
-//         if (clientInformation === '5'){
-//             clientInformation=sheep+sheep+sheep+sheep+sheep
-//         }
-//         html+= `
-//  <div class="card d-flex" id="sleep-card">
-//         <div>${getDayOfWeek(date)}</div>
-//         <hr style="margin-top: 0px;">
-//         <div>${clientInformation}</div>
-// <!--        <div>${id}</div>-->
-// </div>`
-//     })
     id.innerHTML = html;
 }
 

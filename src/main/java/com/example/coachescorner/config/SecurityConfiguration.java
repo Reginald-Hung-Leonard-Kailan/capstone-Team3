@@ -63,6 +63,7 @@ public class SecurityConfiguration {
                     .requestMatchers(
                             "/home", "profile", // only authenticated users can create ads
                             "/client", "/stats", "/stats/*", "/edit/{id}", "/client-edit/{id}", "/users/search", "/add-injury/{id}", "/add-injury/**", "/injury/edit/{id}", "/injury/delete/{id}", "/client-false/{id}", "/api/user/**" , "/api/user", "/setting/{id}", "/setting" // only authenticated users can edit ads
+
                     )
                     .authenticated()
         ;

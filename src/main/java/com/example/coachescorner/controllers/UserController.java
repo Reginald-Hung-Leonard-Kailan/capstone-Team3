@@ -160,4 +160,13 @@ public class UserController {
         return "privacyPolicy";
     }
 
+
+    @GetMapping("/profile")
+        public String showProfileView(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        return "profile";
+        }
+
 }

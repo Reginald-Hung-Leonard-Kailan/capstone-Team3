@@ -21,7 +21,7 @@
   <!--		Nav-->
   <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-      <a class="sidebar-brand" href="index.html">
+      <a class="sidebar-brand" href="/home">
         <span class="align-middle">Coaches Corner</span>
       </a>
 
@@ -60,7 +60,7 @@
 
 
         <li class="sidebar-item">
-          <a class="sidebar-link" href="/home">
+          <a class="sidebar-link" href="/profile">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
           </a>
         </li>
@@ -170,7 +170,7 @@
               <img th:src="${user.getProfilePicture()}" class="avatar img-fluid rounded me-1" alt="user logged in" /> <span class="text-dark" th:text="${user.firstName + ' ' + user.lastName}"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+              <a class="dropdown-item" href="/profile"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
               <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
               <div class="dropdown-divider"></div>
               <a id="settings-button" onclick="openCity(event, 'settings')" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="settings"></i>Settings</a>
@@ -398,7 +398,7 @@
         <div class="row text-muted">
           <div class="col-6 text-start">
             <p class="mb-0">
-              <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> &copy;
+              <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Coaches Corner</strong></a> &copy;
             </p>
           </div>
           <div class="col-6 text-end">

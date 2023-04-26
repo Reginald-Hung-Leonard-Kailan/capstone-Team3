@@ -20,6 +20,7 @@ async function render(){
     squatChart()
     benchChart()
     deadliftChart()
+
 }
 
 //retrieve from REST API
@@ -29,6 +30,7 @@ async function allInfo(id = viewId){
         .then(data => {
             // const {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data;
             viewerInfo(data);
+            showInjury(data);
             data = data.clientInformationList;
             return data.sort((b, a) => new Date(a.date) - new Date(b.date));
         }).catch(e => console.error(e));

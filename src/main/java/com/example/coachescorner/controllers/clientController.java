@@ -26,6 +26,9 @@ public class clientController {
     @GetMapping("/client")
     public String showClientsForm(Model model ){
         model.addAttribute("user", new User());
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User coach = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("coach", coach);
         return "clients";
     }
 
@@ -46,6 +49,9 @@ public class clientController {
 
     @GetMapping("/client-edit/{id}")
     public String showClientEditFrom(@PathVariable long id, Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User coach = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("coach", coach);
         User user = userDao.findById(id);
         model.addAttribute("user", user);
         return "client-edit";

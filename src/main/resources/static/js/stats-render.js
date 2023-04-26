@@ -101,64 +101,8 @@ function renderSleep(arr = sleepArr){
 /*
  * TODO:
  * -Add Fatigue to the calendar chart
- * -Populate the charts
  * -injuries
  * ---grab from our api
  * ---render it correctly
  * ---CRUD
  */
-
-
-
-//Graphs!!
-
-//Body Fat
-// let chartBF , modalBF;
-// function bodyFatChart() {
-//     let bodyFat = [], weighInDate = [];
-//     bodyFatPercentArr.map(data => {
-//         bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
-//         weighInDate.unshift(data.date);
-//     })
-//     chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
-//     // modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
-// }
-
-// function populateGraph(elemId, dateArr, statArr, title){
-//     const ctx = document.getElementById(elemId).getContext('2d');
-//     const data = {
-//         labels: dateArr,
-//         datasets: [{
-//             label: title,
-//             data: statArr,
-//             backgroundColor: 'rgba(78,93,180,0.48)',
-//             borderColor: 'rgb(103,124,245)',
-//             borderWidth: 1,
-//         }],
-//     };
-//
-// // axis labels are not populating...
-//     const options = {
-//         scales: {
-//             yAxes: [{
-//                 scaleLabel: {
-//                     display: true
-//                 }
-//             }],
-//             xAxes: [{
-//                 scaleLabel: {
-//                     display: true
-//                 },
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     };
-//
-//     return new Chart(ctx, {
-//         type: 'line',
-//         data: data,
-//         options: options
-//     });
-// }

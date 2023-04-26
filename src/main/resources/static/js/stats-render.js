@@ -15,6 +15,11 @@ render();
 async function render(){
     await allInfo();
     renderSleep();
+    bodyFatChart();
+    bodyWeightChart()
+    squatChart()
+    benchChart()
+    deadliftChart()
 }
 
 //retrieve from REST API
@@ -24,9 +29,7 @@ async function allInfo(id = viewId){
         .then(data => {
             // const {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data;
             viewerInfo(data);
-            showInjury(data);
-            console.log("data is: " + data);
-            data = data.clientInformationList
+            data = data.clientInformationList;
             return data.sort((b, a) => new Date(a.date) - new Date(b.date));
         }).catch(e => console.error(e));
     personalStats.map(data => {
@@ -64,15 +67,17 @@ function viewerInfo(data){
     let {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data,
         id = document.querySelector("#personal-info"),
         html = "";
-    console.log(data.injuries);
+        if(profilePicture === null){
+            profilePicture= "../img/profilePicPlaceholder.png";
+    }
 
     html = `<div class="card-content"> 
-<h1>First/Last: ${firstName} ${lastName}</h1>
-<div>Phone num: ${phoneNumber}</div>
-<div>bio: ${bio}</div>
-<div>pic: ${profilePicture}</div>
-<div>username:  ${username}</div>
-<div>email: ${email}</div>
+<div style="display: flex; justify-content: center;"><img id="user-stats-picture" src="${profilePicture}"/></div>
+<h1>${firstName} ${lastName}</h1>
+<div> ${phoneNumber}</div>
+<div> ${email}</div>
+<!--<div>bio: ${bio}</div>-->
+
 </div>`;
 
     id.innerHTML = html;
@@ -115,15 +120,15 @@ function renderSleep(arr = sleepArr){
         let {clientInformation, date, id} = data;
         html+= `
  <div class="card d-flex">
-        <div>${clientInformation}</div> 
         <div>${date}</div> 
+        <div>${clientInformation}</div> 
         <div>${id}</div>
 </div>`
     })
     id.innerHTML = html;
 }
 
-/***
+/*
  * TODO:
  * -Add Fatigue to the calendar chart
  * -Populate the charts
@@ -132,3 +137,58 @@ function renderSleep(arr = sleepArr){
  * ---render it correctly
  * ---CRUD
  */
+
+
+
+//Graphs!!
+
+//Body Fat
+// let chartBF , modalBF;
+// function bodyFatChart() {
+//     let bodyFat = [], weighInDate = [];
+//     bodyFatPercentArr.map(data => {
+//         bodyFat.unshift(parseFloat(data.clientInformation).toFixed(2));
+//         weighInDate.unshift(data.date);
+//     })
+//     chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
+//     // modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
+// }
+
+// function populateGraph(elemId, dateArr, statArr, title){
+//     const ctx = document.getElementById(elemId).getContext('2d');
+//     const data = {
+//         labels: dateArr,
+//         datasets: [{
+//             label: title,
+//             data: statArr,
+//             backgroundColor: 'rgba(78,93,180,0.48)',
+//             borderColor: 'rgb(103,124,245)',
+//             borderWidth: 1,
+//         }],
+//     };
+//
+// // axis labels are not populating...
+//     const options = {
+//         scales: {
+//             yAxes: [{
+//                 scaleLabel: {
+//                     display: true
+//                 }
+//             }],
+//             xAxes: [{
+//                 scaleLabel: {
+//                     display: true
+//                 },
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     };
+//
+//     return new Chart(ctx, {
+//         type: 'line',
+//         data: data,
+//         options: options
+//     });
+// }

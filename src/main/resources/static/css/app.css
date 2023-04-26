@@ -149,7 +149,40 @@
         color:#fff;
         text-decoration:none;
     }
+    h5{
+        display: flex;
+        justify-content: center;
+    }
+    #carouselExample{
+        aspect-ratio: 2/1;
+        max-width: 700px;
+        color: black;
+    }
+    #carouselExample button{
+        color: black;
+    }
+    img{
+        margin-inline: auto;
+        border-radius: 5px;
+    }
 
+    #user-stats-picture{
+
+        height: 100px;
+        width: 100px;
+
+    }
+    #personal-info{
+        padding-top: 0;
+    }
+
+    .card-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-inline: auto;
+        text-align: center;
+    }
 
 
 

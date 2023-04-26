@@ -1,94 +1,4 @@
 
-let workoutPlanArr = [],
-    bodyWeightArr = [],
-    bodyFatPercentArr = [],
-    squatArr = [],
-    benchArr = [],
-    deadliftArr = [],
-    sleepArr = [],
-    fatigueArr = [];
-
-//Sleep
-function renderSleep(){
-    let id = document.querySelector("#sleep-days"),
-        html=``,
-        weekNames = getWeekdayNames(),
-        oneWeekAgo = new Date(),
-        total = 0,
-        count = 0;
-
-    let entries =[];
-
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
-
-    let weekOldSleep = sleepArr.filter(entry => {
-        const entryDate = new Date(entry.date);
-        return entryDate >= oneWeekAgo;
-    });
-
-    weekOldSleep.map(obj => {
-        let {date, clientInformation, id, type} = obj,
-            weekDay = getDayOfWeek( date );
-        entries.push({ weekDay, clientInformation, id, type} );
-    });
-
-    for(let i=0; i<7; i++){
-        let rating = 0;
-        entries.map(entry => {
-            if(entry.weekDay === weekNames[i]){
-                rating = parseInt(entry.clientInformation);
-                total += rating;
-                count++;
-            }
-        })
-        html += `
-                 <div>${weekNames[i]}: ${rating}</div>
-                 <hr>`
-    }
-
-    document.querySelector("#sleep-average").innerHTML = (total / count).toFixed(1);
-
-    id.innerHTML = html;
-}
-
-// Fatigue
-function renderFatigue(){
-    let id = document.querySelector("#fatigue-days"),
-        html=``,
-        weekNames = getWeekdayNames(),
-        oneWeekAgo = new Date(),
-        total = 0,
-        count = 0;
-
-        let entries =[];
-
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 8);
-
-    let weekOldFatigue = fatigueArr.filter(entry => {
-        const entryDate = new Date(entry.date);
-        return entryDate >= oneWeekAgo;
-    });
-
-    weekOldFatigue.map(obj => {
-        let {date, clientInformation, id, type} = obj,
-            weekDay = getDayOfWeek( date );
-        entries.push({ weekDay, clientInformation, id, type} );
-    });
-
-    for(let i=0; i<7; i++){
-        let rating = 0;
-        entries.map(entry => {
-            if(entry.weekDay === weekNames[i]){
-                rating = parseInt(entry.clientInformation);
-                total += rating;
-                count++;
-            }
-        })
-        html += `<div>${weekNames[i]}: ${rating}</div> <hr>`
-    }
-    document.querySelector("#fatigue-average").innerHTML = (total / count).toFixed(1);
-    id.innerHTML = html;
-}
 
 // Body Fat %
 let chartBF , modalBF;
@@ -101,7 +11,7 @@ function bodyFatChart() {
         weighInDate.unshift(data.date);
     })
     chartBF = populateGraph("bodyFatChart", weighInDate, bodyFat, "Body Fat %");
-    modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
+    // modalBF = populateGraph("bodyFatModal", weighInDate, bodyFat, "Body Fat %");
 }
 
 // Body Weight
@@ -113,7 +23,7 @@ function bodyWeightChart() {
         bodyweightInDate.unshift( data.date );
     })
     chartBW = populateGraph("bodyWeightChart", bodyweightInDate, bodyWeight, "Body Weight");
-    modalBW = populateGraph("bodyWeightModal", bodyweightInDate, bodyWeight, "Body Weight");
+    // modalBW = populateGraph("bodyWeightModal", bodyweightInDate, bodyWeight, "Body Weight");
 }
 
 // Squat
@@ -125,7 +35,7 @@ function squatChart() {
         squatDate.unshift( data.date );
     })
     chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
-    modalS = populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
+    // modalS = populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
 }
 
 // BenchChart
@@ -137,19 +47,19 @@ function benchChart() {
         benchDate.unshift( data.date );
     })
     chartB = populateGraph('benchChart', benchDate, benchWeight, 'Bench');
-    modalB = populateGraph('benchModal', benchDate, benchWeight, 'Bench');
+    // modalB = populateGraph('benchModal', benchDate, benchWeight, 'Bench');
 }
 
 // deadLift chart
 let chartDL, modalDL;
-function deadLiftChart() {
+function deadliftChart() {
     let deadLift = [], liftDate = [];
     deadliftArr.map(data => {
         deadLift.unshift( parseInt( data.clientInformation ) );
         liftDate.unshift( data.date );
     })
-    chartDL = populateGraph('deadLiftChart', liftDate, deadLift, 'Deadlift');
-    modalDL = populateGraph('deadliftModal', liftDate, deadLift, 'Deadlift');
+    chartDL = populateGraph('deadliftChart', liftDate, deadLift, 'Deadlift');
+    // modalDL = populateGraph('deadliftModal', liftDate, deadLift, 'Deadlift');
 }
 
 function populateGraph(elemId, dateArr, statArr, title){
@@ -159,8 +69,8 @@ function populateGraph(elemId, dateArr, statArr, title){
         datasets: [{
             label: title,
             data: statArr,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(78,93,180,0.48)',
+            borderColor: 'rgb(103,124,245)',
             borderWidth: 1,
         }],
     };
@@ -192,43 +102,43 @@ function populateGraph(elemId, dateArr, statArr, title){
 }
 //Simplify
 
-async function setAllArr(){
-    let id = document.querySelector('meta[name="view"]').content;
-    let url = "/api/user/" + id + '/details';
-    let personalStats = await fetch(url).then(response => response.json())
-                                .then(data => {
-                                    return data.sort((b, a) => new Date(a.date) - new Date(b.date));
-                                }).catch(e => console.error(e));
-    personalStats.map(data => {
-        switch (data.type){
-            case "workoutPlan":
-                workoutPlanArr.push(data);
-                break;
-            case "bodyWeight":
-                bodyWeightArr.push(data);
-                break;
-            case "bodyFatPercent":
-                bodyFatPercentArr.push(data);
-                break;
-            case "squat":
-                squatArr.push(data);
-                break;
-            case "bench":
-                benchArr.push(data);
-                break;
-            case "deadlift":
-                deadliftArr.push(data);
-                break;
-            case "sleep":
-                sleepArr.push(data);
-                break;
-            case "fatigue":
-                fatigueArr.push(data);
-                break;
-        }
-    })
-
-}
+// async function setAllArr(){
+//     let id = document.querySelector('meta[name="view"]').content;
+//     let url = "/api/user/" + id + '/details';
+//     let personalStats = await fetch(url).then(response => response.json())
+//                                 .then(data => {
+//                                     return data.sort((b, a) => new Date(a.date) - new Date(b.date));
+//                                 }).catch(e => console.error(e));
+//     personalStats.map(data => {
+//         switch (data.type){
+//             case "workoutPlan":
+//                 workoutPlanArr.push(data);
+//                 break;
+//             case "bodyWeight":
+//                 bodyWeightArr.push(data);
+//                 break;
+//             case "bodyFatPercent":
+//                 bodyFatPercentArr.push(data);
+//                 break;
+//             case "squat":
+//                 squatArr.push(data);
+//                 break;
+//             case "bench":
+//                 benchArr.push(data);
+//                 break;
+//             case "deadlift":
+//                 deadliftArr.push(data);
+//                 break;
+//             case "sleep":
+//                 sleepArr.push(data);
+//                 break;
+//             case "fatigue":
+//                 fatigueArr.push(data);
+//                 break;
+//         }
+//     })
+//
+// }
 
 function popAll(){
     renderSleep();

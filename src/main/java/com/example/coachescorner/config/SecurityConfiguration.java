@@ -56,13 +56,13 @@ public class SecurityConfiguration {
                     /* Pages that require authentication */
                 .and()
                     .authorizeHttpRequests()
-                    .requestMatchers("/", "/register", "/login", "/css/**", "/js/**", "/img/**", "/about", "/stats", "/stats/{id}") // anyone can see home, the ads pages, and sign up
+                    .requestMatchers("/", "/register", "/login", "/css/**", "/js/**", "/img/**", "/about", "/stats", "/stats/{id}", "/error/**", "/privacyPolicy") // anyone can see home, the ads pages, and sign up
                     .permitAll()
                 .and()
                     .authorizeHttpRequests()
                     .requestMatchers(
                             "/home", // only authenticated users can create ads
-                            "/client", "/stats", "/stats/*", "/edit/{id}", "/client-edit/{id}", "/users/search", "/add-injury/{id}", "/add-injury/**", "/injury/edit/{id}", "/injury/delete/{id}", "/client-false/{id}", "/api/user/**" , "/api/user" // only authenticated users can edit ads
+                            "/client", "/stats", "/stats/*", "/edit/{id}", "/client-edit/{id}", "/users/search", "/add-injury/{id}", "/add-injury/**", "/injury/edit/{id}", "/injury/delete/{id}", "/client-false/{id}", "/api/user/**" , "/api/user", "/setting/{id}", "/setting" // only authenticated users can edit ads
                     )
                     .authenticated()
         ;

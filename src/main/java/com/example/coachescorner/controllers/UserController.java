@@ -154,4 +154,10 @@ public class UserController {
         userDao.save(user);
         return "redirect:/home";
     }
+
+    @GetMapping("/privacy")
+    public String privacyView(){
+        return "privacyPolicy";
+    }
+
 }

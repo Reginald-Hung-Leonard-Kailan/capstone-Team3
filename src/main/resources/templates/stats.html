@@ -208,12 +208,13 @@
             </div>
           </div>
           <div class="col-lg-8 col-xxl-9">
-            <div class="card flex-fill w-100">
-              <div class="card-header">
+            <div id="sleep-div" class="card flex-fill w-100">
+              <div id="sleep-div-header" class="card-header">
 
                 <h5 class="card-title mb-0">Sleep Ratings</h5>
               </div>
               <div id="sleep-cards" class="card-body py-3 d-flex">
+
               </div>
             </div>
           </div>
@@ -231,23 +232,23 @@
                   <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner rounded">
                       <div class="carousel-item active" >
-                        <canvas id="bodyFatChart"></canvas>
+                        <canvas id="bodyFatChart" class="stats-chart"></canvas>
 <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
                       </div>
                       <div class="carousel-item">
-                        <canvas id="bodyWeightChart"></canvas>
+                        <canvas id="bodyWeightChart" class="stats-chart"></canvas>
                         <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
                       </div>
                       <div class="carousel-item">
-                        <canvas id="squatChart"></canvas>
+                        <canvas id="squatChart" class="stats-chart"></canvas>
                         <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
                       </div>
                       <div class="carousel-item">
-                        <canvas id="benchChart"></canvas>
+                        <canvas id="benchChart" class="stats-chart"></canvas>
                         <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
                       </div>
                       <div class="carousel-item">
-                        <canvas id="deadliftChart"></canvas>
+                        <canvas id="deadliftChart" class="stats-chart"></canvas>
                         <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
                       </div>
                     </div>

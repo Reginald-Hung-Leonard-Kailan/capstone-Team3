@@ -216,12 +216,60 @@
           <div class="col-12 col-md-12 col-lg-7 d-flex order-3 order-xxl-2">
             <div class="card flex-fill w-100">
               <div class="card-header">
-
                 <h5 class="card-title mb-0">Real-Time</h5>
               </div>
               <div class="card-body px-4">
 <!--                CARROSEL GOES INSIDE OF THIS-->
-
+                <div class="container">
+                  <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner rounded">
+                      <div class="carousel-item active" >
+                        <canvas id="bodyFatChart"></canvas>
+<!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
+                      </div>
+                      <div class="carousel-item">
+                        <canvas id="bodyWeightChart"></canvas>
+                        <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
+                      </div>
+                      <div class="carousel-item">
+                        <canvas id="squatChart"></canvas>
+                        <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
+                      </div>
+                      <div class="carousel-item">
+                        <canvas id="benchChart"></canvas>
+                        <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
+                      </div>
+                      <div class="carousel-item">
+                        <canvas id="deadliftChart"></canvas>
+                        <!--                <div th:replace="partials/chart :: bodyfat-chart"></div>-->
+                      </div>
+                    </div>
+                    <button
+                            class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#carouselExample"
+                            data-bs-slide="prev"
+                    >
+              <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+              ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                            class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#carouselExample"
+                            data-bs-slide="next"
+                    >
+              <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+              ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
 <!--                END OF CARROSEL-->
               </div>
             </div>
@@ -248,75 +296,78 @@
             <div class="card flex-fill">
               <div class="card-header">
 
-                <h5 class="card-title mb-0">Latest Projects</h5>
+                <h5 class="card-title mb-0">Injury Reports</h5><br>
+                <a th:href="@{/add-injury/{id}(id=${id})}" style="text-decoration: none; color: grey"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                </svg> Add Injury</a>
               </div>
               <table class="table table-hover my-0">
                 <thead>
                 <tr>
                   <th>Name</th>
                   <th class="d-none d-xl-table-cell">Start Date</th>
-                  <th class="d-none d-xl-table-cell">End Date</th>
+                  <th class="d-none d-xl-table-cell">Title</th>
                   <th>Status</th>
-                  <th class="d-none d-md-table-cell">Assignee</th>
+                  <th class="d-none d-md-table-cell">Description</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td>Project Apollo</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-success">Done</span></td>
-                  <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                </tr>
-                <tr>
-                  <td>Project Fireball</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-danger">Cancelled</span></td>
-                  <td class="d-none d-md-table-cell">William Harris</td>
-                </tr>
-                <tr>
-                  <td>Project Hades</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-success">Done</span></td>
-                  <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                </tr>
-                <tr>
-                  <td>Project Nitro</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-warning">In progress</span></td>
-                  <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                </tr>
-                <tr>
-                  <td>Project Phoenix</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-success">Done</span></td>
-                  <td class="d-none d-md-table-cell">William Harris</td>
-                </tr>
-                <tr>
-                  <td>Project X</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-success">Done</span></td>
-                  <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                </tr>
-                <tr>
-                  <td>Project Romeo</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-success">Done</span></td>
-                  <td class="d-none d-md-table-cell">Christina Mason</td>
-                </tr>
-                <tr>
-                  <td>Project Wombat</td>
-                  <td class="d-none d-xl-table-cell">01/01/2021</td>
-                  <td class="d-none d-xl-table-cell">31/06/2021</td>
-                  <td><span class="badge bg-warning">In progress</span></td>
-                  <td class="d-none d-md-table-cell">William Harris</td>
-                </tr>
+                <tbody  id="injury-info">
+<!--                <tr>-->
+<!--                  <td>Project Apollo</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-success">Done</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Fireball</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-danger">Cancelled</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">William Harris</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Hades</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-success">Done</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">Sharon Lessman</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Nitro</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-warning">In progress</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">Vanessa Tucker</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Phoenix</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-success">Done</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">William Harris</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project X</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-success">Done</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">Sharon Lessman</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Romeo</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-success">Done</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">Christina Mason</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                  <td>Project Wombat</td>-->
+<!--                  <td class="d-none d-xl-table-cell">01/01/2021</td>-->
+<!--                  <td class="d-none d-xl-table-cell">31/06/2021</td>-->
+<!--                  <td><span class="badge bg-warning">In progress</span></td>-->
+<!--                  <td class="d-none d-md-table-cell">William Harris</td>-->
+<!--                </tr>-->
                 </tbody>
               </table>
             </div>
@@ -359,6 +410,7 @@
 
 <script src="/js/app.js"></script>
 <script src="/js/stats-render.js"></script>
+<script src="/js/userGraphs.js"></script>
 
 <!--Graph in Sleep Ratings dashboard-->
 <script>

@@ -28,14 +28,6 @@ async function render(){
 //retrieve from REST API
 async function allInfo(id = viewId){
     let url = "/api/user/" + id, newToOld;
-    workoutPlanArr = [];
-    bodyWeightArr = [];
-    bodyFatPercentArr = [];
-    squatArr = [];
-    benchArr = [];
-    deadliftArr = [];
-    sleepArr = [];
-    fatigueArr = [];
 
     let personalStats = await fetch(url).then(response => response.json())
         .then(data => {
@@ -98,7 +90,6 @@ function viewerInfo(data){
 }
 
 //Injury Info card
-
 function showInjury(data){
     let {injuryDate, status, title, description} = data.injuries,
         id = document.querySelector("#injury-info"),
@@ -152,7 +143,7 @@ function renderSleep(arr = sleepArr){
         const entryDate = new Date(entry.date);
         return entryDate >= oneWeekAgo;
     })
-
+helper = weekOldSleep;
     // We convert the information that is left into a readable format
     weekOldSleep.map(obj => {
         let {date, clientInformation, id, type} = obj,

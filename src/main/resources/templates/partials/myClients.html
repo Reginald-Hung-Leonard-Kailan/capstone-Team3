@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="myClients" id="myClients" class="tabcontent container-fluid">
-  <div class="client-search-holder d-flex justify-content-around">
-      <a class="tablinks" id="client-button" href="/client">
-          <i class="align-middle" data-feather="user-plus"></i>
+  <div class="client-search-holder d-flex justify-content-around mb-3">
+      <a class="tablinks d-flex justify-content-around" style="text-decoration: none" id="client-button" href="/client">
+          <div class="card-title" style="font-size: 20px;">Add Client</div>&nbsp;&nbsp;&nbsp;
+          <i class="align-middle" style="height: 25px; width: 25px;" data-feather="user-plus"></i>
       </a>
     <form  th:action="@{/users/search}" id="client-search" class="d-flex">
         <input   id="name" name="name" class="search form-control" type="text" placeholder="name">

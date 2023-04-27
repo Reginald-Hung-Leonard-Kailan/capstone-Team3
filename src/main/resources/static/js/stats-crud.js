@@ -310,3 +310,38 @@ async function saveChangesDeadlift() {
     await allInfo();
     deadliftChart();
 }
+
+//workout program
+async function addProgram(){
+    // Get the date and value inputs
+    let dateInput = document.getElementById("program-date"),
+        valueInput = document.getElementById("program-url"),
+        modal = document.getElementById('programModal'),
+        findIndex;
+
+    //Validate date
+    if (!dateInput.value) {
+        alert("Please select a date.");
+        return;
+    }
+
+    // Validate the value input
+    const value = valueInput.value;
+    if (value.length < 10) {
+        alert("Don't forget the https://www. in front of the url!");
+        return;
+    }
+
+    // save the date and value
+    dateInput = dateInput.value;
+    valueInput = valueInput.value;
+    await addInfo(valueInput, dateInput, "workoutPlan");
+
+    //close the modal
+    const modalBS = bootstrap.Modal.getInstance(modal);
+    modalBS.hide();
+
+    workoutPlanArr = [];
+    await allInfo();
+    await renderProgram();
+}

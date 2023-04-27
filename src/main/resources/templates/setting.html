@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <meta th:name="loggedInId" th:content="${user.id}"/>
-  <meta th:name="_csrf" th:content="${_csrf.token}"/>
-  <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
-  <meta th:name="view" th:content="${user.getId()}"/>
-  <title>Coach's Corner</title>
-  <link href="img/favicon.jpg" rel="icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <!--    <link href="css/profile.css" rel="stylesheet">-->
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <meta th:name="loggedInId" th:content="${user.id}"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta th:name="view" th:content="${user.getId()}"/>
+    <title>Coach's Corner</title>
+    <link href="img/favicon.jpg" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!--    <link href="css/profile.css" rel="stylesheet">-->
 
-  <!--    <link href="css/layout.css" rel="stylesheet">-->
-  <link href="css/app.css" rel="stylesheet">
-  <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--    <link href="css/layout.css" rel="stylesheet">-->
+    <link href="css/app.css" rel="stylesheet">
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 <!--        <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>-->
 <div class="wrapper">
-  <!--		Nav-->
-  <nav id="sidebar" class="sidebar js-sidebar">
-    <div class="sidebar-content js-simplebar">
-      <a class="sidebar-brand" href="/home">
-        <span class="align-middle">Coaches Corner</span>
-      </a>
+    <!--		Nav-->
+    <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+            <a class="sidebar-brand" href="/home">
+                <span class="align-middle">Coaches Corner</span>
+            </a>
 
-      <ul class="sidebar-nav">
-        <li class="sidebar-header">
-          Main
-        </li>
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">
+                    Main
+                </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
-            <i class="align-middle" data-feather="film"></i> <span class="align-middle">Explore</span>
-          </a>
-        </li>
+                <!-- use this in the future when we figure out what to do with it-->
+                <!--        <li class="sidebar-item">-->
+                <!--          <a class="sidebar-link" href="#">-->
+                <!--            <i class="align-middle" data-feather="film"></i> <span class="align-middle">Explore</span>-->
+                <!--          </a>-->
+                <!--        </li>-->
+
 
         <li class="sidebar-item">
           <a class="sidebar-link" href="/stats">
@@ -50,22 +54,26 @@
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" id="program-header">
-            <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle tablinks" onclick="openCity(event, 'program')">Program</span>
-          </a>
-        </li>
 
-        <li class="sidebar-header">
-          Account
-        </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" id="program-header">
+                        <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle tablinks"
+                                                                                    onclick="openCity(event, 'program')">Program</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-header">
+                    Account
+                </li>
 
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/home">
-            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-          </a>
-        </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/home">
+                        <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                    </a>
+                    </a>
+                </li>
+
 
         <li class="sidebar-item active">
           <a class="sidebar-link" href="/setting">
@@ -73,182 +81,207 @@
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/">
-            <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span>
-          </a>
-        </li>
-      </ul>
+                <li class="sidebar-item">
+                    <form class="sidebar-link"  th:action="@{/logout}" th:method="post" >
+                        <button><i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span></button>
+                    </form>
+                </li>
+            </ul>
 
-    </div>
-  </nav>
-
-  <div class="main">
-    <nav class="navbar navbar-expand navbar-light navbar-bg">
-      <a class="sidebar-toggle js-sidebar-toggle">
-        <i class="hamburger align-self-center"></i>
-      </a>
-      <div class="navbar-collapse collapse">
-        <ul class="navbar-nav navbar-align">
-          <li class="nav-item dropdown">
-            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-              <div class="position-relative">
-                <i class="align-middle" data-feather="bell"></i>
-                <span class="indicator">2</span>
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-              <div class="dropdown-menu-header">
-                2 New Notifications
-              </div>
-              <div class="list-group">
-                <a href="#" class="list-group-item">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-2">
-                      <i class="text-danger" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="col-10">
-                      <div class="text-dark">Updates Coming Soon</div>
-                      <div class="text-muted small mt-1">This is not the final version!</div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-2">
-                      <i class="text-warning" data-feather="bell"></i>
-                    </div>
-                    <div class="col-10">
-                      <div class="text-dark">Calendar Alerts</div>
-                      <div class="text-muted small mt-1">Calendar alerts will be coming soon.</div>
-                      <div class="text-muted small mt-1">just now</div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-2">
-                      <i class="text-primary" data-feather="home"></i>
-                    </div>
-                    <div class="col-10">
-                      <div class="text-dark">Welcome to your Home page</div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-2">
-                      <i class="text-success" data-feather="user-plus"></i>
-                    </div>
-                    <div class="col-10">
-                      <div class="text-dark">Friends & Followers</div>
-                      <div class="text-muted small mt-1">Friends and followers coming soon!</div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="dropdown-menu-footer">
-                <a href="#" class="text-muted">Show all notifications</a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
-              <div class="position-relative">
-                <i class="align-middle" data-feather="message-square"></i>
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-              <div class="dropdown-menu-header">
-                <div class="position-relative">
-                  No New Messages
-                </div>
-              </div>
-              <div class="dropdown-menu-footer">
-                <a href="#" class="text-muted">Show all messages</a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-              <i class="align-middle" data-feather="settings"></i>
-            </a>
-
-            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <img th:src="${user.getProfilePicture()}" class="avatar img-fluid rounded me-1" alt="user logged in" /> <span class="text-dark" th:text="${user.firstName + ' ' + user.lastName}"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-              <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
-              <div class="dropdown-divider"></div>
-              <a id="settings-button" onclick="openCity(event, 'settings')" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="settings"></i>Settings</a>
-              <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Log out</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+        </div>
     </nav>
-    <!--End of nav bar-->
-    <main class="content">
-      <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3"><strong>Edit Profile</strong> Dashboard</h1>
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+            <a class="sidebar-toggle js-sidebar-toggle">
+                <i class="hamburger align-self-center"></i>
+            </a>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav navbar-align">
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                            <div class="position-relative">
+                                <i class="align-middle" data-feather="bell"></i>
+                                <span class="indicator">2</span>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                             aria-labelledby="alertsDropdown">
+                            <div class="dropdown-menu-header">
+                                2 New Notifications
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-2">
+                                            <i class="text-danger" data-feather="alert-circle"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="text-dark">Updates Coming Soon</div>
+                                            <div class="text-muted small mt-1">This is not the final version!</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-2">
+                                            <i class="text-warning" data-feather="bell"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="text-dark">Calendar Alerts</div>
+                                            <div class="text-muted small mt-1">Calendar alerts will be coming soon.
+                                            </div>
+                                            <div class="text-muted small mt-1">just now</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-2">
+                                            <i class="text-primary" data-feather="home"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="text-dark">Welcome to your Home page</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-2">
+                                            <i class="text-success" data-feather="user-plus"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="text-dark">Friends & Followers</div>
+                                            <div class="text-muted small mt-1">Friends and followers coming soon!</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="dropdown-menu-footer">
+                                <a href="#" class="text-muted">Show all notifications</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+                            <div class="position-relative">
+                                <i class="align-middle" data-feather="message-square"></i>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                             aria-labelledby="messagesDropdown">
+                            <div class="dropdown-menu-header">
+                                <div class="position-relative">
+                                    Feature Coming Soon!
+                                    <!--                  No New Messages-->
+                                </div>
+                            </div>
+                            <div class="dropdown-menu-footer">
+                                <a href="#" class="text-muted">Show all messages</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                            <i class="align-middle" data-feather="settings"></i>
+                        </a>
 
-        <form th:action="@{/edit/{id}(id=${user.id})}" th:method="POST" id="profile-form" class="modal-form">
-      <!--        <label for="role">Role:</label>-->
-      <!--        <select name="role" id="role">-->
-      <!--            <option value="current">Coach</option>-->
-      <!--            <option value="past">Client</option>-->
-      <!--        </select><br><br>-->
-      <div class="edit-heading"></div>
-      <label for="first-name" id="firstname">First Name:</label><br>
-      <input id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br><br>
-      <label for="last-name">Last Name:</label><br>
-      <input id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br><br>
-      <label for="email">Email:</label><br>
-      <input id="email" type="text" name="email" th:value="${user.email}"><br><br>
-      <!--        <label for="username">Username:</label><br>-->
-      <!--        <input id="username" type="text" name="username" th:value="${user.username}"><br>-->
-      <!--        button for profile picture -->
-      <label for="upload-btn">Profile Picture:</label><br>
-      <button type="button" id="upload-btn">Upload photo</button>
-      <input type="text" id="user-input" name="picture" th:value="${user.profilePicture}"/><br><br>
-      <!--        button end-->
+                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                            <img th:src="${user.getProfilePicture()}" class="avatar img-fluid rounded me-1"
+                                 alt="user logged in"/> <span class="text-dark"
+                                                              th:text="${user.firstName + ' ' + user.lastName}"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+                                                                                  data-feather="user"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i>
+                                Analytics</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="settings-button" onclick="openCity(event, 'settings')"
+                               class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="edit"></i>Edit
+                                Profile</a>
+                            <!--              this has no path or logic                  -->
+                            <!--              <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>-->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--End of nav bar-->
 
-      <button>Submit</button>
-    </form>
-  </div>
-  </main>
-  <footer class="footer">
-    <div class="container-fluid">
-      <div class="row text-muted">
-        <div class="col-6 text-start">
-          <p class="mb-0">
-            <a class="text-muted" href="#" target="_blank"><strong>Coaches Corner</strong></a> &copy;
-          </p>
-        </div>
-        <div class="col-6 text-end">
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <a class="text-muted" href="#" target="_blank">Support</a>
-            </li>
-            <li class="list-inline-item">
-              <a class="text-muted" href="#" target="_blank">Help Center</a>
-            </li>
-            <li class="list-inline-item">
-              <a class="text-muted" href="/privacyPolicy" target="_blank">Privacy</a>
-            </li>
-            <li class="list-inline-item">
-              <a class="text-muted" href="#" target="_blank">Terms</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <main class="content">
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <div class="card text-bg-secondary my-3">
+                            <div class="card-header">
+                                <img src="/img/watermark.png" alt="watermark">
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/edit/{id}(id=${user.id})}" th:method="POST" id="profile-form"
+                                      class="modal-form">
+                                    <div class="edit-heading"></div>
+                                    <label for="first-name" id="firstname">First Name:</label><br>
+                                    <input class="form-control form-control-lg bg-light" id="first-name" type="text" name="firstname"
+                                           th:value="${user.firstName}"><br><br>
+                                    <label for="last-name">Last Name:</label><br>
+                                    <input class="form-control form-control-lg bg-light" id="last-name" type="text" name="lastname"
+                                           th:value="${user.lastName}"><br><br>
+                                    <label for="email">Email:</label><br>
+                                    <input class="form-control form-control-lg bg-light" id="email" type="text" name="email" th:value="${user.email}"><br><br>
+                                    <label for="upload-btn">Profile Picture:</label><br>
+
+                                    <input class="form-control form-control-lg bg-light" type="text" id="user-input" name="picture"
+                                           th:value="${user.profilePicture}"/>
+                                  <button class="btn btn-secondary custom" type="button" id="upload-btn">Upload photo</button>
+                                  <br>
+                                  <br>
+
+                                    <!--        button end-->
+                                    <button class="btn btn-secondary custom" >Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row text-muted">
+                    <div class="col-6 text-start">
+                        <p class="mb-0">
+                            <a class="text-muted" href="/home" target="_blank"><strong>Coaches Corner</strong></a>
+                            &copy;
+                        </p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <ul class="list-inline">
+                            <!--              where does support go? what does support do?-->
+                            <!--            <li class="list-inline-item">-->
+                            <!--              <a class="text-muted" href="#" target="_blank">Support</a>-->
+                            <!--            </li>-->
+                            <!--            where does this go? what does it look like??-->
+                            <!--            <li class="list-inline-item">-->
+                            <!--              <a class="text-muted" href="#" target="_blank">Help Center</a>-->
+                            <!--            </li>-->
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="/privacy" target="_blank">Privacy</a>
+                            </li>
+                            <!--    Update terms once drafted by a lawyer           -->
+                            <!--            <li class="list-inline-item">-->
+                            <!--              <a class="text-muted" href="#" target="_blank">Terms</a>-->
+                            <!--            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-  </footer>
-</div>
 </div>
 <script src="js/app.js"></script>
 <script src="/js/profile.js"></script>

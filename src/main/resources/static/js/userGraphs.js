@@ -8,8 +8,10 @@ function fatigueCalendar(data = fatigueArr){
         let rating = parseInt(obj.clientInformation);
         let date = dateToMMDDYYYY(obj.date);
         formatData.push([date, rating])
-    })
+    });
+
     console.log(formatData);
+
     chartFatigue = JSC.chart('datetimepicker-dashboard', {
         debug: true,
         type: 'calendar month solid',
@@ -130,7 +132,7 @@ function squatChart() {
         squatWeight.unshift( parseInt( data.clientInformation ) );
         squatDate.unshift( data.date );
     })
-    chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
+    chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat");
     // modalS = populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
 }
 

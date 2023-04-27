@@ -78,7 +78,7 @@ function editCard(clients){
 }
 
 async function run() {
-    await setAllArr();
+    // await setAllArr();
     await popAll();
     await showPlans();
 }

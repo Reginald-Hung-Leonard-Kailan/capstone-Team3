@@ -20,7 +20,6 @@ async function render(){
     await squatChart();
     await benchChart();
     await deadliftChart();
-    await fatigueCalendar(fatigueArr);
     // await renderProgram();
 
 }
@@ -73,7 +72,7 @@ async function allInfo(id = viewId){
                 break;
         }
     })
-    // await fatigueCalendar();
+    await fatigueCalendar(fatigueArr);
 }
 
 //Personal Info card

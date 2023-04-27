@@ -24,8 +24,11 @@ function editCard(clients){
 
         let client=clients[i];
         let profilePicture = client[4];
-        if(profilePicture.length < 1){
-            profilePicture= "../img/profilePicPlaceholder.png";}
+
+        if(profilePicture == null || profilePicture === ""){
+            profilePicture = "../img/profilePicPlaceholder.png";
+        }
+
         html += `
        <div class="col-lg-4 col-sm-6">
         <div class="card profile-card-3">
@@ -78,7 +81,7 @@ function editCard(clients){
 }
 
 async function run() {
-    await setAllArr();
+    // await setAllArr();
     await popAll();
     await showPlans();
 }

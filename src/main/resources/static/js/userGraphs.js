@@ -134,7 +134,7 @@ function squatChart() {
         squatWeight.unshift( parseInt( data.clientInformation ) );
         squatDate.unshift( data.date );
     })
-    chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat Weight");
+    chartS = populateGraph("squatChart", squatDate, squatWeight, "Squat");
     // modalS = populateGraph("squatModal", squatDate, squatWeight, "Squat Weight");
 }
 

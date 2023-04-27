@@ -220,8 +220,7 @@ function urlSplitter(url){
 /*
  * TODO:
  * -Check what is up with fatigue calendar....
- * -Render Workout Program
- * -Resize the cards
  * -CRUD workout Program
+ *  -- Still need to edit and delete (adding works)
  */
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <title>Error 500</title>
+  <link href="css/layout.css" rel="stylesheet">
+  <link href="img/favicon.jpg" rel="icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <link href="css/app.css" rel="stylesheet">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+    *{
+      font-family: "Carrois Gothic SC", sans-serif;
+    #index {
+      background: radial-gradient(circle, rgba(0,0,0,.9) 0%, rgba(0,0,0,.0) 100%), url("/img/background.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+  <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="page-wrapper" id="index">
+
+<!--        <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>-->
+
+  <!--		Nav-->
+
+  <main class="content">
+    <div class="container text-center">
+      <div class="row align-items-start">
+        <div class="col">
+          <div class="card text-bg-secondary my-3">
+            <div class="card-header">
+              <img src="/img/watermark.png" alt="watermark">
+            </div>
+            <div class="card-body">
+              <p> You took a wrong turn, please go back to <a href="/" style="color: #ec0b0b" >Coaches Corner</a> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+<script src="js/app.js"></script>
+<script src="/js/profile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/clientsList.js"></script>
+<script th:src="@{/js/fileStackAPI.js}" type="module"></script>
+</body>
+</html>

@@ -21,7 +21,11 @@ function editCard(clients){
     let id = document.querySelector("#client-holder"), html=``;
 
     for(let i=0; i<clients.length; i++){
+
         let client=clients[i];
+        let profilePicture = client[4];
+        if(profilePicture === null){
+            profilePicture= "../img/profilePicPlaceholder.png";}
         html += `
        <div class="col-lg-4 col-sm-6">
         <div class="card profile-card-3">
@@ -36,7 +40,7 @@ function editCard(clients){
         </div>
        
         <div class="profile-thumb-block">
-            <img src="../img/profilePicPlaceholder.png" alt="profile-image" class="profile"/>
+            <img src="${profilePicture}" alt="profile-image" class="profile"/>
         </div>
         <div class="card-content">
             <h2>${client[0]} ${client[1]}<small>${client[2]}</small></h2>
@@ -192,7 +196,7 @@ async function clientArray(id){
                     clientInfo.push(rel.client);
                 }
             });
-            clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id]);
+            clientInfo = clientInfo.map(client => [client.firstName, client.lastName, client.email, client.id, client.profilePicture]);
             // console.log(clientInfo)
             return clientInfo
         }).catch(error => console.error(error));

@@ -158,10 +158,10 @@
         color:#fff;
         text-decoration:none;
     }
-    h5{
-        display: flex;
-        justify-content: center;
-    }
+    /*h5{*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*}*/
     #carouselExample{
         aspect-ratio: 2/1;
         max-width: 700px;
@@ -170,10 +170,26 @@
     #carouselExample button{
         color: black;
     }
-    img{
-        margin-inline: auto;
-        border-radius: 5px;
+    .carousel-control-next-icon {
+        background-color: rgb(33,46,60);
     }
+    .carousel-control-prev {
+        left: -40px;
+    }
+    .carousel-control-next {
+        right: -40px;
+    }
+    canvas{
+        height: 300px;
+    }
+
+    .carousel-control-prev-icon{
+        background-color: rgb(33,46,60);
+    }
+    /*img{*/
+    /*    margin-inline: auto;*/
+    /*    border-radius: 5px;*/
+    /*}*/
 
     #user-stats-picture{
 
@@ -193,8 +209,34 @@
         text-align: center;
     }
 
+  .stats-chart{
+      height: 400px;
+      width: 600px;
+  }
 
+  canvas{
+      height: 1000px;
+      width: 500px;
+  }
 
+  #carouselExample{
+      /*height: 1600px;*/
+      /*width: 1600px;*/
+  }
+
+  #sleep-div{
+      background: linear-gradient(to left, rgba(35,46,60,1), rgb(255, 255, 255));
+  }
+#sleep-div-header{
+    background: linear-gradient(to left, rgba(35,46,60,1), rgb(255, 255, 255));
+    /*background-color: rgb(35,46,60);*/
+    color: white;
+}
+
+#sleep-card{
+    margin: 0 10px;
+    width: 400px;
+}
 
 
 

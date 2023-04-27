@@ -41,20 +41,19 @@
                 <!--          </a>-->
                 <!--        </li>-->
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="/stats">
-                        <i class="align-middle" data-feather="activity"></i> <span
-                            class="align-middle">Personal Stats</span>
-                    </a>
-                </li>
-                <!--                        <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
-                <li class="sidebar-item active">
-                    <a class="sidebar-link">
-                        <i class="align-middle" data-feather="users"></i> <span class="align-middle tablinks"
-                                                                                onclick="openCity(event, 'myClients')"
-                                                                                id="defaultOpen">My Clients</span>
-                    </a>
-                </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/stats">
+            <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Personal Stats</span>
+          </a>
+        </li>
+        <!--                        <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
+        <li class="sidebar-item">
+          <a class="sidebar-link">
+            <i class="align-middle" data-feather="users"></i> <span class="align-middle tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</span>
+          </a>
+        </li>
+
 
                 <li class="sidebar-item">
                     <a class="sidebar-link" id="program-header">
@@ -74,11 +73,12 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="/setting">
-                        <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Edit Profile</span>
-                    </a>
-                </li>
+
+        <li class="sidebar-item active">
+          <a class="sidebar-link" href="/setting">
+            <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Edit Profile</span>
+          </a>
+        </li>
 
                 <li class="sidebar-item">
                     <form class="sidebar-link"  th:action="@{/logout}" th:method="post" >

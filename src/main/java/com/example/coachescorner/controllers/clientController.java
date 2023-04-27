@@ -58,11 +58,12 @@ public class clientController {
     }
 
     @PostMapping("/client-edit/{id}")
-    public String saveClientEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email){
+    public String saveClientEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String picture){
         User client = userDao.findById(id);
         client.setFirstName(firstname);
         client.setLastName(lastname);
         client.setEmail(email);
+        client.setProfilePicture(picture);
         userDao.save(client);
         return "redirect:/home";
     }

@@ -24,7 +24,7 @@ function editCard(clients){
 
         let client=clients[i];
         let profilePicture = client[4];
-        if(profilePicture === null){
+        if(profilePicture.length < 1){
             profilePicture= "../img/profilePicPlaceholder.png";}
         html += `
        <div class="col-lg-4 col-sm-6">

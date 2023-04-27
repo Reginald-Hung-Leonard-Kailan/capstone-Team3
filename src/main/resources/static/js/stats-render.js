@@ -74,7 +74,7 @@ function viewerInfo(data){
     let {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data,
         id = document.querySelector("#personal-info"),
         html = "";
-        if(profilePicture === null){
+        if(profilePicture.length < 1){
             profilePicture= "../img/profilePicPlaceholder.png";
     }
 

@@ -66,9 +66,9 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/">
-                        <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Log Out</span>
-                    </a>
+                    <form class="sidebar-link"  th:action="@{/logout}" th:method="post" >
+                        <button><i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span></button>
+                    </form>
                 </li>
             </ul>
 

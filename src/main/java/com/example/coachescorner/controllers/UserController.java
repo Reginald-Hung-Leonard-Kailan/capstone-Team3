@@ -4,9 +4,13 @@ import com.example.coachescorner.model.User;
 import com.example.coachescorner.repositories.InjuryRepository;
 import com.example.coachescorner.repositories.UserClientRepository;
 import com.example.coachescorner.repositories.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -155,6 +159,12 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @GetMapping("/privacy")
+    public String privacyView(){
+        return "privacyPolicy";
+    }
+
+
     @GetMapping("/profile")
         public String showProfileView(Model model){
         User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -162,5 +172,4 @@ public class UserController {
         model.addAttribute("user", user);
         return "profile";
         }
-
 }

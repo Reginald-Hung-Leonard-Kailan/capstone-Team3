@@ -280,7 +280,7 @@ async function touchApi( clientInformation) {
 
 function addOneDay(newDate) {
     var dateObj = new Date(newDate + 'T00:00:00Z');
-    dateObj.setUTCDate(dateObj.getUTCDate() + 1);
+    // dateObj.setUTCDate(dateObj.getUTCDate() + 1); //This is adding one day to our input
     var year = dateObj.getUTCFullYear();
     var month = ('0' + (dateObj.getUTCMonth() + 1)).slice(-2);
     var day = ('0' + dateObj.getUTCDate()).slice(-2);
@@ -315,24 +315,3 @@ function dateToMMDDYYYY(oldFormat){
     return correctArr.join('/')
 }
 
-async function resetAll(){
-    workoutPlanArr = [];
-    bodyWeightArr = [];
-    bodyFatPercentArr = [];
-    squatArr = [];
-    benchArr = [];
-    deadliftArr = [];
-    sleepArr = [];
-    fatigueArr = [];
-
-    chartBF.destroy();
-    modalBF.destroy();
-    chartBW.destroy();
-    modalBW.destroy();
-    chartS.destroy();
-    modalS.destroy();
-    chartB.destroy();
-    modalB.destroy();
-    chartDL.destroy();
-    modalDL.destroy();
-}

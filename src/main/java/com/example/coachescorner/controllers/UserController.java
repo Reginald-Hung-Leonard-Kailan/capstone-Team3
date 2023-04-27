@@ -1,11 +1,16 @@
 package com.example.coachescorner.controllers;
 
 import com.example.coachescorner.model.User;
+import com.example.coachescorner.repositories.InjuryRepository;
 import com.example.coachescorner.repositories.UserClientRepository;
 import com.example.coachescorner.repositories.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,10 +28,13 @@ public class UserController {
 
     private PasswordEncoder passwordDao;
 
-    public UserController(UserRepository userDao, UserClientRepository userClientDao, PasswordEncoder passwordDao) {
+    private InjuryRepository injuryDao;
+
+    public UserController(UserRepository userDao, UserClientRepository userClientDao, PasswordEncoder passwordDao, InjuryRepository injuryDao) {
         this.userDao = userDao;
         this.userClientDao = userClientDao;
         this.passwordDao = passwordDao;
+        this.injuryDao = injuryDao;
     }
 
     @GetMapping("/")
@@ -99,32 +107,69 @@ public class UserController {
         return "about";
     }
 
-//    @GetMapping("/users/search")
-//    public String showClients (@RequestParam String name, Model model){
-//
-//        // coach login
-//
-//        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User coach = userDao.findById(userLogIn.getId());
-//
-//        // check for relationship
-//       List<UserClient> users = coach.getClients();
-//
-//       List<User> clients = new ArrayList<>();
-//
-//       for (UserClient client : users) {
-//            User user = client.getClient();
-//            if(
-//                    user.getFirstName().toLowerCase().contains(name.toLowerCase()) ||
-//                    user.getLastName().toLowerCase().contains(name.toLowerCase())
-//                )
-//
-//               clients.add(user);
-//       }
-//
-//        // display search result
-//        model.addAttribute("users", clients);
-//        return "search-client";
+    @GetMapping("/stats")
+    public String showStats(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+//        if(id != user.getId()){
+//            model.addAttribute("viewNum", id);
+//            System.out.println("GET method sees attempt with: " + id);
+//        } else {
+//            model.addAttribute("viewNum", user.getId());
+//            System.out.println("GET method DOES NOT see sticking with: " + user.getId());
+//        }
+        model.addAttribute("user", user);
+        return "stats";
+    }
+
+//    @PostMapping("/stats")
+//    public String hiddenViewer(Model model, @ModelAttribute("viewerNum") long id){
+//        model.addAttribute("viewNum", id);
+//        System.out.println("Post method sees attempt with: " + id);
+//        return "stats";
 //    }
 
+    @GetMapping("/stats/{id}")
+    public String customView(@PathVariable long id, Model model){
+//        redirect.addAttribute("viewerNum", id);
+        model.addAttribute("viewerNum", id);
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        System.out.println(id);
+        return "stats";
+    }
+
+    @GetMapping("/setting")
+    public String statsSettingsView(Model model) {
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(userLogIn.getId());
+        model.addAttribute("user", user);
+        return "setting";
+    }
+
+    @PostMapping("/setting/{id}")
+    public String saveSettingForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String picture){
+        User user = userDao.findById(id);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setEmail(email);
+        user.setProfilePicture(picture);
+        userDao.save(user);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/privacy")
+    public String privacyView(){
+        return "privacyPolicy";
+    }
+
+
+    @GetMapping("/profile")
+        public String showProfileView(Model model){
+        User userLogIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findByUsername(userLogIn.getUsername());
+        model.addAttribute("user", user);
+        return "profile";
+        }
 }

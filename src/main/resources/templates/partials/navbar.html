@@ -31,11 +31,11 @@
     <li class="nav-item mt-5">
         <a class="nav-link active" aria-current="page" href="/about" style="color: whitesmoke">About</a>
     </li>
-    <li class="nav-item" th:if="${isAuthenticated}">
-        <a class="nav-link" href="/home">Profile</a>
+    <li class="nav-item mt-5" th:if="${isAuthenticated}">
+        <a class="nav-link" style="color: whitesmoke" href="/home">Profile</a>
     </li>
-    <li class="nav-item" th:if="${isAuthenticated}">
-        <a class="nav-link" href="/">Logout</a>
+    <li class="nav-item mt-5" th:if="${isAuthenticated}">
+        <a class="nav-link" style="color: whitesmoke" href="/">Logout</a>
     </li>
     <li class="nav-item form mt-5" th:unless="${isAuthenticated}" id="open-login" style="color: whitesmoke">
         <a class="nav-link form" style="color: whitesmoke" href="/login">Login</a>
@@ -48,6 +48,7 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap JavaScript -->
+<!--test-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,58 +1,249 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<dialog th:fragment="editChart" class="modal-wide" id="edit-chart-modal">
-    <button id="close-edit-chart">❌</button>
-    <form method="dialog" class="modal-form" onsubmit="return validateForm()">
-        <label for="body-fat-date">Date:</label><br>
-        <input id="body-fat-date" type="date"><br>
-        <label for="body-fat-info">Body Fat Percentage:</label><br>
-        <input id="body-fat-info" type="number" min="0" max="60" step="0.01">
-        <br>
-        <button id="add-body-fat">Submit</button>
-    </form>
-</dialog>
-<dialog th:fragment="editBodyWeightChart" class="modal-wide" id="edit-bodyWeight-modal">
-    <button id="close-edit-bodyWeight-chart">❌</button>
-    <form method="dialog" class="modal-form">
-        <label for="body-weight-date">Date:</label><br>
-        <input id="body-weight-date" type="date"><br>
-        <label for="body-weight-info">Body Weight:</label><br>
-        <input id="body-weight-info" type="number" min="0" max="500">
-        <br>
-        <button id="add-body-weight">Submit</button>
-    </form>
-</dialog>
-<dialog th:fragment="editSquatChart" class="modal-wide" id="edit-squat-modal">
-    <button id="close-edit-squat-chart">❌</button>
-    <form method="dialog" class="modal-form">
-        <label for="squat-date">Date:</label><br>
-        <input id="squat-date" type="date"><br>
-        <label for="squat-info">Squat:</label><br>
-        <input id="squat-info" type="number" min="0" max="1200">
-        <br>
-        <button id="add-squat">Submit</button>
-    </form>
-</dialog>
-<dialog th:fragment="editBenchChart" class="modal-wide" id="edit-bench-modal">
-    <button id="close-edit-bench-chart">❌</button>
-    <form method="dialog" class="modal-form">
-        <label for="bench-date">Date:</label><br>
-        <input id="bench-date" type="date"><br>
-        <label for="bench-info">Bench:</label><br>
-        <input id="bench-info" type="number" min="0" max="900">
-        <br>
-        <button id="add-bench">Submit</button>
-    </form>
-</dialog>
-<dialog th:fragment="editDeadlift" class="modal-wide" id="edit-deadlift-modal">
-    <button id="close-edit-deadlift-chart">❌</button>
-    <form method="dialog" class="modal-form">
-        <label for="deadlift-date">Date:</label><br>
-        <input id="deadlift-date" type="date"><br>
-        <label for="deadlift-info">Deadlift:</label><br>
-        <input id="deadlift-info" type="number" min="0" max="1300">
-        <br>
-        <button id="add-deadlift">Submit</button>
-    </form>
-</dialog>
+<div th:fragment="modals">
+
+    <div class="modal fade" id="sleepModal" tabindex="-1" aria-labelledby="sleepModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sleep-title">Sleep Rating</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="sleep-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="sleep-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sleep-rating" class="form-label">Rating</label>
+                        <select class="form-select" id="sleep-rating" required>
+                            <option value="">Select a value</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fatigueModal" tabindex="-1" aria-labelledby="fatigueModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fatigue-title">Fatigue Rating</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="fatigue-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="fatigue-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fatigue-rating" class="form-label">Rating</label>
+                        <select class="form-select" id="fatigue-rating" required>
+                            <option value="">Select a value</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesFatigue()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bodyfatModal" tabindex="-1" aria-labelledby="bodyfatModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bodyfat-title">Body Fat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="bodyfat-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="bodyfat-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bodyfat-rating" class="form-label">Percentage</label>
+                        <input type="number" class="form-control" min="0" max="60" id="bodyfat-rating" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesBodyfat()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bodyweightModal" tabindex="-1" aria-labelledby="bodyweightModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bodyweight-title">Body Weight</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="bodyweight-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="bodyweight-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bodyweight-rating" class="form-label">Body Weight in lb</label>
+                        <input type="number" class="form-control" min="20" max="400" id="bodyweight-rating" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesBodyweight()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="squatModal" tabindex="-1" aria-labelledby="squatModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="squat-title">Squat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="squat-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="squat-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="squat-rating" class="form-label">Weight</label>
+                        <input type="number" class="form-control" max="1200" id="squat-rating" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesSquat()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="benchModal" tabindex="-1" aria-labelledby="benchModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bench-title">Bench</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="bench-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="bench-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bench-rating" class="form-label">Weight</label>
+                        <input type="number" class="form-control" max="900" id="bench-rating" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesBench()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deadliftModal" tabindex="-1" aria-labelledby="deadliftModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deadlift-title">Deadlift</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="deadlift-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="deadlift-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deadlift-rating" class="form-label">Weight</label>
+                        <input type="number" class="form-control" max="1500" id="deadlift-rating" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesDeadlift()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="programModal" tabindex="-1" aria-labelledby="programModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="program-title">Program</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="program-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="program-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="program-url" class="form-label">Link</label>
+                        <input type="url" class="form-control" id="program-url" pattern="https?://.+"
+                               placeholder="https://example.com" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addProgram()">Add Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editProgramModal" tabindex="-1" aria-labelledby="editProgramModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editprogram-title">Program</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editprogram-date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="editprogram-date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editprogram-url" class="form-label">Link</label>
+                        <input type="url" class="form-control" id="editprogram-url" pattern="https?://.+"
+                               placeholder="https://example.com">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChangesProgram()">Add Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </html>

@@ -2,36 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Coach's Corner</title>
-    <link href="../css/profile.css" rel="stylesheet">
-    <link href="../css/layout.css" rel="stylesheet">
+    <title>Injury Add</title>
+    <link href="/css/layout.css" rel="stylesheet">
+    <!--    <link href="css/home.css" rel="stylesheet">-->
+    <script src="/js/home.js"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap");
+        *{
+            font-family: "Carrois Gothic SC", sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-<div class="page-wrapper">
+<div class="page-wrapper" id="index">
     <div th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})" ></div>
-    <div id="add-injury-holder">
-    <form th:action="@{/add-injury/{id}(id=${user.id})}" th:method="Post" id="add-injury-form" class="modal-form" >
-    <div class="edit-heading">Add Injury</div>
-        <label for="status">Status:</label><br>
-        <select id="status" name="status">
-            <option value=active>Active</option>
-            <option value=past>Past</option>
-        </select><br><br>
-        <label for="title">Title:</label><br>
-        <input type="text" id="title"  name="title"><br><br>
-        <label for="injury-date">Injury Date:</label><br>
-        <input  id="injury-date" type="date">
-        <input hidden id="hidden-injury-date" name="injuryDate" type="text"><br><br>
-        <label for="description">Description:</label><br>
-<!--        <input type="text" id="description" th:field="*{description}">-->
-        <textarea id="description" style="width: 442px; height: 186px" name="description"></textarea><br><br>
-        <!--    <input type="number" id="status"  th:field="*{status}"><br>-->
-        <!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->
-        <button>Submit</button>
-    </form>
+
+    <div class="container text-center">
+
+        <div class="row align-items-start">
+
+            <div class="col" id="add-injury-holder">
+
+                <div class="card text-bg-secondary my-3">
+
+                    <div class="card-header">
+                        <img src="/img/watermark.png" alt="watermark">
+                    </div>
+
+                    <div class="card-body">
+
+                        <form th:action="@{/add-injury/{id}(id=${user.id})}" th:method="Post" id="add-injury-form" class="modal-form" >
+                            <div class="edit-heading"><h1>Add Injury</h1></div>
+                            <label for="status">Status:</label><br>
+                            <select class="form-select" id="status" name="status">
+                                <option value=active>Active</option>
+                                <option value=past>Past</option>
+                            </select><br><br>
+                            <label for="title">Title:</label><br>
+                            <input type="text" id="title" class="form-control form-control-lg bg-light" style="font-family: sans-serif" name="title"><br><br>
+                            <label for="injury-date">Injury Date:</label><br>
+                            <input  id="injury-date" class="form-control form-control-lg bg-light" style="font-family: sans-serif" type="date">
+                            <input hidden id="hidden-injury-date" name="injuryDate" type="text"><br><br>
+                            <label for="description">Description:</label><br>
+                            <!--        <input type="text" id="description" th:field="*{description}">-->
+                            <textarea class="form-control form-control-lg bg-light" style="font-family: sans-serif" id="description" name="description"></textarea><br><br>
+                            <!--    <input type="number" id="status"  th:field="*{status}"><br>-->
+                            <!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->
+                            <button class="btn btn-secondary custom">Submit</button>
+                        </form>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
 </div>
 <script th:src="@{/js/convertDate.js}"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
 </body>
 </html>

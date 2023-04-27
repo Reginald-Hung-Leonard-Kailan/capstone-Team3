@@ -209,18 +209,21 @@ function renderProgram(arr = workoutPlanArr){
         html += `<tr>
 <td class="d-none d-xl-table-cell">${date}</td>
 <td class="d-none d-xl-table-cell">${urlSplitter(url)}</td>
-<td class="d-none d-xl-table-cell"><a class="text-primary" href="${url}" target="_blank">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link align-middle me-2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-</a></td>
 <td class="d-none d-xl-table-cell">
-<a class="text-info" data-bs-toggle="modal" data-bs-target="#programModal" value="${id}">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle me-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-</a>
+    <a class="text-primary" href="${url}" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link align-middle me-2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+    </a>
+</td>
+<td class="d-none d-xl-table-cell">
+    <a class="text-info edit-program-btn" data-program="${id}" data-bs-toggle="modal" data-bs-target="#editPrograrmModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle me-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+    </a>
 </td>
 </tr>`;
 
     }
     id.innerHTML = html;
+    showCustomInfo();
 }
 
 //This is so we remove the 'https://www.' and keep the '<name of site>' but no '.com/ etc'

@@ -345,3 +345,51 @@ async function addProgram(){
     await allInfo();
     await renderProgram();
 }
+
+//Edit workout program
+async function saveChangesProgram(){
+    let id = document.getElementById("editprogram-title").dataset.value,
+        newUrl = document.getElementById('editprogram-url').value,
+        newDate = document.getElementById('editprogram-date').value,
+        modal = document.getElementById('editProgramModal');
+
+    //Edit the info that already exists
+    await editInfo(id, newUrl, newDate, "workoutPlan");
+
+    //Close the modal
+    const modalBS = bootstrap.Modal.getInstance(modal);
+    modalBS.hide();
+
+    //Rerender the workout plan Arr
+    workoutPlanArr = []
+    await allInfo();
+    await renderProgram();
+
+
+}
+
+//prepopulate info for program class name = edit-program-btn
+async function showCustomInfo(){
+    const editProgramButtons = document.querySelectorAll('.edit-program-btn');
+
+    // Loop through each button and add an event listener
+    editProgramButtons.forEach(a => {
+        a.addEventListener('click', () => {
+
+            // Get the values for the date and url from the button's data attributes
+            const programId = a.dataset.program;
+            let id = workoutPlanArr.findIndex(obj => obj.id == programId)
+
+            // Set the values of the modal's input fields to the button's data values
+            const {date, clientInformation} = workoutPlanArr[id];
+            document.getElementById('editprogram-date').value = date;
+            document.getElementById('editprogram-url').value = clientInformation;
+            document.getElementById("editprogram-title").dataset.value = programId;
+
+            // Show the modal
+            const editProgramModal = new bootstrap.Modal(document.getElementById('editProgramModal'));
+            editProgramModal.show();
+        });
+    });
+
+}

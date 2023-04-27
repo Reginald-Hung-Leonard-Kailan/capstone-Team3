@@ -94,11 +94,23 @@ function viewerInfo(data){
 function showInjury(data){
     let {injuryDate, status, title, description} = data.injuries,
         id = document.querySelector("#injury-info"),
-        html = "";
+        html = "",
+        activeInjuries = [],
+        passiveInjuries = [];
 
     for(let i = 0 ; i < data.injuries.length ; i++ ){
-
         let injury = data.injuries[i];
+        if (injury.status === "active") {
+            activeInjuries.push(injury);
+        } else {
+            passiveInjuries.push(injury);
+        }
+    }
+    activeInjuries = activeInjuries.concat(passiveInjuries)
+
+    for(let i = 0 ; i < activeInjuries.length ; i++ ){
+
+        let injury = activeInjuries[i];
 
         let badges = injury.status;
         if(badges === "active"){
@@ -119,9 +131,6 @@ function showInjury(data){
 </svg></a></td> 
                 </tr>`;
     }
-
-
-
     id.innerHTML = html;
 }
 
@@ -181,7 +190,9 @@ function renderSleep(arr = sleepArr){
          <div class="card-title">${date}</div> 
          <hr style="margin-top: 0px;">
          <div>${sheepPop}</div> 
+         <div class="d-flex justify-content-center align-items-end" style="height: 100%;">
          <div>${bed}</div>
+        </div>
  </div>`
     }
     id.innerHTML = html;

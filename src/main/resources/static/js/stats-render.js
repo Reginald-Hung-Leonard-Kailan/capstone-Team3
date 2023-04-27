@@ -66,7 +66,7 @@ async function allInfo(id = viewId){
                 break;
         }
     })
-    await fatigueCalendar(fatigueArr);
+    //await fatigueCalendar(fatigueArr);
 }
 
 //Personal Info card

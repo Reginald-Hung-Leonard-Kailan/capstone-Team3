@@ -9,6 +9,7 @@ function fatigueCalendar(data = fatigueArr){
         let date = dateToMMDDYYYY(obj.date);
         formatData.push([date, rating])
     })
+    console.log(formatData);
     chartFatigue = JSC.chart('datetimepicker-dashboard', {
         debug: true,
         type: 'calendar month solid',

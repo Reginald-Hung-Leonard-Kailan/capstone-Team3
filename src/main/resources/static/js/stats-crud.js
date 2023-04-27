@@ -25,8 +25,8 @@ async function saveChangesSleep() {
     // Log the date and value
     dateInput = dateInput.value;
     valueInput = valueInput.value;
-    console.log("Date:", dateInput);
-    console.log("Value:", valueInput);
+    // console.log("Date:", dateInput);
+    // console.log("Value:", valueInput);
 
     //close the modal
     const modalBS = bootstrap.Modal.getInstance(modal);
@@ -40,8 +40,9 @@ async function saveChangesSleep() {
         let id = sleepArr[findIndex].id;
         await editInfo(id, valueInput, dateInput, "sleep");
     }
-
-    await render();
+    await allInfo();
+    console.log(sleepArr);
+    await renderSleep();
 }
 
 //fatigue

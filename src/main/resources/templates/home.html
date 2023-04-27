@@ -9,9 +9,6 @@
     <title>Coach's Corner</title>
     <link href="img/favicon.jpg" rel="icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<!--    <link href="css/profile.css" rel="stylesheet">-->
-
-<!--    <link href="css/layout.css" rel="stylesheet">-->
     <link href="css/app.css" rel="stylesheet">
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -32,12 +29,11 @@
                             Main
                         </li>
 
-                        <!-- use this in the future when we figure out what to do with it-->
-                        <!--        <li class="sidebar-item">-->
-                        <!--          <a class="sidebar-link" href="#">-->
-                        <!--            <i class="align-middle" data-feather="film"></i> <span class="align-middle">Explore</span>-->
-                        <!--          </a>-->
-                        <!--        </li>-->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="#">
+                                <i class="align-middle" data-feather="film"></i> <span class="align-middle">Explore</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/stats">
@@ -75,9 +71,9 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <form class="sidebar-link"  th:action="@{/logout}" th:method="post" >
-                                <button><i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span></button>
-                            </form>
+                            <a class="sidebar-link" href="/">
+                                <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span>
+                            </a>
                         </li>
                     </ul>
 
@@ -162,8 +158,7 @@
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
                                     <div class="dropdown-menu-header">
                                         <div class="position-relative">
-                                            Feature Coming Soon!
-<!--                                            No New Messages-->
+                                            No New Messages
                                         </div>
                                     </div>
                                     <div class="dropdown-menu-footer">
@@ -181,13 +176,12 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="/profile"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-<!--                                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>-->
+                                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                     <div class="dropdown-divider"></div>
-                                    <a id="settings-button" href="setting" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="edit"></i>Edit Profile</a>
-                                    <!--              this has no path or logic                  -->
-<!--                                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>-->
-<!--                                    <div class="dropdown-divider"></div>-->
-<!--                                    <a class="dropdown-item" href="/logout">Log out</a>-->
+                                    <a id="settings-button" href="setting" class="tablinks dropdown-item"><i class="align-middle me-1" data-feather="settings"></i>Settings</a>
+                                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Log out</a>
                                 </div>
                             </li>
                         </ul>
@@ -198,63 +192,9 @@
                     <div class="container-fluid p-0">
 
                         <h1 class="h3 mb-3"><strong>Clients</strong> Dashboard</h1>
-
-
-
-
-<!--        end of template-->
-
-<!--            <div id="profile-info">-->
-<!--                <div th:text="${user.email}"></div>-->
-<!--                <button  id="profile-button" class="profile-button" th:action="@{/edit/{id}(id=${user.id})}">Edit Account</button>-->
-<!--            </div>-->
-<!--            <div id="program-holder">-->
-<!--&lt;!&ndash;                <div   id="program-header">Program</div><br>&ndash;&gt;-->
-<!--            <div id="program-edit">-->
-<!--            <div id="program-input-form">-->
-<!--                &lt;!&ndash;                <div class="stats-title">Fatigue Rating:</div>z&ndash;&gt;-->
-<!--                <label for="profile-section"  id="profile-input-label" class="program-subheader">Edit</label><br>-->
-<!--                <input type="text" id="program-input" placeholder="Copy & Paste link here!">-->
-<!--                <button id="program-input-button">add</button >-->
-<!--            </div>-->
-<!--            <form id="program-selection-form">-->
-<!--                <label for="profile-section"  id="profile-section-label" class="program-subheader">Select</label><br>-->
-<!--&lt;!&ndash;                <div class="stats-title">Fatigue Rating:</div>z&ndash;&gt;-->
-<!--                <select id="program-selection">-->
-<!--                    <option class="program" value="-1">Add Program</option>-->
-<!--                    <option class="program" value="0">yyyy-mm-dd (current)</option>-->
-<!--                    <option class="program">2023-04-19</option>-->
-<!--                </select>-->
-<!--            </form>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--        </div>-->
         <hr id="main-hr">
         <!-- Tab links -->
-        <div class="tab">
-<!--            <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
-<!--            <button class="tablinks" onclick="openCity(event, 'Personal-Stats')">Personal Stats</button>-->
-<!--            <button class="tablinks"><a id="program-button" href="https://docs.google.com/spreadsheets/d/1QS4v3Cp_yAYcZDhlFfuECqUV84Wvex69/edit#gid=122619846">Program</a></button>-->
-<!--            <button class="tablinks" onclick="openCity(event, 'settings')">Settings</button>-->
-        </div>
         <div th:replace="partials/myClients :: myClients"></div>
-<!--        <div th:replace="partials/personalStats :: personalStats"></div>-->
-<!--        <div th:replace="partials/fatigue :: fatigue"></div>-->
-<!--        <div th:replace="partials/sleep :: sleep"></div>-->
-<!--        <div th:replace="partials/chart :: bodyfat-chart"></div>-->
-<!--        <div th:replace="partials/chart :: bodyweight-chart"></div>-->
-<!--        <div th:replace="partials/chart :: squat-chart"></div>-->
-<!--        <div th:replace="partials/chart :: bench-chart"></div>-->
-<!--        <div th:replace="partials/chart :: deadlift-chart"></div>-->
-<!--        <div th:replace="partials/editChart :: editChart"></div>-->
-<!--        <div th:replace="partials/editChart :: editBodyWeightChart"></div>-->
-<!--        <div th:replace="partials/editChart :: editSquatChart"></div>-->
-<!--        <div th:replace="partials/editChart :: editBenchChart"></div>-->
-<!--        <div th:replace="partials/editChart :: editDeadlift"></div>-->
-<!--        <div th:replace="partials/injury :: injury"></div>-->
-<!--        <div th:replace="partials/editInjury :: editInjury"></div>-->
-<!--        <div th:replace="partials/settings :: settings"></div>-->
-<!--        <div th:replace="partials/program :: program"></div>-->
                     </div>
                 </main>
                 <footer class="footer">
@@ -262,26 +202,23 @@
                         <div class="row text-muted">
                             <div class="col-6 text-start">
                                 <p class="mb-0">
-                                    <a class="text-muted" href="/home" target="_blank"><strong>Coaches Corner</strong></a> &copy;
+                                    <a class="text-muted" href="#" target="_blank"><strong>Coaches Corner</strong></a> &copy;
                                 </p>
                             </div>
                             <div class="col-6 text-end">
                                 <ul class="list-inline">
-                                    <!--              where does support go? what does support do?-->
-                                    <!--              <li class="list-inline-item">-->
-                                    <!--                <a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>-->
-                                    <!--              </li>-->
-                                    <!--            where does this go? what does it look like??-->
-                                    <!--              <li class="list-inline-item">-->
-                                    <!--                <a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>-->
-                                    <!--              </li>-->
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="/privacy" target="_blank">Privacy</a>
+                                        <a class="text-muted" href="#" target="_blank">Support</a>
                                     </li>
-                                    <!--    Update terms once drafted by a lawyer           -->
-                                    <!--              <li class="list-inline-item">-->
-                                    <!--                <a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>-->
-                                    <!--              </li>-->
+                                    <li class="list-inline-item">
+                                        <a class="text-muted" href="#" target="_blank">Help Center</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="text-muted" href="/privacyPolicy" target="_blank">Privacy</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="text-muted" href="#" target="_blank">Terms</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -290,13 +227,10 @@
             </div>
         </div>
 <script src="js/app.js"></script>
-    <script src="/js/profile.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/clientsList.js"></script>
-<!--    <script src="/js/userGraphs.js"></script>-->
-<!--    <script src="/js/crudGraphs.js"></script>-->
-<!--    <script src="/js/programs.js"></script>-->
-    <script th:src="@{/js/fileStackAPI.js}" type="module"></script>
+<script src="/js/profile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/clientsList.js"></script>
+<script th:src="@{/js/fileStackAPI.js}" type="module"></script>
 </body>
 </html>
 

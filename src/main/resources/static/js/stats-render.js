@@ -86,8 +86,8 @@ function viewerInfo(data){
 <!--<div>bio: ${bio}</div>-->
 
 </div>`;
-
     id.innerHTML = html;
+    document.getElementById("addinjury").href = "/add-injury/" + viewId;
 }
 
 //Injury Info card

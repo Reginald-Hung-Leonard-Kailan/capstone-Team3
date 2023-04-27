@@ -4,15 +4,17 @@
 let chartFatigue; //for CRUD do .destory() on this and then run function again
 function fatigueCalendar(data = fatigueArr){
     let formatData = [];
+
     fatigueArr.map(obj => {
         let rating = parseInt(obj.clientInformation);
         let date = dateToMMDDYYYY(obj.date);
         formatData.push([date, rating])
     });
 
+    helper = formatData;
     console.log(formatData);
 
-    chartFatigue = JSC.chart('datetimepicker-dashboard', {
+    chartFatigue = JSC.chart('fatigue-calendar', {
         debug: true,
         type: 'calendar month solid',
         data: formatData,
@@ -42,7 +44,7 @@ function fatigueCalendar(data = fatigueArr){
         },
         title: {
             label: {
-                text: 'Fatigue Ratings',
+                text: 'Ratings by Day',
                 style_fontSize: 15
             }
         },
@@ -99,7 +101,7 @@ function fatigueCalendar(data = fatigueArr){
 
 
 // Body Fat %
-let chartBF , modalBF;
+let chartBF;
 function bodyFatChart() {
     let bodyFat = [], weighInDate = [];
     // chartBF.destroy();
@@ -113,7 +115,7 @@ function bodyFatChart() {
 }
 
 // Body Weight
-let chartBW, modalBW
+let chartBW;
 function bodyWeightChart() {
     let bodyWeight = [], bodyweightInDate = [];
     bodyWeightArr.map(data => {
@@ -125,7 +127,7 @@ function bodyWeightChart() {
 }
 
 // Squat
-let chartS, modalS;
+let chartS;
 function squatChart() {
     let squatWeight = [], squatDate = [];
     squatArr.map(data => {
@@ -137,7 +139,7 @@ function squatChart() {
 }
 
 // BenchChart
-let chartB, modalB;
+let chartB;
 function benchChart() {
     let benchWeight = [], benchDate = [];
     benchArr.map(data => {
@@ -149,7 +151,7 @@ function benchChart() {
 }
 
 // deadLift chart
-let chartDL, modalDL;
+let chartDL;
 function deadliftChart() {
     let deadLift = [], liftDate = [];
     deadliftArr.map(data => {

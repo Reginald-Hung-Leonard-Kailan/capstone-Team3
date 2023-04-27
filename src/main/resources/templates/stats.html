@@ -193,7 +193,7 @@
     <main class="content">
       <div class="container-fluid p-0">
 
-        <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+        <h1 class="h3 mb-3"><strong>Personal</strong> Dashboard</h1>
 
         <div class="row">
           <div class="col-12 col-lg-4 col-xxl-3 d-flex">
@@ -298,7 +298,7 @@
               <div class="card-body d-flex">
                 <div class="align-self-center w-100">
                   <div class="chart">
-                    <div id="datetimepicker-dashboard" style="max-width: 100vw;height: 40vh;margin: 0px auto;"></div>
+                    <div id="fatigue-calendar" style="max-width: 100vw;height: 50vh;margin: 0 auto;"></div>
                   </div>
                 </div>
               </div>
@@ -307,11 +307,11 @@
         </div>
 
         <div class="row">
-          <div class="col-12 col-lg-9 d-flex">
+          <div class="col-12 col-lg-8 d-flex">
             <div class="card flex-fill">
-              <div class="card-header">
+              <div class="card-header d-flex justify-content-around">
 
-                <h5 class="card-title mb-0">Injury Reports</h5><br>
+                <h5 class="card-title mb-0">Injury Reports</h5>
                 <a th:href="@{/add-injury/{id}(id=${id})}" style="text-decoration: none; color: grey"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                 </svg> Add Injury</a>
@@ -320,7 +320,7 @@
                 <thead>
                 <tr>
                   <th>Name</th>
-                  <th class="d-none d-xl-table-cell">Start Date</th>
+                  <th class="d-none d-xl-table-cell">Date</th>
                   <th class="d-none d-xl-table-cell">Title</th>
                   <th>Status</th>
                   <th class="d-none d-md-table-cell">Description</th>
@@ -331,17 +331,29 @@
               </table>
             </div>
           </div>
-          <div class="col-12 col-lg-3 d-flex order-1 order-xxl-3">
+          <div class="col-12 col-lg-4 d-flex order-1 order-xxl-3">
             <div class="card flex-fill">
-              <div class="card-header">
+              <div class="card-header d-flex justify-content-between">
 
                 <h5 class="card-title mb-0">Workout Program</h5>
+                <a class="text-primary" data-bs-toggle="modal" data-bs-target="#programModal">
+                  <svg width="24px" height="24px" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 10V18C3 19.1046 3.89543 20 5 20H11M3 10V6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V10M3 10H21M21 10V13" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 14V17M17 20V17M17 17H14M17 17H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <circle cx="6" cy="7" r="1" fill="#000000"></circle> <circle cx="9" cy="7" r="1" fill="#000000"></circle> </g></svg>
+                </a>
               </div>
               <div id="program-list" class="card-body d-flex">
                 <div class="align-self-center w-100">
-                  <div class="chart">
-                    <!--                    <div id="datetimepicker-dashboard"></div>-->
-                  </div>
+                  <table class="table table-hover my-0">
+                    <thead>
+                    <tr>
+                      <th>Start Date</th>
+                      <th class="d-none d-xl-table-cell">Program</th>
+                      <th class="d-none d-xl-table-cell">Link</th>
+                      <th class="d-none d-md-table-cell">Edit</th>
+                    </tr>
+                    </thead>
+                    <tbody  id="program-info">
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -380,6 +392,7 @@
     </footer>
   </div>
 </div>
+<div th:replace="partials/editChart :: modals"></div>
 
 <!--//SRC for charting.js-->
 <script src="https://code.jscharting.com/latest/jscharting.js"></script>
@@ -391,197 +404,6 @@
 <script src="/js/stats-crud.js"></script>
 
 <!--bootstrap-->
-<div class="modal fade" id="sleepModal" tabindex="-1" aria-labelledby="sleepModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="sleep-title">Sleep Rating</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="sleep-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="sleep-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="sleep-rating" class="form-label">Rating</label>
-          <select class="form-select" id="sleep-rating" required>
-            <option value="">Select a value</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="fatigueModal" tabindex="-1" aria-labelledby="fatigueModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="fatigue-title">Fatigue Rating</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="fatigue-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="fatigue-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="fatigue-rating" class="form-label">Rating</label>
-          <select class="form-select" id="fatigue-rating" required>
-            <option value="">Select a value</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bodyfatModal" tabindex="-1" aria-labelledby="bodyfatModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bodyfat-title">Body Fat</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="bodyfat-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="bodyfat-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="bodyfat-rating" class="form-label">Percentage</label>
-          <input type="number" class="form-control" max="60" id="bodyfat-rating" required/>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bodyweightModal" tabindex="-1" aria-labelledby="bodyweightModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bodyweight-title">Body Weight</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="bodyweight-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="bodyweight-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="bodyweight-rating" class="form-label">Weight</label>
-          <input type="number" class="form-control" max="60" id="bodyweight-rating" required/>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="squatModal" tabindex="-1" aria-labelledby="squatModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="squat-title">Squat</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="squat-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="squat-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="squat-rating" class="form-label">Weight</label>
-          <input type="number" class="form-control" max="60" id="squat-rating" required/>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="benchModal" tabindex="-1" aria-labelledby="benchModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bench-title">Bench</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="bench-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="bench-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="bench-rating" class="form-label">Weight</label>
-          <input type="number" class="form-control" max="60" id="bench-rating" required/>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="deadliftModal" tabindex="-1" aria-labelledby="deadliftModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deadlift-title">Deadlift</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="deadlift-date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="deadlift-date" required>
-        </div>
-        <div class="mb-3">
-          <label for="deadlift-rating" class="form-label">Weight</label>
-          <input type="number" class="form-control" max="60" id="deadlift-rating" required/>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChangesSleep()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js" integrity="sha512-MDT1g32V7FUGyGkU6x5f6OeR9XgRH6mGF04Hq1e/mcavKKkzeh+Fr2Q/6zEMfo0c97G00XrNHyZsiMswMTrDcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 

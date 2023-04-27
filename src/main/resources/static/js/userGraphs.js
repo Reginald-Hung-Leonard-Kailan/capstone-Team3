@@ -13,6 +13,12 @@ function fatigueCalendar(data = fatigueArr){
 
     helper = formatData;
     console.log(formatData);
+    if(formatData.length < 1){
+        let today=new Date();
+        console.log(today)
+        // today = dateToMMDDYYYY(today);
+        formatData.push([today, 3]);
+    }
 
     chartFatigue = JSC.chart('fatigue-calendar', {
         debug: true,

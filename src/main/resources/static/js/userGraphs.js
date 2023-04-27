@@ -11,8 +11,10 @@ function fatigueCalendar(data = fatigueArr){
         formatData.push([date, rating])
     });
 
-    // console.log(formatData);
-    chartFatigue = JSC.chart('datetimepicker-dashboard', {
+    helper = formatData;
+    console.log(formatData);
+
+    chartFatigue = JSC.chart('fatigue-calendar', {
         debug: true,
         type: 'calendar month solid',
         data: formatData,
@@ -42,7 +44,7 @@ function fatigueCalendar(data = fatigueArr){
         },
         title: {
             label: {
-                text: 'Fatigue Ratings',
+                text: 'Ratings by Day',
                 style_fontSize: 15
             }
         },

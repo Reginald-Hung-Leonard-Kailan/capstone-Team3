@@ -11,7 +11,6 @@ function fatigueCalendar(data = fatigueArr){
         formatData.push([date, rating])
     });
 
-    helper = formatData;
     console.log(formatData);
     if(formatData.length < 1){
         let today=new Date();

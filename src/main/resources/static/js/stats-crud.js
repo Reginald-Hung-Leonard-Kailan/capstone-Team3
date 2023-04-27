@@ -69,8 +69,6 @@ async function saveChangesFatigue() {
     // Log the date and value
     dateInput = dateInput.value;
     valueInput = valueInput.value;
-    // console.log("Date:", dateInput);
-    // console.log("Value:", valueInput);
 
     //close the modal
     const modalBS = bootstrap.Modal.getInstance(modal);

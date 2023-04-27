@@ -21,7 +21,7 @@ async function render(){
     await squatChart();
     await benchChart();
     await deadliftChart();
-    await fatigueCalendar(fatigueArr);
+    // fatigueCalendar(fatigueArr);
     // await renderProgram();
 
 }

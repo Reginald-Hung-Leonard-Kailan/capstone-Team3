@@ -88,11 +88,12 @@ public class UserController {
     }
 
     @PostMapping("/edit/{id}")
-    public String saveEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String picture){
+    public String saveEditForm(@PathVariable long id, @RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String phonenumber, @RequestParam String picture){
         User user = userDao.findById(id);
         user.setFirstName(firstname);
         user.setLastName(lastname);
         user.setEmail(email);
+        user.setPhoneNumber(phonenumber);
         user.setProfilePicture(picture);
         userDao.save(user);
         return "redirect:/home";

@@ -74,7 +74,10 @@ function viewerInfo(data){
     let {username, email, firstName, lastName, phoneNumber, bio, profilePicture} = data,
         id = document.querySelector("#personal-info"),
         html = "";
-    helper = profilePicture;
+        helper = profilePicture;
+        if (phoneNumber === null|| phoneNumber === ""){
+            phoneNumber="no number added";
+        }
         if(profilePicture == null || profilePicture === ""){
             profilePicture= "../img/profilePicPlaceholder.png";
     }
@@ -134,7 +137,7 @@ function showInjury(data){
     }
     id.innerHTML = html;
 }
-
+g
 //Sleep Ratings
 function renderSleep(arr = sleepArr){
 

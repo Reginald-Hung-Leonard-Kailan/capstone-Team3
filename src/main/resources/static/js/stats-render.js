@@ -137,7 +137,7 @@ function showInjury(data){
     }
     id.innerHTML = html;
 }
-g
+
 //Sleep Ratings
 function renderSleep(arr = sleepArr){
 
@@ -166,7 +166,8 @@ function renderSleep(arr = sleepArr){
     });
 
     // Create the HTML
-    for (let i = 0; i < 7; i++) {
+    // To switch back to normal just make i=0; i<7; i++
+    for (let i = 6; i >= 0; i--) {
         let today = weekNames[i], date = "no entry", rating = 0, sheepPop = "", bed = "";
         entries.map(entry => {
             if(entry.weekDay === today){

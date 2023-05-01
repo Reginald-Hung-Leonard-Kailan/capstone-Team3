@@ -38,22 +38,22 @@
 
                         <form th:action="@{/add-injury/{id}(id=${user.id})}" th:method="Post" id="add-injury-form" class="modal-form" >
                             <div class="edit-heading"><h1>Add Injury</h1></div>
-                            <label for="status">Status:</label><br>
+                            <label for="status">Status</label><br>
                             <select class="form-select" id="status" name="status">
                                 <option value=active>Active</option>
                                 <option value=past>Past</option>
                             </select><br><br>
-                            <label for="title">Title:</label><br>
+                            <label for="title">Title</label><br>
                             <input type="text" id="title" class="form-control form-control-lg bg-light" style="font-family: sans-serif" name="title"><br><br>
-                            <label for="injury-date">Injury Date:</label><br>
+                            <label for="injury-date">Injury Date</label><br>
                             <input  id="injury-date" class="form-control form-control-lg bg-light" style="font-family: sans-serif" type="date">
                             <input hidden id="hidden-injury-date" name="injuryDate" type="text"><br><br>
-                            <label for="description">Description:</label><br>
+                            <label for="description">Description</label><br>
                             <!--        <input type="text" id="description" th:field="*{description}">-->
                             <textarea class="form-control form-control-lg bg-light" style="font-family: sans-serif" id="description" name="description"></textarea><br><br>
                             <!--    <input type="number" id="status"  th:field="*{status}"><br>-->
                             <!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->
-                            <button class="btn btn-secondary custom">Submit</button>
+                            <button class="btn btn-secondary custom">submit</button>
                         </form>
 
                     </div>

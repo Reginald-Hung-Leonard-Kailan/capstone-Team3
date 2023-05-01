@@ -200,18 +200,18 @@
 
                             <form th:action="@{/client-edit/{id}(id=${user.id})}" th:method="POST" id="edit-client-form" class="modal-form">
                                 <div class="edit-heading"><h1>Client Edit</h1></div>
-                                <label for="first-name">First Name:</label><br>
+                                <label for="first-name">First Name</label><br>
                                 <input class="form-control form-control-lg bg-light" id="first-name" type="text" name="firstname" th:value="${user.firstName}"><br><br>
-                                <label for="last-name">Last Name:</label><br>
+                                <label for="last-name">Last Name</label><br>
                                 <input class="form-control form-control-lg bg-light" id="last-name" type="text" name="lastname" th:value="${user.lastName}"><br><br>
-                                <label for="email">Email:</label><br>
+                                <label for="email">Email</label><br>
                                 <input class="form-control form-control-lg bg-light" id="email" type="text" name="email" th:value="${user.email}"><br><br>
                                 <label for="phone-number">Phone Number:</label><br>
                                 <input class="form-control form-control-lg bg-light" id="phone-number" type="text" name="phonenumber" th:value="${user.phoneNumber}"><br><br>
                                 <label for="user-input">Profile Picture:</label><br>
                                 <input type="text" id="user-input" name="picture" style="font-family: sans-serif" class="form-control form-control-lg my-2 bg-light" th:value="${user.profilePicture}"/>
                                 <button type="button" id="upload-btn" class="btn btn-secondary " >Upload photo</button><br><br>
-                                <button class="btn btn-secondary custom">Submit</button>
+                                <button class="btn btn-secondary custom">submit</button>
                             </form>
 
                     </div>

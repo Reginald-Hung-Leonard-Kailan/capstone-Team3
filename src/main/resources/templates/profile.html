@@ -37,7 +37,7 @@
 <!--          </a>-->
 <!--        </li>-->
 
-        <li class="sidebar-item active">
+        <li class="sidebar-item">
           <a class="sidebar-link" href="/stats">
             <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Personal Stats</span>
           </a>
@@ -60,9 +60,15 @@
         </li>
 
 
-        <li class="sidebar-item">
+        <li class="sidebar-item active">
           <a class="sidebar-link" href="/profile">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/setting">
+            <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Edit Profile</span>
           </a>
         </li>
 
@@ -206,7 +212,7 @@
                   <p th:text="'First/Last: ' + ${user.firstName + ' ' + user.lastName}"></p>
                   <p th:text="'Username: ' + ${user.username}"></p>
                   <p th:text="'Email: ' + ${user.email}"></p>
-                  <a href="/setting"><button class="btn btn-secondary custom">Edit Me!</button></a>
+                  <a href="/setting"><button class="btn btn-primary custom">Edit Me!</button></a>
               </div>
 
               </div>

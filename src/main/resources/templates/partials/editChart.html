@@ -16,9 +16,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="sleep-rating" class="form-label">Rating</label>
-                        <select class="form-select" id="sleep-rating" required>
+                        <select class="form-select" id="sleep-rating"  required >
                             <option value="">Select a value</option>
-                            <option value="0">0</option>
+                            <option value="0">Remove rating</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -51,7 +51,7 @@
                         <label for="fatigue-rating" class="form-label">Rating</label>
                         <select class="form-select" id="fatigue-rating" required>
                             <option value="">Select a value</option>
-                            <option value="0">0</option>
+                            <option value="0">Remove rating</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -85,6 +85,7 @@
                         <input type="number" class="form-control" min="0" max="60" id="bodyfat-rating" required/>
                     </div>
                 </div>
+                    <div style="text-align: center">  *0 will erase the point from the selected date.*</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="saveChangesBodyfat()">Save changes</button>
@@ -110,6 +111,7 @@
                         <input type="number" class="form-control" min="20" max="400" id="bodyweight-rating" required/>
                     </div>
                 </div>
+                <div style="text-align: center">  *0 will erase the point from the selected date.*</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="saveChangesBodyweight()">Save changes</button>
@@ -135,6 +137,7 @@
                         <input type="number" class="form-control" max="1200" id="squat-rating" required/>
                     </div>
                 </div>
+                <div style="text-align: center">  *0 will erase the point from the selected date.*</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="saveChangesSquat()">Save changes</button>
@@ -160,6 +163,7 @@
                         <input type="number" class="form-control" max="900" id="bench-rating" required/>
                     </div>
                 </div>
+                <div style="text-align: center">  *0 will erase the point from the selected date.*</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="saveChangesBench()">Save changes</button>
@@ -185,6 +189,7 @@
                         <input type="number" class="form-control" max="1500" id="deadlift-rating" required/>
                     </div>
                 </div>
+                <div style="text-align: center">  *0 will erase the point from the selected date.*</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="saveChangesDeadlift()">Save changes</button>

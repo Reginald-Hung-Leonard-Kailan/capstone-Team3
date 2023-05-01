@@ -30,19 +30,19 @@
         <img class="nav-link active" src="/img/whitewatermark.png" alt="watermark">
     </li>
     <li class="nav-item mt-5">
-        <a class="nav-link active" aria-current="page" href="/about" style="color: whitesmoke">About</a>
+        <a class="nav-link active" aria-current="page" href="/about" style="color: whitesmoke ; font-size: 20px">About</a>
     </li>
     <li class="nav-item mt-5" th:if="${isAuthenticated}">
-        <a class="nav-link" style="color: whitesmoke" href="/home">Profile</a>
+        <a class="nav-link" style="color: whitesmoke ; font-size: 20px" href="/home">Profile</a>
     </li>
     <li class="nav-item mt-5" th:if="${isAuthenticated}">
-        <a class="nav-link" style="color: whitesmoke" href="/">Logout</a>
+        <a class="nav-link" style="color: whitesmoke ; font-size: 20px" href="/">Logout</a>
     </li>
     <li class="nav-item form mt-5" th:unless="${isAuthenticated}" id="open-login" style="color: whitesmoke">
-        <a class="nav-link form" style="color: whitesmoke" href="/login">Login</a>
+        <a class="nav-link form" style="color: whitesmoke ; font-size: 20px" href="/login">Login</a>
     </li>
     <li class="nav-item mt-5" th:unless="${isAuthenticated}" id="open-register">
-        <a class="nav-link" href="/register" style="color: whitesmoke">Register</a>
+        <a class="nav-link" href="/register" style="color: whitesmoke ; font-size: 20px">Register</a>
     </li>
 </ul>
 

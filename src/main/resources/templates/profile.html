@@ -209,7 +209,7 @@
               <div class="card-body">
 
                   <h1>Profile page</h1>
-                  <p th:text="'First/Last: ' + ${user.firstName + ' ' + user.lastName}"></p>
+                  <p th:text="'Name: ' + ${user.firstName + ' ' + user.lastName}"></p>
                   <p th:text="'Username: ' + ${user.username}"></p>
                   <p th:text="'Email: ' + ${user.email}"></p>
                   <a href="/setting"><button class="btn btn-primary custom">Edit Me!</button></a>

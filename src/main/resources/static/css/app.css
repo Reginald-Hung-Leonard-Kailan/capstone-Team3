@@ -219,11 +219,6 @@
       width: 500px;
   }
 
-  #carouselExample{
-      /*height: 1600px;*/
-      /*width: 1600px;*/
-  }
-
   #sleep-div{
       background: linear-gradient(to left, rgba(35,46,60,1), rgb(255, 255, 255));
   }
@@ -241,6 +236,11 @@
 .card-title{
     font-size: 16px;
 }
+
+
+
+
+
 
 
 

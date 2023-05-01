@@ -48,11 +48,11 @@
           </a>
         </li>
         <!--                        <button class="tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</button>-->
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/home">
-            <i class="align-middle" data-feather="users"></i> <span class="align-middle tablinks" onclick="openCity(event, 'myClients')" id="defaultOpen">My Clients</span>
-          </a>
-        </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/home">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle tablinks">My Clients</span>
+                    </a>
+                </li>
 
 
                 <li class="sidebar-item">
@@ -68,9 +68,8 @@
 
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/home">
+                    <a class="sidebar-link" href="/profile">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-                    </a>
                     </a>
                 </li>
 
@@ -231,6 +230,8 @@
                                            th:value="${user.lastName}"><br><br>
                                     <label for="email">Email:</label><br>
                                     <input class="form-control form-control-lg bg-light" id="email" type="text" name="email" th:value="${user.email}"><br><br>
+                                    <label for="phone-number">Phone Number:</label><br>
+                                    <input class="form-control form-control-lg bg-light" id="phone-number" type="text" name="phonenumber" th:value="${user.phoneNumber}"><br><br>
                                     <label for="upload-btn">Profile Picture:</label><br>
 
                                     <input class="form-control form-control-lg bg-light" type="text" id="user-input" name="picture"
@@ -244,6 +245,10 @@
                                 </form>
                             </div>
                         </div>
+                        <form class="form"  th:action="@{/logout}" th:method="post" >
+                            <button class="btn-danger" onclick="return confirm('Are you sure you want to delete your account?\n\nYou will be able to sign in for another 48 hours.')">Delete Account</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

@@ -40,16 +40,16 @@
                         <form th:action="@{/injury/edit/{id}(id=${injury.id})}" th:method="Post" >
                             <div class="edit-heading"><h1>Edit Injury</h1></div>
                             <!--    <input type="hidden" name="user" th:value="${injury.user}"/>-->
-                            <label for="status">Status:</label><br>
+                            <label for="status">Status</label><br>
                             <select class="form-select" id="status" name="status">
                                 <option value=active>Active</option>
                                 <option value=past>Past</option>
                             </select><br>
-                            <label for="title">Title:</label><br>
+                            <label for="title">Title</label><br>
                             <input class="form-control form-control-lg bg-light" style="font-family: sans-serif" type="text" id="title" name="title" th:value="${injury.title}"><br><br>
-                            <label for="injury-date">Injury Date:</label><br>
+                            <label for="injury-date">Injury Date</label><br>
                             <input class="form-control form-control-lg bg-light" style="font-family: sans-serif" id="injury-date" name="injuryDate" th:value="${injury.injuryDate}"><br>
-                            <label for="description">Description:</label><br>
+                            <label for="description">Description</label><br>
                             <input class="form-control form-control-lg bg-light" style="font-family: sans-serif" type="text" id="description" name="description" th:value="${injury.description}"></input><br>
                             <!--    <input type="number" id="status"  th:field="*{status}"><br>-->
                             <!--    <input type="hidden" id="user-id" th:value="${userId}" th:field="*{userId}" ><br>-->

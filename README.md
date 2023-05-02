@@ -34,7 +34,7 @@ spring.datasource.hikari.maximum-pool-size=4
 
 ## Developers
 
-Leo K. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/karolyleo)
-Hung H. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/Hunghho)
-Reginald G. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/ReginaldGraham)
-Kailan Z. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/KailanZwas)
+ - Leo K. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/karolyleo)
+ - Hung H. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/Hunghho)
+ - Reginald G. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/ReginaldGraham)
+ - Kailan Z. – [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20"/>](https://github.com/KailanZwas)

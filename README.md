@@ -1,9 +1,5 @@
 # Coaches Corner
-> A webapplication that helps coaches manage their clients.
-
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+> A web application that helps coaches manage their clients.
 
 Fitness coaches often struggle to manage clients effectively using multiple resources, which can lead to inefficiencies and lost time. Coaches Corner provides a comprehensive solution, including injury reporting and personalized coaching tools, to help coaches streamline their workflow and manage clients more efficiently. With Coaches Corner, fitness coaches can focus on delivering quality coaching, while our platform handles the administrative tasks, saving time and improving overall efficiency.
 
